@@ -19,6 +19,7 @@ const appRoutes: Routes = [
   { path: 'post', component: PostComponent },
   { path: 'post/add', component: PostAddComponent },
   { path: 'post/list', component: PostListComponent },
+  { path: 'commentpost', component: PostDetailComponent},
 ]
 
 @NgModule({

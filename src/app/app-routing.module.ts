@@ -36,6 +36,7 @@ const appRoutes: Routes = [
   { path: 'post/searchPostGeneral', component: SearchPostGeneralComponent },
   { path: 'post/searchByTitile', component: SearchPostByTitleComponent },
   { path: 'post/searchByFengshui', component: SearchPostByFengshuiComponent },
+  { path: 'post/add/success', component: PostSuccessComponent },
 ]
 
 @NgModule({

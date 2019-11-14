@@ -6,14 +6,14 @@ import { map } from "rxjs/operators";
   providedIn: 'root'
 })
 export class PostService {
-  apiUrlPost: string ="http://localhost:8000/api/posts/all";
+  apiUrlPost: string ="http://localhost:8000/api/posts";
   apiUrlSearchBasic: string ="http://localhost:8000/api/posts/searchPostBasic";
   constructor(
     private httpClient: HttpClient
   ) { }
 
   getAllPosts(): Observable<any> {
-    return this.httpClient.get(this.apiUrlPost).pipe(map((response: any) => response));
+    return this.httpClient.get(this.apiUrlPost+'All').pipe(map((response: any) => response));
   }
 
   postDataSearch(data) {

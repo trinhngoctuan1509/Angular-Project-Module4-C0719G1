@@ -1,7 +1,7 @@
-import { Component, OnInit, Inject} from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from "@angular/router";
-import { MAT_DIALOG_DATA ,MatDialogRef} from "@angular/material";
-
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
+import { PostService } from "../../../services/post.service";
 @Component({
   selector: 'app-post-confirm',
   templateUrl: './post-confirm.component.html',
@@ -10,9 +10,10 @@ import { MAT_DIALOG_DATA ,MatDialogRef} from "@angular/material";
 export class PostConfirmComponent implements OnInit {
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data:any,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<PostConfirmComponent>,
-  private router: Router
+    private router: Router,
+    private postService: PostService
   ) { }
 
   ngOnInit() {
@@ -20,13 +21,15 @@ export class PostConfirmComponent implements OnInit {
   }
 
   // Click Cancel
-  onClickBack(){
+  onClickBack() {
     this.dialogRef.close();
   }
 
-// Click Add new Post
-  onClickAdd(){
-    window.location.href = 'posts/add/success';
+  // Click Add new Post
+  onClickAdd() {
+    this.postService.addPost(this.data).subscribe(data => {
+      window.location.href = 'post/add/success';
+    })
 
   }
 }

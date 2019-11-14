@@ -10,7 +10,8 @@ import { PostSuccessComponent } from './components/post/post-success/post-succes
 @NgModule({
   declarations: [
     AppComponent,
-    PostSuccessComponent
+    PostSuccessComponent,
+   
 
   ],
   imports: [

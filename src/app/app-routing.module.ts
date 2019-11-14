@@ -15,6 +15,7 @@ import { MaterialModule } from './material/material.module';
 import { LoginUsersComponent } from './components/login/login-users/login-users.component';
 import { SingInComponent } from './components/sing-in/sing-in.component';
 import { PostConfirmComponent } from './components/post/post-confirm/post-confirm.component';
+import { PostSuccessComponent } from './components/post/post-success/post-success.component';
 
 
 
@@ -28,14 +29,11 @@ import { SearchPostGeneralComponent } from './components/post/search-post-genera
 
 
 const appRoutes: Routes = [
-  { path: 'post', component: PostComponent },
-  { path: 'post/add', component: PostAddComponent },
-  { path: 'post/list', component: PostListComponent },
+ 
   { path: 'post', component: PostComponent },
   { path: 'post/add', component: PostAddComponent },
   { path: 'post/list', component: PostListComponent },
   { path: 'commentpost', component: PostDetailComponent},
-    { path: 'post', component: PostComponent },
   { path: 'login', component: LoginUsersComponent },
   { path: 'singin', component: SingInComponent },
   { path: 'post/btnSearchPostAdvanced', component: DemoButtonSearchPostAdvancedComponent },
@@ -58,7 +56,8 @@ const appRoutes: Routes = [
     DialogSearchPostAdvancedComponent,
     SearchPostByTitleComponent,
     SearchPostByFengshuiComponent,
-    SearchPostGeneralComponent
+    SearchPostGeneralComponent,
+    PostSuccessComponent
   ],
 
 

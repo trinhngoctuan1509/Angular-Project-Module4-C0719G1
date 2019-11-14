@@ -16,10 +16,7 @@ import { MaterialModule } from './material/material.module';
 import { LoginUsersComponent } from './components/login/login-users/login-users.component';
 import { SingInComponent } from './components/sing-in/sing-in.component';
 import { PostConfirmComponent } from './components/post/post-confirm/post-confirm.component';
-
-
-
-
+import { PostSuccessComponent } from './components/post/post-success/post-success.component';
 
 
 const appRoutes: Routes = [
@@ -40,11 +37,12 @@ const appRoutes: Routes = [
     PostEditComponent,
     PostDetailComponent,
     PostSearchAdvancedComponent,
-
+    PostConfirmComponent,
+    PostSuccessComponent,
     LoginUsersComponent,
     SingInComponent,
-
     PostConfirmComponent],
+
 
 
   imports: [

@@ -66,7 +66,7 @@
                                 <div class="card mt-3">
                                     <img class="card-img-top" src="https://cdn.chotot.com/a6nsbINEnlXtohlbmqAlHN1HdxMA9dbQnDRFjdX04VU/preset:listing/plain/8651904829.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                        <h5 class="card-title">[{{post.post_of_types.postOfTypeName}}] {{post.title}}
+                                        <h5 class="card-title" [routerLink]="['/posts/detail/'+post.id]">[{{post.post_of_types.postOfTypeName}}] {{post.title}}
                                         </h5>
 
                                         <div>

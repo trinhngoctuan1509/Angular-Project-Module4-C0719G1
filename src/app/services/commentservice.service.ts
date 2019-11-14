@@ -21,8 +21,6 @@ export class CommentserviceService {
       tap(receivedDetailpost => console.log(`receivedDetailpost = ${JSON.stringify(receivedDetailpost)}`)),
       catchError(error => of([]))
     );
-
-
   }
   addCommentpost(commentposts:Commentpost): Observable<Commentpost> {        
     return this.http.post<Commentpost>(this.commentpostURL,commentposts, httpOptions).pipe(

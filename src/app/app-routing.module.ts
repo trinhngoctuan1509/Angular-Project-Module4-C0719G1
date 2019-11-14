@@ -23,7 +23,7 @@ const appRoutes: Routes = [
   { path: 'post', component: PostComponent },
   { path: 'post/add', component: PostAddComponent },
   { path: 'post/list', component: PostListComponent },
-  { path: 'commentpost', component: PostDetailComponent},
+  { path: 'post/detail/:id', component: PostDetailComponent},
     { path: 'post', component: PostComponent },
   { path: 'login', component: LoginUsersComponent },
   { path: 'singin', component: SingInComponent },

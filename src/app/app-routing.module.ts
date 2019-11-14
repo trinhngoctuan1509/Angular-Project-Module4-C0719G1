@@ -17,6 +17,10 @@ import { SingInComponent } from './components/sing-in/sing-in.component';
 import { PostConfirmComponent } from './components/post/post-confirm/post-confirm.component';
 import { PostSuccessComponent } from './components/post/post-success/post-success.component';
 
+
+
+
+
 import { DemoButtonSearchPostAdvancedComponent } from './components/post/demo-button-search-post-advanced/demo-button-search-post-advanced.component';
 import { DialogSearchPostAdvancedComponent } from './components/post/dialog-search-post-advanced/dialog-search-post-advanced.component';
 import { SearchPostByTitleComponent } from './components/post/search-post-by-title/search-post-by-title.component';
@@ -25,11 +29,11 @@ import { SearchPostGeneralComponent } from './components/post/search-post-genera
 
 
 const appRoutes: Routes = [
+ 
   { path: 'post', component: PostComponent },
   { path: 'post/add', component: PostAddComponent },
   { path: 'post/list', component: PostListComponent },
-  { path: 'commentpost', component: PostDetailComponent },
-  { path: 'post', component: PostComponent },
+  { path: 'commentpost', component: PostDetailComponent},
   { path: 'login', component: LoginUsersComponent },
   { path: 'singin', component: SingInComponent },
   { path: 'post/btnSearchPostAdvanced', component: DemoButtonSearchPostAdvancedComponent },
@@ -45,8 +49,6 @@ const appRoutes: Routes = [
     PostAddComponent,
     PostEditComponent,
     PostDetailComponent,
-    PostConfirmComponent,
-    PostSuccessComponent,
     LoginUsersComponent,
     SingInComponent,
     PostConfirmComponent,
@@ -54,9 +56,9 @@ const appRoutes: Routes = [
     DialogSearchPostAdvancedComponent,
     SearchPostByTitleComponent,
     SearchPostByFengshuiComponent,
-    SearchPostGeneralComponent
+    SearchPostGeneralComponent,
+    PostSuccessComponent
   ],
-
 
 
   imports: [

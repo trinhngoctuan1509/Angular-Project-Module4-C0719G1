@@ -14,7 +14,7 @@ import { PostDetailComponent } from './components/post/post-detail/post-detail.c
 import { PostSearchAdvancedComponent } from './components/post/post-search-advanced/post-search-advanced.component';
 import { MaterialModule } from './material/material.module';
 import { PostConfirmComponent } from './components/post/post-confirm/post-confirm.component';
-
+import { PostSuccessComponent } from './components/post/post-success/post-success.component';
 const appRoutes: Routes = [
   { path: 'post', component: PostComponent },
   { path: 'post/add', component: PostAddComponent },
@@ -29,7 +29,9 @@ const appRoutes: Routes = [
     PostEditComponent,
     PostDetailComponent,
     PostSearchAdvancedComponent,
-    PostConfirmComponent],
+    PostConfirmComponent,
+    PostSuccessComponent],
+    
 
   imports: [
     CommonModule,

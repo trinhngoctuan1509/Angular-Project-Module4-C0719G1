@@ -6,97 +6,86 @@
 
                 <div class="card-body">
                     <h4 class="card-title">Mua Bán Bất Động Sản </h4>
+
                     <!-- Start Form Tìm Kiếm -->
-                    <!-- <form action=""> -->
                     <div>
-                        <input type="text" placeholder="search" class="form-control">
-                    </div>
+                        <form [formGroup]="formSearchPostBasic" (ngSubmit)="onClickSearchBasic()">
+                            <div>
+                                <input type="text" placeholder="Nhập Tiêu đề hoặc nội dung cần tìm kiếm" class="form-control" formControlName="wordSearch">
+                            </div>
 
-                    <div class="row mt-2">
-                        <div class="col">
-                            <select class="form-control">
-                                                    <option>--Toàn Quốc--</option>
-                                                    <option>Đà Nẵng</option>
-                                                  </select>
-                        </div>
-                        <div class="col">
-                            <select class=" form-control ">
-                                                <option>--Danh Mục--</option>
-                                              </select>
-                        </div>
-                    </div>
+                            <div class="row mt-2">
+                                <div class="col">
+                                    <select class="form-control" formControlName="region">
+                                        <option value="">--Toàn Quốc--</option>
+                                        <option *ngFor="let region of regions" value="{{region.id}}">
+                                            {{region.regionName}}</option>
+                                    </select>
+                                </div>
 
-                    <div class="row mt-2">
-                        <div class="col">
-                            <h6>Tất cả Cá nhân / Tổ chức</h6>
-                        </div>
-                        <div class="col">
-                            <button type="button" class="btn btn-secondary btn-sm float-right"><i class="fas fa-filter"></i> Lọc nâng cao</button>
-                            <button type="button" class="btn btn-warning btn-sm float-right mr-1"><i class="fas fa-search"> </i> Tìm Kiếm</button>
+                                <div class="col">
+                                    <select class=" form-control " formControlName="category">
+                                            <option value="">--Danh Mục--</option>
+                                        <option *ngFor="let category of categories" value="{{category.id}}">
+                                               
+                                            {{category.categoryName}}</option>
+                                    </select>
+                                </div>
+                            </div>
 
-                        </div>
+                            <div class="row mt-2">
+                                <div class="col">
+                                    <h6>Tất cả Cá nhân / Tổ chức</h6>
+                                </div>
+                                <div class="col">
+
+                                    <button type="button" class="btn btn-secondary btn-sm float-right"><i
+                                            class="fas fa-filter"></i> Lọc nâng cao</button>
+
+                                    <!-- Button Submit  formSearchPostBasic -->
+                                    <button type="submit" class="btn btn-warning btn-sm float-right mr-1"><i
+                                            class="fas fa-search"> </i> Tìm Kiếm</button>
+                                </div>
+                            </div>
+
+                        </form>
                     </div>
-                    <!-- </form> -->
                     <!-- End Form Tìm Kiếm -->
+
                     <hr>
 
                     <!-- Start List Bài đăng -->
-                    <div class="card-deck">
-                        <div class="card">
-                            <img class="card-img-top" src="https://cdn.chotot.com/a6nsbINEnlXtohlbmqAlHN1HdxMA9dbQnDRFjdX04VU/preset:listing/plain/8651904829.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">[Cần Bán] Bán Lô Đất ... 5,0000,0000,0000 VND</h5>
+                    <div>
+                        <div class="row">
+                            <div class="col-4" *ngFor="let post of posts">
+                                <div *ngIf="posts && posts?.length == 0">
+                                    <div class="alert alert-danger" role="alert">
+                                        Xin lỗi! Chúng tôi không tìm thấy bài đăng nào dành cho bạn!
+                                    </div>
+                                </div>
+                                <div class="card mt-3">
+                                    <img class="card-img-top" src="https://cdn.chotot.com/a6nsbINEnlXtohlbmqAlHN1HdxMA9dbQnDRFjdX04VU/preset:listing/plain/8651904829.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">[{{post.post_of_types.postOfTypeName}}] {{post.title}}
+                                        </h5>
 
-                                <div>
-                                    <small class="text-muted">tại Hà Nội</small>
-                                </div>
-                                <div>
-                                    <small class="text-muted">2017-02-28</small>
-                                </div>
-                                <div class="d-flex">
-                                    <small class="text-muted mr-auto">Lượt xem 1</small>
-                                    <small class="text-muted">Cá Nhân</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="https://cdn.chotot.com/a6nsbINEnlXtohlbmqAlHN1HdxMA9dbQnDRFjdX04VU/preset:listing/plain/8651904829.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">[Cần Bán] Bán Lô Đất ... 5,0000,0000,0000 VND</h5>
-
-                                <div>
-                                    <small class="text-muted">tại Hà Nội</small>
-                                </div>
-                                <div>
-                                    <small class="text-muted">2017-02-28</small>
-                                </div>
-                                <div class="d-flex">
-                                    <small class="text-muted mr-auto">Lượt xem 1</small>
-                                    <small class="text-muted">Cá Nhân</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="https://cdn.chotot.com/a6nsbINEnlXtohlbmqAlHN1HdxMA9dbQnDRFjdX04VU/preset:listing/plain/8651904829.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">[Cần Bán] Bán Lô Đất ... 5,0000,0000,0000 VND</h5>
-
-                                <div>
-                                    <small class="text-muted">tại Hà Nội</small>
-                                </div>
-                                <div>
-                                    <small class="text-muted">2017-02-28</small>
-                                </div>
-                                <div class="d-flex">
-                                    <small class="text-muted mr-auto">Lượt xem 1</small>
-                                    <small class="text-muted">Cá Nhân</small>
+                                        <div>
+                                            <small class="text-muted">tại {{post.region.regionName}}</small>
+                                        </div>
+                                        <div>
+                                            <small class="text-muted">{{post.created_at | date: 'y-M-d' }}</small>
+                                        </div>
+                                        <div class="d-flex">
+                                            <small class="text-muted mr-auto">Lượt xem 1</small>
+                                            <small class="text-muted">{{post.seller.sellerName}}</small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- End List Bài đăng -->
                 </div>
-
             </div>
             <!--End Main -->
         </div>
@@ -112,32 +101,32 @@
                     <div>
                         <h6 class="m-0">Cần Bán Nhà Gấp</h6>
                         <div>
-                            <small class="text-muted">tại Hà Nội | Ngày đăng: 2017-02-27 >  </small>
+                            <small class="text-muted">tại Hà Nội | Ngày đăng: 2017-02-27 > </small>
                         </div>
                     </div>
 
                     <div class="mt-2">
                         <h6 class="m-0">Cần Bán Nhà Gấp</h6>
                         <div>
-                            <small class="text-muted">tại Hà Nội | Ngày đăng: 2017-02-27 >  </small>
+                            <small class="text-muted">tại Hà Nội | Ngày đăng: 2017-02-27 > </small>
                         </div>
                     </div>
                     <div class="mt-2">
                         <h6 class="m-0">Cần Bán Nhà Gấp</h6>
                         <div>
-                            <small class="text-muted">tại Hà Nội | Ngày đăng: 2017-02-27 >  </small>
+                            <small class="text-muted">tại Hà Nội | Ngày đăng: 2017-02-27 > </small>
                         </div>
                     </div>
                     <div class="mt-2">
                         <h6 class="m-0">Cần Bán Nhà Gấp</h6>
                         <div>
-                            <small class="text-muted">tại Hà Nội | Ngày đăng: 2017-02-27 >  </small>
+                            <small class="text-muted">tại Hà Nội | Ngày đăng: 2017-02-27 > </small>
                         </div>
                     </div>
                     <div class="mt-2">
                         <h6 class="m-0">Cần Bán Nhà Gấp</h6>
                         <div>
-                            <small class="text-muted">tại Hà Nội | Ngày đăng: 2017-02-27 >  </small>
+                            <small class="text-muted">tại Hà Nội | Ngày đăng: 2017-02-27 > </small>
                         </div>
                     </div>
                 </div>
@@ -150,6 +139,7 @@
                 <div class="card-header" id="cardDirectionFavourite">
                     <i class="fas fa-road"></i> Hướng ưa thích
                 </div>
+
                 <div class="card-body">
                     <p class="m-0"> Đông <span style="color: red;">80</span> lượt xem</p>
                     <p class="m-0"> Đông Nam <span style="color: red;">80</span> lượt xem</p>
@@ -159,7 +149,6 @@
                     <p class="m-0"> Bắc <span style="color: red;">80</span> lượt xem</p>
                     <p class="m-0"> Tây Bắc <span style="color: red;">80</span> lượt xem</p>
                     <p class="m-0"> Đông Bắc <span style="color: red;">80</span> lượt xem</p>
-
                 </div>
 
             </div>

@@ -1,0 +1,30 @@
+<mat-dialog-content class="d-flex flex-column justify-content-center" style="font-size:12px;height: 150px;">
+    <form action="" [formGroup]="formSearchByFengshui">
+        <div class="row">
+            <div class="col-3 font-weight-bold d-flex justify-content-end">Năm Sinh:</div>
+            <div class="col-9">
+                <select class="form-control" name="" id="" formControlName="yearOfBirth" [value]="1990">
+                    <option value="1990">1990</option>
+                    <option value="1991">1991</option>
+                    <option value="1992">1992</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-3 font-weight-bold d-flex justify-content-end">Giới Tính:</div>
+            <div class="col-9">
+                <select class="form-control" name="" id="" formControlName="gender" [value]="1">
+                    <option value="1">Nam</option>
+                    <option value="2">Nữ</option>
+                </select>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="d-flex justify-content-end mb-0">
+    <button [routerLink]="['']" mat-raised-button color="primary" mat-dialog-close>Cancel</button>
+    <button [routerLink]="['']" mat-raised-button color="warn" mat-dialog-close (click)="searchByFengshui()">Tìm
+        Kiếm</button>
+</mat-dialog-actions>

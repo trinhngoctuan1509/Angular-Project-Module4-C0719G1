@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PostSearchAdvancedComponent } from './post-search-advanced.component';
+import { SearchPostByTitleComponent } from './search-post-by-title.component';
 
-describe('PostSearchAdvancedComponent', () => {
-  let component: PostSearchAdvancedComponent;
-  let fixture: ComponentFixture<PostSearchAdvancedComponent>;
+describe('SearchPostByTitleComponent', () => {
+  let component: SearchPostByTitleComponent;
+  let fixture: ComponentFixture<SearchPostByTitleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostSearchAdvancedComponent ]
+      declarations: [ SearchPostByTitleComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PostSearchAdvancedComponent);
+    fixture = TestBed.createComponent(SearchPostByTitleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -13,13 +13,23 @@ import { PostEditComponent } from './components/post/post-edit/post-edit.compone
 import { PostDetailComponent } from './components/post/post-detail/post-detail.component';
 import { PostSearchAdvancedComponent } from './components/post/post-search-advanced/post-search-advanced.component';
 import { MaterialModule } from './material/material.module';
+import { LoginUsersComponent } from './components/login/login-users/login-users.component';
+import { SingInComponent } from './components/sing-in/sing-in.component';
 import { PostConfirmComponent } from './components/post/post-confirm/post-confirm.component';
+
+
+
+
+
 
 const appRoutes: Routes = [
   { path: 'post', component: PostComponent },
   { path: 'post/add', component: PostAddComponent },
   { path: 'post/list', component: PostListComponent },
   { path: 'commentpost', component: PostDetailComponent},
+    { path: 'post', component: PostComponent },
+  { path: 'login', component: LoginUsersComponent },
+  { path: 'singin', component: SingInComponent },
 ]
 
 @NgModule({
@@ -30,7 +40,12 @@ const appRoutes: Routes = [
     PostEditComponent,
     PostDetailComponent,
     PostSearchAdvancedComponent,
+
+    LoginUsersComponent,
+    SingInComponent,
+
     PostConfirmComponent],
+
 
   imports: [
     CommonModule,

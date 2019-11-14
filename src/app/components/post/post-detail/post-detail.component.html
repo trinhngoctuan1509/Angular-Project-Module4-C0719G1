@@ -64,10 +64,18 @@
                                 <div class="card-body">
                                   <form action="comment" method="post">
                                         <div class="form-group">
-                                            
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" name="noidung" rows="3"></textarea>
+                                          <div class="form-group">
+                                            <label>userId</label>
+                                            <input type="text" class="form-control" placeholder="userId" #userId>
+                                          </div>
+                                          <div class="form-group">
+                                            <label>postId</label>
+                                            <input type="text" class="form-control" placeholder="postId" #postId>
+                                          </div>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" 
+                                        rows="3"#commentContent></textarea>
                                               </div>
-                                  <a href="#" class="btn btn-primary">Bình luận</a>
+                                  <button class="btn btn-primary"(click)="onadd(userId.value,postId.value,commentContent.value)">Bình luận</button>
                                 </form>
                                 </div>
                               </div>

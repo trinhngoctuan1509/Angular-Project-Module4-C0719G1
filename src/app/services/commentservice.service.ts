@@ -24,5 +24,11 @@ export class CommentserviceService {
 
 
   }
+  addCommentpost(commentposts:Commentpost): Observable<Commentpost> {        
+    return this.http.post<Commentpost>(this.commentpostURL,commentposts, httpOptions).pipe(
+      tap((commentposts: Commentpost) => console.log(`insertedCustomer = ${JSON.stringify(commentposts)}`)),
+      catchError(error => of(new Commentpost()))
+    );
+  }
   constructor(private http: HttpClient) { }
 }

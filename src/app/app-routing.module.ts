@@ -15,13 +15,21 @@ import { PostSearchAdvancedComponent } from './components/post/post-search-advan
 import { MaterialModule } from './material/material.module';
 import { LoginUsersComponent } from './components/login/login-users/login-users.component';
 import { SingInComponent } from './components/sing-in/sing-in.component';
+import { PostConfirmComponent } from './components/post/post-confirm/post-confirm.component';
+
+
+
+
 
 
 const appRoutes: Routes = [
   { path: 'post', component: PostComponent },
+  { path: 'post/add', component: PostAddComponent },
+  { path: 'post/list', component: PostListComponent },
+  { path: 'commentpost', component: PostDetailComponent},
+    { path: 'post', component: PostComponent },
   { path: 'login', component: LoginUsersComponent },
   { path: 'singin', component: SingInComponent },
-
 ]
 
 @NgModule({
@@ -32,8 +40,12 @@ const appRoutes: Routes = [
     PostEditComponent,
     PostDetailComponent,
     PostSearchAdvancedComponent,
+
     LoginUsersComponent,
-    SingInComponent],
+    SingInComponent,
+
+    PostConfirmComponent],
+
 
   imports: [
     CommonModule,
@@ -44,7 +56,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
 
-  entryComponents: [],
+  entryComponents: [PostConfirmComponent],
 
   exports: [RouterModule]
 })

@@ -1,0 +1,12 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a [routerLink]="['/post/searchPostGeneral/']" class="nav-item nav-link active" id="nav-home-tab"
+            data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Tìm Tổng Hợp</a>
+        <a [routerLink]="['/post/searchByFengshui/']" class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab"
+            href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Tìm Theo Phong Thủy</a>
+        <a [routerLink]="['/post/searchByTitile/']" class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+            href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Tìm Theo Tiêu Đề</a>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

@@ -12,25 +12,36 @@ import { Posts } from "src/app/models/post.model";
 })
 export class PostDetailComponent implements OnInit {
    public commentposts:Commentpost[];
-  @Input() post:Posts;
+   public id;
+   
+  @Input() postdetail:Posts;
+  
 
   constructor(
     private route:ActivatedRoute,
     private commentpostservice:CommentserviceService,
     private postserve:PostService
 
-  ) { }
+  ) { 
+   this.getPostFromroute();
+  }
   getcommentpostFromServices(): void {
     //this.movies = this.movieService.getMovies();
     this.commentpostservice.getcommentpost().subscribe(updatedCommentpost => {
       this.commentposts = updatedCommentpost
-      console.log(updatedCommentpost)
+      
+     
     });
   }
   getPostFromroute():void{
-    const id = +this.route.snapshot.paramMap.get('id');
-    console.log(`this.route.snapshot.paramMap = ${JSON.stringify(this.route.snapshot.paramMap)}`);
-    this.postserve.getPostfromId(id).subscribe(post => this.post= post); 
+    this.route.params.subscribe(data=>{
+      this.id=data['id'],console.log(this.id)
+    })
+    this.postserve.getPostfromId(this.id).subscribe(post => {
+      this.postdetail= post, console.log(this.postdetail)
+    }); 
+    
+   
 
   }
   onadd(userId:number,postId:number,commentContent:string):void {
@@ -46,7 +57,7 @@ export class PostDetailComponent implements OnInit {
   }
   ngOnInit() {
     this.getcommentpostFromServices();
-    this.post=new Posts;
+    this.postdetail=new Posts;
   }
 
 }

@@ -1,10 +1,10 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>Bán lô đất cần bán</h1>
-        <div class="card mb-3" style="max-width: 1000px;">
+            <h1>[{{postdetail.post_of_types.postOfTypeName}}] Lô đất 4 mặt tiền</h1>
+        <div class="card mb-3" style="max-width: 1100px;">
                         <div class="row no-gutters">
-                          <div class="col-md-5 mt-4">
+                          <div class="col-md-5 mt-3">
                                 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
                                         <div class="carousel-inner" >
                                           <div class="carousel-item active">
@@ -33,23 +33,29 @@
                           <div class="col-md-4">
                             <div class="card-body">
                              
-                              <p class="card-text">Ngày Đăng:<small class="text-muted"> 20/11/2019</small></p>
-                              <p class="card-text">Vùng Miền<small class="text-muted"> Đà Nẵng</small></p>
-                              <p class="card-text">Hướng:<small class="text-muted"> Đông</small></p>
-                              <p class="card-text">Tinh Trạng:<small class="text-muted"> Mới</small></p>
-                              <p class="card-text">Địa Chỉ:<small class="text-muted"> Đà Nẵng</small></p>
-                              <p class="card-text">Diện Tích:<small class="text-muted"> 100m2</small></p>
-                              <p class="card-text">Gía:<small class="text-muted"> 5000000000 vnd</small></p>
+                              <p class="card-text">Ngày Đăng:<small class="text-muted"> {{postdetail.created_at}}</small></p>
+                              <p class="card-text">Vùng Miền: <small class="text-muted">{{postdetail.region.regionName}}</small></p>
+                              <p class="card-text">Hướng:<small class="text-muted"> {{postdetail.directions.directionName}}</small></p>
+                              <p class="card-text">Tinh Trạng:<small class="text-muted"> {{postdetail.status_of_posts.statusOfPostName}}</small></p>
+                              <p class="card-text">Địa Chỉ:<small class="text-muted"> {{postdetail.address}}</small></p>
+                              <p class="card-text">Diện Tích:<small class="text-muted">{{postdetail.area}}/m2</small></p>
+                              <p class="card-text">Gía:<small class="text-muted">{{postdetail.price}} vnd</small></p>
+                              <p class="card-text">Lược xem :<small class="text-muted">{{postdetail.sellerId}}</small></p>
 
                             </div>
                           </div>
                           <div class="col-md-3">
-                                <h2>Thông tin liên hệ</h2>
-                                <p class="card-text">Họ Và Tên:<small class="text-muted"> dailalle</small></p>
-                                <p class="card-text">Email:<small class="text-muted"> daila@gmail.com</small></p>
-                                <p class="card-text">Số điện thoại:<small class="text-muted"> 3838383838</small></p>
-                                <p class="card-text">Địa chỉ:<small class="text-muted"> daila hoa son</small></p>
-
+                            <div class="card" >
+                                    <div class="card-header">
+                                      Thông tin liên hệ người đăng
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                      <label class="list-group-item">Họ Và Tên:dailalle</label>
+                                      <label class="list-group-item">Email:dailalle@gmail.com</label>
+                                      <label class="list-group-item">Số điện thoại: 67676767</label>
+                                      <li class="list-group-item">Địa chỉ: daila hoa son</li>
+                                    </ul>
+                                  </div>
                           </div>
                         </div>
                         <div class="card">
@@ -57,7 +63,7 @@
                             Nội Dung Bài Đăng
                             </div>
                             <div class="card-body">
-                                <p class="text-monospace">đất nền hợp phong thủy</p>
+                                <p class="text-monospace">{{postdetail.contentPost}}</p>
                             </div>
                           </div>
                         <div class="card text-right">

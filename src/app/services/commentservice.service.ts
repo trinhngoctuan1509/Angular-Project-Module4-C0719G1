@@ -17,16 +17,12 @@ const httpOptions = {
 export class CommentserviceService {
   private commentpostURL='http://127.0.0.1:8000/api/comments';
   getcommentpost():Observable<Commentpost[]>{
-    return this.http.get<Commentpost[]>(this.commentpostURL).pipe(
-      tap(receivedDetailpost => console.log(`receivedDetailpost = ${JSON.stringify(receivedDetailpost)}`)),
-      catchError(error => of([]))
-    );
+    return this.http.get<Commentpost[]>(this.commentpostURL).pipe(map((response: any) => response))
   }
   addCommentpost(commentposts:Commentpost): Observable<Commentpost> {        
-    return this.http.post<Commentpost>(this.commentpostURL,commentposts, httpOptions).pipe(
-      tap((commentposts: Commentpost) => console.log(`insertedCustomer = ${JSON.stringify(commentposts)}`)),
-      catchError(error => of(new Commentpost()))
-    );
+    return this.http.post<Commentpost>(this.commentpostURL,commentposts, httpOptions).
+    pipe(map((response: any) => response))
+    
   }
   constructor(private http: HttpClient) { }
 }

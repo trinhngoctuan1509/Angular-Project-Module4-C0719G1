@@ -9,14 +9,14 @@ import { map } from "rxjs/operators";
   providedIn: 'root'
 })
 export class PostService {
-  apiUrlPost: string ="http://localhost:8000/api/posts";
+  apiUrlPost: string ="http://127.0.0.1:8000/api/postsAll";
   apiUrlSearchBasic: string ="http://localhost:8000/api/posts/searchPostBasic";
   constructor(
     private httpClient: HttpClient
   ) { }
 
   getAllPosts(): Observable<any> {
-    return this.httpClient.get(this.apiUrlPost+'All').pipe(map((response: any) => response));
+    return this.httpClient.get(this.apiUrlPost).pipe(map((response: any) => response));
   }
 
   postDataSearch(data) {
@@ -26,9 +26,8 @@ export class PostService {
   addPost(data) {
     return this.httpClient.post(this.apiUrlPost, data).pipe(map((response: any) => response));
   }
-  getPostfromId(id:number): Observable<any>{
-    const url = `${this.apiUrlPost}/${id}`;
-    return this.httpClient.get<any>(url).pipe(map((response: any) => response));
+  getPostfromId(id): Observable<any>{
+    return this.httpClient.get(this.apiUrlPost+'/'+id).pipe(map((response: any) => response));
   }
   
 }

@@ -54,24 +54,19 @@
                                     <label for="inputPassword" class="col col-sm-2 col-form-label">Danh mục: </label>
                                     <div class="col">
                                         <select class="form-control form-control-sm" formControlName="categoryId">
-                                                <option value="1">--Nhà Đất--</option>
-                                                <option value="2">--Chung cư--</option>
-                                                <option value="3">--Phòng Trọ--</option>
-                
-                                            </select>
+                                            <option *ngFor="let category of categories" value="{{category.id}}">
+                                                {{category.categoryName}}</option>
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="inputPassword" class="col col-sm-2 col-form-label">Vùng miền:  </label>
+                                    <label for="inputPassword" class="col col-sm-2 col-form-label">Vùng miền: </label>
                                     <div class="col">
-                                        <select class="form-control form-control-sm" formControlName="directionId">
-                                                <option value="1">--Hà Nội--</option>
-                                                <option value="2">--Huế--</option>
-                                                <option value="3">--Đà Nẵng--</option>
-                                               
-                
-                                            </select>
+                                        <select class="form-control form-control-sm" formControlName="regionId">
+                                            <option *ngFor="let region of regions" value="{{region.id}}">
+                                                {{region.regionName}}</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -82,44 +77,45 @@
                                         <div class="form-check pr-4">
                                             <input class="form-check-input" type="radio" value="1" formControlName="sellerId">
                                             <label class="form-check-label">
-                                                    Cá Nhân
-                                                </label>
+                                                Cá Nhân
+                                            </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" value="2" formControlName="sellerId">
                                             <label class="form-check-label">
-                                                    Công ty
-                                                </label>
+                                                Công ty
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="inputPassword" class="col col-sm-2 col-form-label">Bạn Đăng tin: </label>
+                                    <label for="inputPassword" class="col col-sm-2 col-form-label">Bạn Đăng tin:
+                                    </label>
                                     <div class="col d-flex">
                                         <div class="form-check pr-4">
                                             <input class="form-check-input" type="radio" value="1" formControlName="postOfTypeId">
                                             <label class="form-check-label">
-                                                    Cần bán
-                                                </label>
+                                                Cần bán
+                                            </label>
                                         </div>
                                         <div class="form-check pr-4">
                                             <input class="form-check-input" type="radio" value="2" formControlName="postOfTypeId">
                                             <label class="form-check-label">
-                                                    Cần mua
-                                                </label>
+                                                Cần mua
+                                            </label>
                                         </div>
                                         <div class="form-check pr-4">
                                             <input class="form-check-input" type="radio" value="3" formControlName="postOfTypeId">
                                             <label class="form-check-label">
-                                                    Cần thuê
-                                                </label>
+                                                Cần thuê
+                                            </label>
                                         </div>
                                         <div class="form-check pr-4">
                                             <input class="form-check-input" type="radio" value="4" formControlName="postOfTypeId">
                                             <label class="form-check-label">
-                                                    Cho thuê
-                                                </label>
+                                                Cho thuê
+                                            </label>
                                         </div>
                                     </div>
 
@@ -132,30 +128,39 @@
                                         <div class="form-check pr-4">
                                             <input class="form-check-input" type="radio" value="1" formControlName="statusOfPostId">
                                             <label class="form-check-label">
-                                                    Mới
-                                                </label>
+                                                Mới
+                                            </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" value="2" formControlName="statusOfPostId">
                                             <label class="form-check-label">
-                                                    Đã sử dụng
-                                                </label>
+                                                Đã sử dụng
+                                            </label>
                                         </div>
                                     </div>
 
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col col-sm-2 col-form-label">Địa chỉ: <span style="color: red">(*)</span> </label>
+                                    <label class="col col-sm-2 col-form-label">Địa chỉ: <span
+                                            style="color: red">(*)</span> </label>
                                     <div class="col">
                                         <input type="text" class="form-control form-control-sm" placeholder="" formControlName="address">
+                                        <span class="badge badge-danger" *ngIf="formPosts.controls.address.errors?.required && (formPosts.controls.address.touched || formPosts.controls.address.dirty)">
+                                            Không được để trống</span>
+
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col col-sm-2 col-form-label">Diện tích: <span style="color: red">(*)</span> </label>
+                                    <label class="col col-sm-2 col-form-label">Diện tích: <span
+                                            style="color: red">(*)</span> </label>
                                     <div class="col">
                                         <input type="text" class="form-control form-control-sm" placeholder="" formControlName="area">
+                                        <span class="badge badge-danger" *ngIf="formPosts.controls.area.errors?.required && (formPosts.controls.area.touched || formPosts.controls.area.dirty)">
+                                            Không được để trống</span>
+                                        <span class="badge badge-danger" *ngIf="formPosts.controls.area.dirty && formPosts.controls.area.errors?.pattern">Sai
+                                            định dạng dữ Liệu ! Chỉ được nhập số</span>
                                     </div>
                                 </div>
 
@@ -163,43 +168,55 @@
                                     <label for="inputPassword" class="col col-sm-2 col-form-label">Hướng: </label>
                                     <div class="col">
                                         <select class="form-control form-control-sm" formControlName="directionId">
-                                                <option value="1">--Đông--</option>
-                                                <option value="2">--Tây--</option>
-                                                <option value="3">--Nam--</option>
-                                                <option value="4">--Bắc--</option>
-                
-                                            </select>
+                                            <option value="1">--Đông--</option>
+                                            <option value="2">--Tây--</option>
+                                            <option value="3">--Nam--</option>
+                                            <option value="4">--Bắc--</option>
+
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col col-sm-2 col-form-label">Tựa đề: <span style="color: red">(*)</span> </label>
+                                    <label class="col col-sm-2 col-form-label">Tựa đề: <span
+                                            style="color: red">(*)</span> </label>
                                     <div class="col">
                                         <input type="text" class="form-control form-control-sm" placeholder="" formControlName="title">
+                                        <span class="badge badge-danger" *ngIf="formPosts.controls.title.errors?.required && (formPosts.controls.title.touched || formPosts.controls.title.dirty)">
+                                            Không được để trống</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col col-sm-2 col-form-label">Nội dung: <span style="color: red">(*)</span> </label>
+                                    <label class="col col-sm-2 col-form-label">Nội dung: <span
+                                            style="color: red">(*)</span> </label>
                                     <div class="col">
                                         <textarea class="form-control" rows="3" formControlName="contentPost"></textarea>
+                                        <span class="badge badge-danger" *ngIf="formPosts.controls.contentPost.errors?.required && (formPosts.controls.contentPost.touched || formPosts.controls.contentPost.dirty)">
+                                            Không được để trống</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col col-sm-2 col-form-label">Giá:  <span style="color: red">(*)</span></label>
+                                    <label class="col col-sm-2 col-form-label">Giá: <span
+                                            style="color: red">(*)</span></label>
                                     <div class="col">
                                         <input type="text" class="form-control form-control-sm" placeholder="" formControlName="price">
+                                        <span class="badge badge-danger" *ngIf="formPosts.controls.price.errors?.required && (formPosts.controls.price.touched || formPosts.controls.price.dirty)">
+                                            Không được để trống</span>
+                                        <span class="badge badge-danger" *ngIf="formPosts.controls.price.dirty && formPosts.controls.price.errors?.pattern">Sai
+                                            định dạng dữ Liệu ! Chỉ được nhập số</span>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="defaultCheck1" formControlName="ableComposition">
                                             <label class="form-check-label" for="defaultCheck1">
-                                                    Giá có thể thỏa thuận
-                                                </label>
+                                                Giá có thể thỏa thuận
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
 
 
                                 <div class="form-group row">
-                                    <label class="col col-sm-2 col-form-label">Hình Ảnh: <span style="color: red">(*)</span> </label>
+                                    <label class="col col-sm-2 col-form-label">Hình Ảnh: <span
+                                            style="color: red">(*)</span> </label>
                                     <div class="col">
                                         <div>
                                             <p class="font-italic" style="color: #FFBF00;">
@@ -213,8 +230,9 @@
 
                                 <div class="row">
                                     <div class="col">
-                                        <button type="submit" class=" btn btn-sm btn-primary float-right col-3"><i class="fas fa-check" > Đăng
-                                                    tin</i></button>
+                                        <button type="submit" class=" btn btn-sm btn-primary float-right col-3"><i
+                                                class="fas fa-check"> Đăng
+                                                tin</i></button>
                                     </div>
                                 </div>
                             </form>

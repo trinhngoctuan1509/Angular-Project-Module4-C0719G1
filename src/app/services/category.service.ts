@@ -15,4 +15,7 @@ export class CategoryService {
   getAllCategory(): Observable<any> {
     return this.httpClient.get(this.apiUrlCategory).pipe(map((response: any) => response));
   }
+  getCategoryById(id){
+    return this.httpClient.get(`${this.apiUrlCategory}/${id}`).pipe(map((respone:any)=>respone));
+  }
 }

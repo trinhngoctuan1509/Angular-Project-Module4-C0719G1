@@ -12,12 +12,15 @@ export class PostService {
   searchPostGeneralAPI: string = 'http://127.0.0.1:8000/api/searchPostGeneral';
 
 
+
   constructor(
     private httpClient: HttpClient
   ) { }
 
   getAllPosts(): Observable<any> {
-    return this.httpClient.get(this.apiUrlPost + 'All').pipe(map((response: any) => response));
+
+    return this.httpClient.get(this.apiUrlPost+'All').pipe(map((response: any) => response));
+
   }
 
   postDataSearch(data) {

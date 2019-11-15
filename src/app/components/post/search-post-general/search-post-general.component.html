@@ -1,5 +1,9 @@
+<div>
+    <button [routerLink]="['/post/searchPostGeneralResult/']">aaa</button>
+</div>
+
 <mat-dialog-content class="mt-4" style="font-size:12px">
-    <form action="" [formGroup]="formSearchAdvanced">
+    <form action="" [formGroup]="formSearchGeneral">
         <div class="row">
             <div class="col-3 font-weight-bold d-flex justify-content-end">Người Đăng
                 Tin:</div>
@@ -167,7 +171,7 @@
 </mat-dialog-content>
 
 <mat-dialog-actions class="d-flex justify-content-end mb-2">
-    <button [routerLink]="['']" mat-raised-button color="primary" mat-dialog-close>Cancel</button>
-    <button [routerLink]="['']" mat-raised-button color="warn" mat-dialog-close (click)="searchAdvanced()">Tìm
-        Kiếm</button>
+    <button mat-raised-button [routerLink]="['/post/searchPostGeneralResult/']" color="primary">Cancel</button>
+    <button mat-raised-button [routerLink]="['/post/searchPostGeneralResult/']" color="warn"
+        (click)="searchAdvanced()">Tìm Kiếm</button>
 </mat-dialog-actions>

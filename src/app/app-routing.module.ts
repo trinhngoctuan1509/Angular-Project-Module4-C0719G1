@@ -26,20 +26,20 @@ import { DialogSearchPostAdvancedComponent } from './components/post/dialog-sear
 import { SearchPostByTitleComponent } from './components/post/search-post-by-title/search-post-by-title.component';
 import { SearchPostByFengshuiComponent } from './components/post/search-post-by-fengshui/search-post-by-fengshui.component';
 import { SearchPostGeneralComponent } from './components/post/search-post-general/search-post-general.component';
+import { SearchPostGeneralResultComponent } from './components/post/search-post-general-result/search-post-general-result.component';
 
 
 const appRoutes: Routes = [
- 
-  { path: 'post', component: PostComponent },
   { path: 'post/add', component: PostAddComponent },
   { path: 'post/list', component: PostListComponent },
-  { path: 'commentpost', component: PostDetailComponent},
+  { path: 'commentpost', component: PostDetailComponent },
   { path: 'login', component: LoginUsersComponent },
   { path: 'singin', component: SingInComponent },
   { path: 'post/btnSearchPostAdvanced', component: DemoButtonSearchPostAdvancedComponent },
   { path: 'post/searchPostGeneral', component: SearchPostGeneralComponent },
   { path: 'post/searchByTitile', component: SearchPostByTitleComponent },
   { path: 'post/searchByFengshui', component: SearchPostByFengshuiComponent },
+  { path: 'post/searchPostGeneralResult', component: SearchPostGeneralResultComponent },
 ]
 
 @NgModule({
@@ -57,7 +57,8 @@ const appRoutes: Routes = [
     SearchPostByTitleComponent,
     SearchPostByFengshuiComponent,
     SearchPostGeneralComponent,
-    PostSuccessComponent
+    PostSuccessComponent,
+    SearchPostGeneralResultComponent
   ],
 
 

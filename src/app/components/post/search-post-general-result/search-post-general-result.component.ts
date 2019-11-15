@@ -5,17 +5,14 @@ import { RegionService } from "../../../services/region.service";
 import { CategoryService } from "../../../services/category.service";
 import { MatDialog } from '@angular/material';
 import { DialogSearchPostAdvancedComponent } from '../dialog-search-post-advanced/dialog-search-post-advanced.component';
-import { SearchPostGeneralService } from '../../../services/search-post-general.service';
-import { Router } from '@angular/router';
-
 
 @Component({
-  selector: 'app-post-list',
-  templateUrl: './post-list.component.html',
-  styleUrls: ['./post-list.component.css']
+  selector: 'app-search-post-general-result',
+  templateUrl: './search-post-general-result.component.html',
+  styleUrls: ['./search-post-general-result.component.css']
 })
-export class PostListComponent implements OnInit {
-  posts;
+export class SearchPostGeneralResultComponent implements OnInit {
+  posts = null;
   regions;
   categories;
   formSearchPostBasic: FormGroup
@@ -24,9 +21,7 @@ export class PostListComponent implements OnInit {
     private postService: PostService,
     private regionService: RegionService,
     private categoryService: CategoryService,
-    private formBuilder: FormBuilder,
-    public searchPostGeneralService: SearchPostGeneralService,
-    public router: Router
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
@@ -55,7 +50,6 @@ export class PostListComponent implements OnInit {
   getAllPosts() {
     this.postService.getAllPosts().subscribe(data => {
       this.posts = data;
-      console.log(this.posts);
     })
   }
 
@@ -77,6 +71,7 @@ export class PostListComponent implements OnInit {
         width: '650px',
         disableClose: true,
         data: { name: 'Trinh Ngoc Tuan' }
-      })
+      });
   }
+
 }

@@ -32,6 +32,9 @@ import { SearchPostGeneralResultComponent } from './components/post/search-post-
 const appRoutes: Routes = [
   { path: 'post/add', component: PostAddComponent },
   { path: 'post/list', component: PostListComponent },
+
+  { path: 'detailpost/:id', component: PostDetailComponent},
+  { path: 'post', component: PostComponent },
   { path: 'commentpost', component: PostDetailComponent },
   { path: 'login', component: LoginUsersComponent },
   { path: 'singin', component: SingInComponent },

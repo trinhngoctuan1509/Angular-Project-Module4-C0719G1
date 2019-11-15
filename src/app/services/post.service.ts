@@ -1,4 +1,7 @@
+
 import { Injectable } from '@angular/core';
+import { Posts } from "../models/post.model";
+
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { map } from "rxjs/operators";
@@ -6,10 +9,12 @@ import { map } from "rxjs/operators";
   providedIn: 'root'
 })
 export class PostService {
+
   apiUrlPost: string = "http://localhost:8000/api/posts";
   apiUrlSearchBasic: string = "http://localhost:8000/api/posts/searchPostBasic";
   getAllPostAPI: string = 'http://127.0.0.1:8000/api/posts';
   searchPostGeneralAPI: string = 'http://127.0.0.1:8000/api/searchPostGeneral';
+
 
 
 
@@ -31,6 +36,10 @@ export class PostService {
     return this.httpClient.post(this.apiUrlPost, data).pipe(map((response: any) => response));
   }
 
+  getPostfromId(id): Observable<any>{
+    return this.httpClient.get(this.apiUrlPost+'/'+id).pipe(map((response: any) => response));
+  }
+  
   getAllPostData(): Observable<any> {
     return this.httpClient.get(this.getAllPostAPI);
   }
@@ -38,4 +47,5 @@ export class PostService {
   searchPostGeneral(conditionsOfSearchPostGeneral): Observable<any> {
     return this.httpClient.post(this.searchPostGeneralAPI, conditionsOfSearchPostGeneral)
   }
+
 }

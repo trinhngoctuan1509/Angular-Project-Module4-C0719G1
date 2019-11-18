@@ -1,112 +1,186 @@
-<div>
-    <button [routerLink]="['/post/searchPostGeneralResult/']">aaa</button>
+<!-- *********** Start Menu Bar ************ -->
+<div class="container-fluid bg-warning d-flex justify-content-center" style="position: fixed; top: 0px;z-index: 200;">
+    <div class="row px-3" style="height:45px;width: 1000px; max-width: 1000px;">
+        <div class="col-3 d-flex align-items-center">
+            <img (click)=backToListPost() src="https://static.chotot.com/storage/marketplace/nha_white_logo.png"
+                style="height: 30px;">
+        </div>
+        <div class="col-9 d-flex justify-content-end">
+            <div class="h-100 d-flex align-items-center mr-3">
+                <i class="fas fa-search mr-1" style="font-size: 20px;"></i><span style="font-size: 16px;">Tìm rao
+                    vặt</span>
+            </div>
+            <div class="h-100 d-flex align-items-center mr-3">
+                <i class="far fa-bell mr-1" style="font-size: 20px;"></i><span style="font-size: 16px;">Thông
+                    báo</span>
+            </div>
+            <div class="h-100 d-flex align-items-center mr-3">
+                <i class="far fa-comments mr-1" style="font-size: 20px;"></i><span style="font-size: 16px;">Chat</span>
+            </div>
+            <div class="h-100 d-flex align-items-center mr-3">
+                <i class="fas fa-user-circle mr-1" style="font-size: 20px;"></i><span style="font-size: 16px;">Tôi
+                    bán</span>
+            </div>
+            <div class="h-100 d-flex align-items-center mr-3">
+                <i class="fas fa-ellipsis-h mr-1" style="font-size: 25px;"></i><span style="font-size: 16px;">
+                    Thêm</span>
+            </div>
+            <div class="h-100 d-flex align-items-center">
+                <button class="btn btn-sm font-weight-bold" style="background-color: #fc9807;"><span
+                        style="color: white; font-size: 12px;">ĐĂNG
+                        TIN</span></button>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- *********** End Menu Bar ************ -->
 
-<h1>Danh sach bai viet</h1>
 
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-8">
-            <!--Start Main -->
-            <div class="card">
 
-                <div class="card-body">
-                    <h4 class="card-title">Mua Bán Bất Động Sản </h4>
 
-                    <!-- Start Form Tìm Kiếm -->
-                    <div>
-                        <form [formGroup]="formSearchPostBasic" (ngSubmit)="onClickSearchBasic()">
-                            <div>
-                                <input type="text" placeholder="Nhập Tiêu đề hoặc nội dung cần tìm kiếm"
-                                    class="form-control" formControlName="wordSearch">
-                            </div>
+<!-- ************ Start Search Box ************ -->
+<div class="container-fluid mt-5 d-flex justify-content-center" style="background-color:#f4f4f4;">
+    <div class="row bg-white px-4" style="width: 1000px; max-width: 1000px;">
+        <div class="card w-100 my-4">
+            <div class="card-body d-flex justify-content-between px-4 py-2">
+                <a class="m-0 py-0 font-weight-bold" style="font-size: 12px;">MUA BÁN</a>
+                <p class="m-0 py-0 text-muted" style="font-size: 12px;">CHO THUÊ</p>
+                <p class="m-0 py-0 text-muted" style="font-size: 12px;">DỰ ÁN</p>
+                <p class="m-0 py-0 text-muted" style="font-size: 12px;">CHUYÊN TRANG BDS</p>
+                <p class="m-0 py-0 text-muted" style="font-size: 12px;">KINH NGHIỆM MUA BÁN</p>
+            </div>
+            <div class="card-footer">
+                <form [formGroup]="formSearchPostBasic" (ngSubmit)="onClickSearchBasic()">
+                    <div class="d-flex justify-content-between">
+                        <div style="width: 40%;">
+                            <input type="text" placeholder="Nhập Tiêu đề hoặc nội dung cần tìm kiếm"
+                                class="form-control" formControlName="wordSearch">
+                        </div>
 
-                            <div class="row mt-2">
-                                <div class="col">
-                                    <select class="form-control" formControlName="region">
-                                        <option value="">--Toàn Quốc--</option>
-                                        <option *ngFor="let region of regions" value="{{region.id}}">
-                                            {{region.regionName}}</option>
-                                    </select>
-                                </div>
 
-                                <div class="col">
-                                    <select class=" form-control " formControlName="category">
-                                        <option value="">--Danh Mục--</option>
-                                        <option *ngFor="let category of categories" value="{{category.id}}">
+                        <div style="width: 28%;">
+                            <select class="form-control" formControlName="region">
+                                <option value="">--Toàn Quốc--</option>
+                                <option *ngFor="let region of regions" value="{{region.id}}">
+                                    {{region.regionName}}</option>
+                            </select>
+                        </div>
 
-                                            {{category.categoryName}}</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row mt-2">
-                                <div class="col">
-                                    <h6>Tất cả Cá nhân / Tổ chức</h6>
-                                </div>
-                                <div class="col">
-
-                                    <!-- *********** Bắt Đầu Tìm Kiếm Nâng Cao ********* -->
-                                    <button [routerLink]="['/post/searchPostGeneral/']" (click)="openDialog()"
-                                        type="button" class="btn btn-secondary btn-sm float-right"><i
-                                            class="fas fa-filter"></i> Lọc
-                                        nâng cao</button>
-                                    <!-- ********** Kết Thúc Tìm Kiếm Nâng Cao ********** -->
-
-                                    <!-- Button Submit  formSearchPostBasic -->
-                                    <button type="submit" class="btn btn-warning btn-sm float-right mr-1"><i
-                                            class="fas fa-search"> </i> Tìm Kiếm</button>
-                                </div>
-                            </div>
-
-                        </form>
+                        <div style="width: 28%;">
+                            <select class=" form-control " formControlName="category">
+                                <option value="">--Danh Mục--</option>
+                                <option *ngFor="let category of categories" value="{{category.id}}">
+                                    {{category.categoryName}}</option>
+                            </select>
+                        </div>
                     </div>
-                    <!-- End Form Tìm Kiếm -->
 
-                    <hr>
+                    <div class="mt-3 d-flex justify-content-between">
+                        <select class="form-control" style="background-color:#f4f4f4; width: 20%;">
+                            <option value="">Chọn khoảng giá</option>
+                        </select>
+                        <select class="form-control" style="background-color:#f4f4f4; width: 20%;">
+                            <option value="">Diện tích tổng</option>
+                        </select>
+                        <!-- *********** Bắt Đầu Tìm Kiếm Nâng Cao ********* -->
+                        <button (click)=" openDialog()"
+                            class="btn btn-outline-secondary btn-sm d-flex justify-content-around"
+                            style="width: 20%;"><span class="text-dark" style="font-size: 15px;">Lọc
+                                nâng cao</span><i class="fas fa-filter mt-1" style="font-size: 20px;"></i></button>
+                        <!-- ********** Kết Thúc Tìm Kiếm Nâng Cao ********** -->
 
-                    <!-- Start List Bài đăng -->
-                    <div>
-                        <div class="row">
-                            <div class="col-4" *ngFor="let post of posts">
-                                <div *ngIf="posts && posts?.length == 0">
-                                    <div class="alert alert-danger" role="alert">
-                                        Xin lỗi! Chúng tôi không tìm thấy bài đăng nào dành cho bạn!
-                                    </div>
-                                </div>
-                                <div class="card mt-3">
-                                    <img class="card-img-top"
-                                        src="https://cdn.chotot.com/a6nsbINEnlXtohlbmqAlHN1HdxMA9dbQnDRFjdX04VU/preset:listing/plain/8651904829.jpg"
-                                        alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">[{{post.post_of_types.postOfTypeName}}] {{post.title}}
-                                        </h5>
+                        <!-- Button Submit  formSearchPostBasic -->
+                        <div class="d-flex justify-content-end" style="width: 35%;">
+                            <button type="submit" class="btn btn-warning btn-sm w-50"><i class="fas fa-search">
+                                </i>
+                                Tìm Kiếm</button>
+                        </div>
+                    </div>
+                </form>
 
-                                        <div>
-                                            <small class="text-muted">tại {{post.region.regionName}}</small>
-                                        </div>
-                                        <div>
-                                            <small class="text-muted">{{post.created_at | date: 'y-M-d' }}</small>
-                                        </div>
-                                        <div class="d-flex">
-                                            <small class="text-muted mr-auto">Lượt xem 1</small>
-                                            <small class="text-muted">{{post.seller.sellerName}}</small>
-                                        </div>
-                                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ************ End Search Box ************ -->
+
+
+
+
+<!-- ************ Start Body (List bài đăng and sidebar) ************ -->
+<div class="container-fluid d-flex justify-content-center" style="background-color:#f4f4f4;">
+    <div class="row bg-white px-2 pb-5" style="width: 1000px; max-width: 1000px;">
+        <div class="col-8">
+            <div class="row mb-2">
+                <div class="px-3 d-flex" *ngIf="isListPost == false">
+                    <button class="btn btn-sm btn-warning mr-3" (click)="backToListPost()">
+                        <i class="fas fa-home mr-1"></i><span class="font-weight-bold">Quay về</span></button>
+                    <h3 class="my-0 py-0">Kết quả tìm kiếm:</h3>
+                </div>
+
+                <div class="px-3" *ngIf="isListPost == true">
+                    <h3 class="my-0 py-0">Danh sách bài đăng:</h3>
+                </div>
+            </div>
+
+
+            <table class="table border mb-2">
+                <tr>
+                    <td class="py-2">Tất Cả</td>
+                    <td class="py-2">Cá Nhân</td>
+                    <td class="py-2">Môi Giới</td>
+                    <td class="py-2">Tin mới trước</td>
+                    <th class="py-2 d-flex justify-content-end border" style="height: 40px;">
+                        <i class="fas fa-th-list mr-3" style="font-size: 20px;"></i>
+                        <i class="fas fa-th-large text-muted" style="font-size: 20px;"></i>
+                    </th>
+                </tr>
+            </table>
+
+            <!-- Start List Bài đăng -->
+            <div class="row px-3">
+                <div *ngIf="posts && posts?.length == 0">
+                    <div class="alert alert-danger" role="alert">
+                        Xin lỗi! Chúng tôi không tìm thấy bài đăng nào dành cho bạn!
+                    </div>
+                </div>
+
+
+                <div *ngFor="let post of posts" class="card mb-2" style="width: 100%">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="assets/imageFolderOfProject/{{post.imageFolderName}}/image1.png" class="card-img"
+                                alt="..." height="130px">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body h-100 d-flex flex-column justify-content-between py-2">
+                                <p class="card-title my-0">{{post.title}}</p>
+
+                                <p class="font-weight-bold text-danger">{{post.price | number}} đ</p>
+
+
+                                <div class="d-flex text-muted">
+                                    <small>
+                                        <i class="fas fa-medal mr-1"
+                                            style="font-size: 17px;"></i>{{post.post_of_types.postOfTypeName}} |
+                                        <i class="fas fa-user-tie ml-2 mr-1" style="font-size: 20px;"></i>
+                                        {{post.seller.sellerName}} |
+                                        <i class="fas fa-map-marker-alt ml-2 mr-1"
+                                            style="font-size: 20px;"></i>{{post.region.regionName}}
+                                    </small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- End List Bài đăng -->
                 </div>
             </div>
-            <!--End Main -->
+            <!-- End List Bài đăng -->
         </div>
 
-        <div class="col-3">
 
-            <!--Start Top 5 Xem nhiều nhất -->
-            <div class="card">
+        <!-- Start Sidebar (Top 5 bài xem nhiều nhất - Hướng ưu thích) -->
+        <div class="col-4 py-3">
+            <div class="card mt-4">
                 <div class="card-header" id="cardTop5">
                     <i class="fas fa-th-list"></i> Top 5 bài xem nhiều nhất
                 </div>
@@ -148,7 +222,7 @@
             <!--End Top 5 Xem nhiều nhất -->
 
             <!-- Start Hướng ưa thích -->
-            <div class="card mt-4">
+            <div class="card mt-4 mb-5">
                 <div class="card-header" id="cardDirectionFavourite">
                     <i class="fas fa-road"></i> Hướng ưa thích
                 </div>
@@ -167,4 +241,79 @@
             </div>
             <!-- End Hướng ưa thích -->
         </div>
+        <!-- Start Sidebar (Top 5 bài xem nhiều nhất - Hướng ưu thích) -->
     </div>
+</div>
+<!-- ************ End Body (List post and sidebar) ************ -->
+
+
+
+
+
+
+
+
+<!-- ****************** Start Footer *********************** -->
+<div class="container-fluid py-5" style="background-color:#dbdbdb;">
+    <div class="row d-flex justify-content-around mx-auto" style="width: 1000px; max-width: 1000px;">
+        <div class="col-2">
+            <div>
+                <p class="font-weight-bold">Liên Kết</p>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <i class="fab fa-facebook-square" style="font-size: 25px;"></i>
+                <span class="ml-2">Facebook</span>
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="fab fa-google-plus-g" style="font-size: 25px;"></i>
+                <span class="ml-2">Google+</span>
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="fab fa-youtube" style="font-size: 25px;"></i>
+                <span class="ml-2">Youtube</span>
+            </div>
+        </div>
+
+        <div class="col-2">
+            <p class="font-weight-bold">Bản di động</p>
+            <img class="mb-2" src="https://static.chotot.com/storage/marketplace/ios-logo.svg" alt="" height="32px">
+            <img src="https://static.chotot.com/storage/marketplace/gg-play.svg" alt="" height="32px">
+        </div>
+
+        <div class="col-3">
+            <p class="font-weight-bold mb-2">Hỗ trợ khách hàng</p>
+            <p class="my-0 py-0">Trung tâm trợ giúp</p>
+            <p class="my-0 py-0">An toàn mua bán</p>
+            <p class="my-0 py-0">Quy định cần biết</p>
+            <p class="my-0 py-0">Liên hệ hỗ trợ</p>
+        </div>
+
+        <div class="col-2">
+            <p class="font-weight-bold mb-2">Về CodeGym</p>
+            <p class="my-0 py-0">Giới thiệu</p>
+            <p class="my-0 py-0">Tuyển dụng</p>
+            <p class="my-0 py-0">Truyền thông</p>
+            <p class="my-0 py-0">Blog</p>
+        </div>
+
+        <div class="col-2">
+            <p class="font-weight-bold mb-2">Chứng nhận</p>
+            <img src="https://static.chotot.com/storage/marketplace/cerfiticate.png" alt="" height="38px">
+        </div>
+    </div>
+
+
+
+    <div class="row mx-auto mt-4 text-center d-flex justify-content-center" style="width: 1000px; max-width: 1000px;">
+        <p class="text-center" style="font-size: 13px;">
+            Công ty Đào tạo lập trình CodeGym - Địa chỉ: Tầng 10 ,Số 295 Nguyễn Tất Thành , Phường Thanh Bình, Đà Nẵng,
+            550000. <br>
+            <span>Giấy chứng nhận đăng ký doanh nghiệp số 0312120782 do Sở Kế Hoạch và Đầu Tư TP Đà Nẵng cấp ngày
+                11/01/2013</span>
+            <br>
+            <span>Email: trogiup@chotot.vn - Đường dây nóng: (084)364452261</span>
+        </p>
+    </div>
+</div>
+<!-- ****************** End Footer *********************** -->

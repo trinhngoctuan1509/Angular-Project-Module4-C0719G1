@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SearchPostGeneralService {
+export class SearchPostAdvancedService {
 
-  public searchPostGeneralResult = new Subject<any>();
+  public searchPostGeneralResult = new BehaviorSubject<string>(null);
   searchPostGeneralResultValue = this.searchPostGeneralResult.asObservable();
 
   constructor() { }
 
-  sendData(data: any) {
+  sendData(data: string) {
     this.searchPostGeneralResult.next(data);
   }
 }

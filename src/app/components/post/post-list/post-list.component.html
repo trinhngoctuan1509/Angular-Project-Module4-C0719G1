@@ -146,7 +146,8 @@
                 </div>
 
 
-                <div *ngFor="let post of posts" class="card mb-2" style="width: 100%">
+                <div *ngFor="let post of posts | paginate: { itemsPerPage: 5, currentPage: p }" class="card mb-2"
+                    style="width: 100%">
                     <div class="row no-gutters">
                         <div class="col-md-4">
                             <img src="assets/imageFolderOfProject/{{post.imageFolderName}}/image1.png" class="card-img"
@@ -175,6 +176,9 @@
                 </div>
             </div>
             <!-- End List Bài đăng -->
+            <div class="mt-4">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
         </div>
 
 

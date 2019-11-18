@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SearchPostGeneralService } from './search-post-general.service';
+import { SearchPostAdvancedService } from './search-post-advanced.service';
 
 describe('SearchPostGeneralService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SearchPostGeneralService = TestBed.get(SearchPostGeneralService);
+    const service: SearchPostAdvancedService = TestBed.get(SearchPostAdvancedService);
     expect(service).toBeTruthy();
   });
 });

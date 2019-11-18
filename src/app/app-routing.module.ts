@@ -27,7 +27,6 @@ import { SearchPostByTitleComponent } from './components/post/search-post-by-tit
 import { SearchPostByFengshuiComponent } from './components/post/search-post-by-fengshui/search-post-by-fengshui.component';
 import { SearchPostGeneralComponent } from './components/post/search-post-general/search-post-general.component';
 import { SuccessRegisterComponent } from './components/Register/success-register/success-register.component';
-import { SearchPostGeneralResultComponent } from './components/post/search-post-general-result/search-post-general-result.component';
 
 import { NgxPaginationModule } from "ngx-pagination";
 
@@ -43,11 +42,11 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'successRegister', component: SuccessRegisterComponent },
   { path: 'post/btnSearchPostAdvanced', component: DemoButtonSearchPostAdvancedComponent },
-  { path: 'post/searchPostGeneral', component: SearchPostGeneralComponent },
-  { path: 'post/searchByTitile', component: SearchPostByTitleComponent },
-  { path: 'post/searchByFengshui', component: SearchPostByFengshuiComponent },
+  { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
+  { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
+  { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
+  { path: '**', redirectTo: 'post/list', pathMatch: 'full' }
   { path: 'post/add/success', component: PostSuccessComponent },
-  { path: 'post/searchPostGeneralResult', component: SearchPostGeneralResultComponent },
 ]
 
 @NgModule({
@@ -66,8 +65,7 @@ const appRoutes: Routes = [
     SearchPostByFengshuiComponent,
     SearchPostGeneralComponent,
     PostSuccessComponent,
-    SuccessRegisterComponent,
-    SearchPostGeneralResultComponent
+    SuccessRegisterComponent
   ],
 
 

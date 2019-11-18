@@ -1,18 +1,28 @@
 <mat-dialog-content class="d-flex flex-column justify-content-center" style="font-size:12px;height: 150px;">
     <form action="" [formGroup]="formSearchByFengshui">
         <div class="row">
-            <div class="col-3 font-weight-bold d-flex justify-content-end">Năm Sinh:</div>
+            <div class="col-3 font-weight-bold d-flex flex-column justify-content-center align-content-center">
+                <span class="d-flex justify-content-end">Ngày Sinh:</span></div>
             <div class="col-9">
-                <select class="form-control" name="" id="" formControlName="yearOfBirth" [value]="1990">
+                <!-- <select class="form-control" name="" id="" formControlName="yearOfBirth" [value]="1990">
                     <option value="1990">1990</option>
                     <option value="1991">1991</option>
                     <option value="1992">1992</option>
-                </select>
+                </select> -->
+
+
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" placeholder="Choose a date"
+                        formControlName="yearOfBirth">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
             </div>
         </div>
 
         <div class="row mt-2">
-            <div class="col-3 font-weight-bold d-flex justify-content-end">Giới Tính:</div>
+            <div class="col-3 font-weight-bold d-flex flex-column justify-content-center align-content-center">
+                <span class="d-flex justify-content-end">Giới tính:</span></div>
             <div class="col-9">
                 <select class="form-control" name="" id="" formControlName="gender" [value]="1">
                     <option value="1">Nam</option>
@@ -24,7 +34,7 @@
 </mat-dialog-content>
 
 <mat-dialog-actions class="d-flex justify-content-end mb-0">
-    <button [routerLink]="['']" mat-raised-button color="primary" mat-dialog-close>Cancel</button>
-    <button [routerLink]="['']" mat-raised-button color="warn" mat-dialog-close (click)="searchByFengshui()">Tìm
+    <button mat-raised-button color="primary" mat-dialog-close (click)="cancelSearchPostByFengshui()">Cancel</button>
+    <button mat-raised-button color="warn" mat-dialog-close (click)="searchByFengshui()">Tìm
         Kiếm</button>
 </mat-dialog-actions>

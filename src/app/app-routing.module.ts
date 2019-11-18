@@ -27,14 +27,17 @@ import { SearchPostByTitleComponent } from './components/post/search-post-by-tit
 import { SearchPostByFengshuiComponent } from './components/post/search-post-by-fengshui/search-post-by-fengshui.component';
 import { SearchPostGeneralComponent } from './components/post/search-post-general/search-post-general.component';
 import { SuccessRegisterComponent } from './components/Register/success-register/success-register.component';
+import { SearchPostGeneralResultComponent } from './components/post/search-post-general-result/search-post-general-result.component';
+
 
 
 const appRoutes: Routes = [
- 
-  { path: 'post', component: PostComponent },
   { path: 'post/add', component: PostAddComponent },
   { path: 'post/list', component: PostListComponent },
-  { path: 'commentpost', component: PostDetailComponent},
+
+  { path: 'detailpost/:id', component: PostDetailComponent},
+  { path: 'post', component: PostComponent },
+  { path: 'commentpost', component: PostDetailComponent },
   { path: 'login', component: LoginUsersComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'successRegister', component: SuccessRegisterComponent },
@@ -42,6 +45,8 @@ const appRoutes: Routes = [
   { path: 'post/searchPostGeneral', component: SearchPostGeneralComponent },
   { path: 'post/searchByTitile', component: SearchPostByTitleComponent },
   { path: 'post/searchByFengshui', component: SearchPostByFengshuiComponent },
+  { path: 'post/add/success', component: PostSuccessComponent },
+  { path: 'post/searchPostGeneralResult', component: SearchPostGeneralResultComponent },
 ]
 
 @NgModule({
@@ -60,7 +65,8 @@ const appRoutes: Routes = [
     SearchPostByFengshuiComponent,
     SearchPostGeneralComponent,
     PostSuccessComponent,
-    SuccessRegisterComponent
+    SuccessRegisterComponent,
+    SearchPostGeneralResultComponent
   ],
 
 

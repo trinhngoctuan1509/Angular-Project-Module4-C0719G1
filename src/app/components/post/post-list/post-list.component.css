@@ -9,3 +9,7 @@
     color: #275cfb;
     font-weight: bold;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}

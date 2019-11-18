@@ -57,14 +57,12 @@ export class PostListComponent implements OnInit {
   onClickSearchBasic() {
     this.postService.postDataSearch(this.formSearchPostBasic.value).subscribe(data => {
       this.posts = data
-      console.log(this.posts)
     })
 
   }
   getAllPosts() {
     this.postService.getAllPosts().subscribe(data => {
       this.posts = data;
-      console.log(this.posts);
     })
   }
 

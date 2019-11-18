@@ -13,4 +13,8 @@ export class RegionService {
     getAllRegions(): Observable<any> {
       return this.httpClient.get(this.apiUrlRegion).pipe(map((response: any) => response));
     }
+
+    getRegionById(id){
+      return this.httpClient.get(`${this.apiUrlRegion}/${id}`).pipe(map((respone:any)=>respone));
+    }
 }

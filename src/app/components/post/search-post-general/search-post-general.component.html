@@ -1,7 +1,3 @@
-<div>
-    <button [routerLink]="['/post/searchPostGeneralResult/']">aaa</button>
-</div>
-
 <mat-dialog-content class="mt-4" style="font-size:12px">
     <form action="" [formGroup]="formSearchGeneral">
         <div class="row">
@@ -55,7 +51,7 @@
                 <div class="form-check-inline disabled" style="width: 150px;">
                     <label class="form-check-label">
                         <input type="radio" class="form-check-input" name="postOfTypeId" value="4"
-                            formControlName="postOfTypeId">Cần Cho Thuê
+                            formControlName="postOfTypeId">Cho Thuê
                     </label>
                 </div>
             </div>
@@ -66,20 +62,20 @@
             <div class="col-9">
                 <div class="form-check-inline" style="width: 80px;">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="statusId" value="0"
-                            formControlName="statusId" [checked]='true'>Tất Cả
+                        <input type="radio" class="form-check-input" name="statusOfPostId" value="0"
+                            formControlName="statusOfPostId" [checked]='true'>Tất Cả
                     </label>
                 </div>
                 <div class="form-check-inline" style="width: 80px;">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="statusId" value="1"
-                            formControlName="statusId">Mới
+                        <input type="radio" class="form-check-input" name="statusOfPostId" value="1"
+                            formControlName="statusOfPostId">Mới
                     </label>
                 </div>
                 <div class="form-check-inline disabled" style="width: 150px;">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="statusId" value="2"
-                            formControlName="statusId">Đã
+                        <input type="radio" class="form-check-input" name="statusOfPostId" value="2"
+                            formControlName="statusOfPostId">Đã
                         Sử Dụng
                     </label>
                 </div>
@@ -171,7 +167,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions class="d-flex justify-content-end mb-2">
-    <button mat-raised-button [routerLink]="['/post/searchPostGeneralResult/']" color="primary">Cancel</button>
-    <button mat-raised-button [routerLink]="['/post/searchPostGeneralResult/']" color="warn"
-        (click)="searchAdvanced()">Tìm Kiếm</button>
+    <button mat-dialog-close mat-raised-button (click)="cancelSearchPostGeneral()" color="primary">Cancel</button>
+    <button mat-dialog-close mat-raised-button (click)="searchPostGeneral()" color="warn">Tìm Kiếm</button>
 </mat-dialog-actions>

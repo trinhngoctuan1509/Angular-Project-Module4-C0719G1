@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormGroup } from "@angular/forms";
-import { Router,ActivatedRoute } from "@angular/router";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { Router, ActivatedRoute } from "@angular/router";
 import { LoginService } from "../../../services/login.service";
 
 @Component({
@@ -9,29 +9,35 @@ import { LoginService } from "../../../services/login.service";
   styleUrls: ['./login-users.component.css']
 })
 export class LoginUsersComponent implements OnInit {
-public formLogin:FormGroup;
+  public formLogin: FormGroup;
+  public dataLogin;
   constructor(
-    private _FormBuilder:FormBuilder,
-    private loginService:LoginService
-  ) { 
+    private _FormBuilder: FormBuilder,
+    private loginService: LoginService,
+    private router: Router
+  ) {
     this.login();
   }
 
   ngOnInit() {
   }
-  login(){
+  login() {
     this.formLogin = this._FormBuilder.group({
       email: [''],
       password: ['']
     })
-    this.formLogin.valueChanges.subscribe(data=>{
+    this.formLogin.valueChanges.subscribe(data => {
       console.log(data)
     })
   }
-  onClickLogin(){
-this.loginService.login(this.formLogin.value).subscribe(data=>{
-  console.log(data)
-})
+  onClickLogin() {
+    this.loginService.login(this.formLogin.value).subscribe(data => {
+      if (!data) {
+        this.router.navigateByUrl('/post/list')
+      } else {
+        this.dataLogin = data
+      }
+    })
   }
 
 }

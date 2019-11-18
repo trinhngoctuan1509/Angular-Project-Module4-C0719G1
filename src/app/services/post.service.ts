@@ -14,6 +14,8 @@ export class PostService {
   apiUrlSearchBasic: string = "http://localhost:8000/api/posts/searchPostBasic";
   getAllPostAPI: string = 'http://127.0.0.1:8000/api/posts';
   searchPostGeneralAPI: string = 'http://127.0.0.1:8000/api/searchPostGeneral';
+  searchPostByTitleAPI: string = 'http://127.0.0.1:8000/api/searchPostByTitle';
+  searchPostByFengshuiAPI: string = 'http://127.0.0.1:8000/api/searchPostByFengshui';
 
 
 
@@ -45,7 +47,15 @@ export class PostService {
   }
 
   searchPostGeneral(conditionsOfSearchPostGeneral): Observable<any> {
-    return this.httpClient.post(this.searchPostGeneralAPI, conditionsOfSearchPostGeneral)
+    return this.httpClient.post(this.searchPostGeneralAPI, conditionsOfSearchPostGeneral);
+  }
+
+  searchPostByTitle(keywordSearchPostByTitle): Observable<any> {
+    return this.httpClient.post(this.searchPostByTitleAPI, keywordSearchPostByTitle);
+  }
+
+  searchPostByFengshui(conditionsOfSearchPostByFengshui): Observable<any> {
+    return this.httpClient.post(this.searchPostByFengshuiAPI, conditionsOfSearchPostByFengshui);
   }
 
 }

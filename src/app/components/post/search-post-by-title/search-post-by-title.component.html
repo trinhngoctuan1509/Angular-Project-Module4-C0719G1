@@ -1,5 +1,5 @@
 <mat-dialog-content class="d-flex flex-column justify-content-center" style="font-size:12px; height: 150px;">
-    <form action="" [formGroup]="formSearchByTitle">
+    <form action="" [formGroup]="formSearchPostByTitle">
         <div class="row">
             <div class="col-3 font-weight-bold d-flex justify-content-end align-items-center">Từ Khóa: </div>
             <div class="col-9">
@@ -10,7 +10,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions class="d-flex justify-content-end mb-0">
-    <button [routerLink]="['']" mat-raised-button color="primary" mat-dialog-close>Cancel</button>
-    <button [routerLink]="['']" mat-raised-button color="warn" mat-dialog-close (click)="searchByTitle()">Tìm
-        Kiếm</button>
+    <button mat-dialog-close mat-raised-button (click)="cancelSearchPostByTitle()" color="primary">Cancel</button>
+    <button mat-dialog-close mat-raised-button (click)="searchPostByTitle()" color="warn">Tìm Kiếm</button>
 </mat-dialog-actions>

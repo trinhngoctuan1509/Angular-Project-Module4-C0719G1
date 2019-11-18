@@ -5,7 +5,7 @@ import { RegionService } from "../../../services/region.service";
 import { CategoryService } from "../../../services/category.service";
 import { MatDialog } from '@angular/material';
 import { DialogSearchPostAdvancedComponent } from '../dialog-search-post-advanced/dialog-search-post-advanced.component';
-import { SearchPostGeneralService } from '../../../services/search-post-general.service';
+import { SearchPostAdvancedService } from '../../../services/search-post-advanced.service';
 import { Router } from '@angular/router';
 
 
@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 })
 export class PostListComponent implements OnInit {
   posts;
+  isListPost = true;
   regions;
   categories;
   formSearchPostBasic: FormGroup
@@ -25,12 +26,20 @@ export class PostListComponent implements OnInit {
     private regionService: RegionService,
     private categoryService: CategoryService,
     private formBuilder: FormBuilder,
-    public searchPostGeneralService: SearchPostGeneralService,
+    public searchPostAdvancedService: SearchPostAdvancedService,
     public router: Router
   ) { }
 
   ngOnInit() {
-    this.getAllPosts()
+    this.searchPostAdvancedService.searchPostGeneralResultValue.subscribe(data => {
+      if (data == null) {
+        this.getAllPosts()
+      } else {
+        this.posts = Object.values(data);
+        this.isListPost = false;
+      }
+    });
+
     this.createForm()
     this.getAllRegion()
     this.getAllCategory()
@@ -48,14 +57,12 @@ export class PostListComponent implements OnInit {
   onClickSearchBasic() {
     this.postService.postDataSearch(this.formSearchPostBasic.value).subscribe(data => {
       this.posts = data
-      console.log(this.posts)
     })
 
   }
   getAllPosts() {
     this.postService.getAllPosts().subscribe(data => {
       this.posts = data;
-      console.log(this.posts);
     })
   }
 
@@ -77,6 +84,12 @@ export class PostListComponent implements OnInit {
         width: '650px',
         disableClose: true,
         data: { name: 'Trinh Ngoc Tuan' }
-      })
+      });
+    this.router.navigateByUrl('post/list(searchPostAdvanced:searchPostGeneral)')
+  }
+
+  backToListPost() {
+    this.getAllPosts();
+    this.isListPost = true;
   }
 }

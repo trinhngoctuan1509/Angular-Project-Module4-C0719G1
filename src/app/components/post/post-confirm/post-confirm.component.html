@@ -1,5 +1,16 @@
 <div class="container mt-5">
-
+    <div *ngIf="err">
+        <div class="alert alert-danger" role="alert">
+            <h5>Có Lỗi Khi đăng bài </h5>
+            <ul>
+                <li>{{err?.address}}</li>
+                <li>{{err?.area}}</li>
+                <li>{{err?.title}}</li>
+                <li>{{err?.contentPost}}</li>
+                <li>{{err?.price}}</li>
+            </ul>
+        </div>
+    </div>
 
     <!-- Nội dung đăng tin-->
     <div class="content-post">
@@ -14,34 +25,34 @@
                             <div class="form-group row">
                                 <label for="inputPassword" class="col col-sm-2 col-form-label">Danh mục: </label>
                                 <div class="col">
-                                    {{data.categoryId}}
+                                    {{category}}
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputPassword" class="col col-sm-2 col-form-label">Vùng miền:  </label>
                                 <div class="col">
-                                    {{data.regionId}}
+                                    {{region}}
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputPassword" class="col col-sm-2 col-form-label">Bạn Là: </label>
                                 <div class="col d-flex">
-                                    {{data.sellerId}}
+                                    {{seller}}
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputPassword" class="col col-sm-2 col-form-label">Hướng: </label>
                                 <div class="col d-flex">
-                                    {{data.directionId}}
+                                    {{direction}}
                                 </div>
 
                             </div>
 
                             <div class="form-group row">
-                                <label for="inputPassword" class="col col-sm-2 col-form-label">[{{data.postOfType}}] </label>
+                                <label for="inputPassword" class="col col-sm-2 col-form-label">[{{postOftype}}] </label>
                                 <div class="col d-flex">
 
                                     {{data.title}}
@@ -53,7 +64,7 @@
                                 <label for="inputPassword" class="col col-sm-2 col-form-label">Tình trạng: </label>
                                 <div class="col d-flex">
 
-                                    {{data.statusOfPostId}}
+                                    {{statusOfPost}}
                                 </div>
 
                             </div>

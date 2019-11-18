@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder,Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material";
 import { PostConfirmComponent} from "../post-confirm/post-confirm.component";
-
+import { CategoryService } from "../../../services/category.service";
+import { RegionService } from "../../../services/region.service";
+import { DirectionService } from "../../../services/direction.service";
 @Component({
   selector: 'app-post-add',
   templateUrl: './post-add.component.html',
@@ -11,31 +13,51 @@ import { PostConfirmComponent} from "../post-confirm/post-confirm.component";
 export class PostAddComponent implements OnInit {
   formPosts : FormGroup
   imageUrls:string = "assets/image/default.png";
+  categories;
+  regions;
+  directions;
   constructor(
     private formBuilder: FormBuilder,
-    public dialog: MatDialog
-    
+    public dialog: MatDialog,
+    private categoryService: CategoryService,
+    private regionService: RegionService,
+    private directionService: DirectionService,
   ) { }
 
   ngOnInit() {
    
     this.createForm()
+    this.getAllCategory()
+    this.getAllRegions()
+    this.getAllDirection()
   }
  createForm(){
 this.formPosts = this.formBuilder.group({
   userId:[1],
-  title: [''],
+  title: ['',[
+    Validators.required,
+  ]],
   categoryId: [''],
   regionId: [''],
   sellerId: [''],
   postOfTypeId: [''],
   statusOfPostId: [''],
-  address: [''],
-  area: [''],
+  address: ['',[
+    Validators.required
+  ]],
+  area: ['',[
+    Validators.required,
+    Validators.pattern('[0-9]+')
+  ]],
   directionId: [''],
-  contentPost: [''],
-  price: [''],
-  ableComposition: [''],
+  contentPost: ['',[
+    Validators.required
+  ]],
+  price: ['',[
+    Validators.required,
+    Validators.pattern('[0-9]+')
+  ]],
+  ableComposition: [false],
   imagePost1: [''],
   imagePost2: [''],
   imagePost3: [''],
@@ -44,8 +66,9 @@ this.formPosts = this.formBuilder.group({
   imagePost6: [''],
  
 })
+
 this.formPosts.valueChanges.subscribe(data=>{
-  console.log(data)
+ 
 })
  }
   onSelectFile(event) {   
@@ -67,5 +90,25 @@ this.formPosts.valueChanges.subscribe(data=>{
     {data: this.formPosts.value, height: '100%',
     width: '80%',})
 
+}
+
+// Get All Category
+getAllCategory(){
+  this.categoryService.getAllCategory().subscribe(data=>{
+    this.categories = data;
+  })
+}
+
+// Get All Region
+getAllRegions(){
+  this.regionService.getAllRegions().subscribe(data=>{
+    this.regions = data;
+  })
+}
+
+getAllDirection(){
+  this.directionService.getAllDirection().subscribe(data=>{
+    this.directions = data;
+  })
 }
 }

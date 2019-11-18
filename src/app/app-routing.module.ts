@@ -35,7 +35,7 @@ const appRoutes: Routes = [
   { path: 'post/add', component: PostAddComponent },
   { path: 'post/list', component: PostListComponent },
 
-  { path: 'detailpost/:id', component: PostDetailComponent},
+  { path: 'detailpost/:id', component: PostDetailComponent },
   { path: 'post', component: PostComponent },
   { path: 'commentpost', component: PostDetailComponent },
   { path: 'login', component: LoginUsersComponent },
@@ -45,7 +45,7 @@ const appRoutes: Routes = [
   { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
-  { path: '**', redirectTo: 'post/list', pathMatch: 'full' }
+  { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
   { path: 'post/add/success', component: PostSuccessComponent },
 ]
 

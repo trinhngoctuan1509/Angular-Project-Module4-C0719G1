@@ -1,5 +1,16 @@
 <div class="container mt-5">
-
+    <div *ngIf="err">
+        <div class="alert alert-danger" role="alert">
+            <h5>Có Lỗi Khi đăng bài </h5>
+            <ul>
+                <li>{{err?.address}}</li>
+                <li>{{err?.area}}</li>
+                <li>{{err?.title}}</li>
+                <li>{{err?.contentPost}}</li>
+                <li>{{err?.price}}</li>
+            </ul>
+        </div>
+    </div>
 
     <!-- Nội dung đăng tin-->
     <div class="content-post">

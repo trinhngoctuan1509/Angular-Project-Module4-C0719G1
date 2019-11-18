@@ -17,8 +17,7 @@
                     <div>
                         <form [formGroup]="formSearchPostBasic" (ngSubmit)="onClickSearchBasic()">
                             <div>
-                                <input type="text" placeholder="Nhập Tiêu đề hoặc nội dung cần tìm kiếm"
-                                    class="form-control" formControlName="wordSearch">
+                                <input type="text" placeholder="Nhập Tiêu đề hoặc nội dung cần tìm kiếm" class="form-control" formControlName="wordSearch">
                             </div>
 
                             <div class="row mt-2">
@@ -47,8 +46,7 @@
                                 <div class="col">
 
                                     <!-- *********** Bắt Đầu Tìm Kiếm Nâng Cao ********* -->
-                                    <button [routerLink]="['/post/searchPostGeneral/']" (click)="openDialog()"
-                                        type="button" class="btn btn-secondary btn-sm float-right"><i
+                                    <button [routerLink]="['/post/searchPostGeneral/']" (click)="openDialog()" type="button" class="btn btn-secondary btn-sm float-right"><i
                                             class="fas fa-filter"></i> Lọc
                                         nâng cao</button>
                                     <!-- ********** Kết Thúc Tìm Kiếm Nâng Cao ********** -->
@@ -68,20 +66,19 @@
                     <!-- Start List Bài đăng -->
                     <div>
                         <div class="row">
-                            <div class="col-4" *ngFor="let post of posts">
-                                <div *ngIf="posts && posts?.length == 0">
-                                    <div class="alert alert-danger" role="alert">
-                                        Xin lỗi! Chúng tôi không tìm thấy bài đăng nào dành cho bạn!
-                                    </div>
-                                </div>
+                            <div class="col alert alert-danger text-center" role="alert" *ngIf="posts?.length == 0">
+                                <b>Xin lỗi!</b> Chúng tôi không tìm thấy bài đăng nào dành cho bạn!
+                            </div>
+
+                            <div class="col-4" *ngFor="let post of posts | paginate: {itemsPerPage: 6, currentPage: p }">
                                 <div class="card mt-3">
 
-                                    <img class="card-img-top"  routerLink="/detailpost/{{post.id}}"src="https://cdn.chotot.com/a6nsbINEnlXtohlbmqAlHN1HdxMA9dbQnDRFjdX04VU/preset:listing/plain/8651904829.jpg" alt="Card image cap">
+                                    <img class="card-img-top" routerLink="/detailpost/{{post.id}}" src="https://cdn.chotot.com/a6nsbINEnlXtohlbmqAlHN1HdxMA9dbQnDRFjdX04VU/preset:listing/plain/8651904829.jpg" alt="Card image cap">
 
-                             
+
 
                                     <div class="card-body">
-                                        <h5 class="card-title" >[{{post.post_of_types.postOfTypeName}}] {{post.title}}
+                                        <h5 class="card-title cursor-pointer">[{{post.post_of_types.postOfTypeName}}] {{post.title}}
                                         </h5>
 
                                         <div>
@@ -93,10 +90,15 @@
                                         <div class="d-flex">
                                             <small class="text-muted mr-auto">Lượt xem 1</small>
                                             <small class="text-muted">{{post.seller.sellerName}}</small>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" *ngIf="posts?.length > 0">
+                                <pagination-controls (pageChange)="p=$event " class="float-right"></pagination-controls>
                             </div>
                         </div>
                     </div>

@@ -28,6 +28,7 @@ import { SearchPostByFengshuiComponent } from './components/post/search-post-by-
 import { SearchPostGeneralComponent } from './components/post/search-post-general/search-post-general.component';
 import { SearchPostGeneralResultComponent } from './components/post/search-post-general-result/search-post-general-result.component';
 
+import { NgxPaginationModule } from "ngx-pagination";
 
 const appRoutes: Routes = [
   { path: 'post/add', component: PostAddComponent },
@@ -72,6 +73,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
+    NgxPaginationModule,
     RouterModule.forRoot(appRoutes)
   ],
 

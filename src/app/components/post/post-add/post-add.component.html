@@ -168,10 +168,8 @@
                                     <label for="inputPassword" class="col col-sm-2 col-form-label">Hướng: </label>
                                     <div class="col">
                                         <select class="form-control form-control-sm" formControlName="directionId">
-                                            <option value="1">--Đông--</option>
-                                            <option value="2">--Tây--</option>
-                                            <option value="3">--Nam--</option>
-                                            <option value="4">--Bắc--</option>
+                                            <option *ngFor="let direction of directions" value="{{direction.id}}">{{direction.directionName}}</option>
+                                            
 
                                         </select>
                                     </div>
@@ -230,7 +228,7 @@
 
                                 <div class="row">
                                     <div class="col">
-                                        <button type="submit" class=" btn btn-sm btn-primary float-right col-3"><i
+                                        <button [disabled]="formPosts.invalid" type="submit" class=" btn btn-sm btn-primary float-right col-3"><i
                                                 class="fas fa-check"> Đăng
                                                 tin</i></button>
                                     </div>

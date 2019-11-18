@@ -15,18 +15,21 @@ export class PostAddComponent implements OnInit {
   imageUrls:string = "assets/image/default.png";
   categories;
   regions;
-  direction;
+  directions;
   constructor(
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
     private categoryService: CategoryService,
     private regionService: RegionService,
+    private directionService: DirectionService,
   ) { }
 
   ngOnInit() {
    
     this.createForm()
     this.getAllCategory()
+    this.getAllRegions()
+    this.getAllDirection()
   }
  createForm(){
 this.formPosts = this.formBuilder.group({
@@ -100,6 +103,12 @@ getAllCategory(){
 getAllRegions(){
   this.regionService.getAllRegions().subscribe(data=>{
     this.regions = data;
+  })
+}
+
+getAllDirection(){
+  this.directionService.getAllDirection().subscribe(data=>{
+    this.directions = data;
   })
 }
 }

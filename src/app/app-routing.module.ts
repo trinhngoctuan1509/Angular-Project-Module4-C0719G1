@@ -13,7 +13,7 @@ import { PostEditComponent } from './components/post/post-edit/post-edit.compone
 import { PostDetailComponent } from './components/post/post-detail/post-detail.component';
 import { MaterialModule } from './material/material.module';
 import { LoginUsersComponent } from './components/login/login-users/login-users.component';
-import { SingInComponent } from './components/sing-in/sing-in.component';
+import { RegisterComponent } from './components/Register/register.component';
 import { PostConfirmComponent } from './components/post/post-confirm/post-confirm.component';
 import { PostSuccessComponent } from './components/post/post-success/post-success.component';
 
@@ -26,7 +26,9 @@ import { DialogSearchPostAdvancedComponent } from './components/post/dialog-sear
 import { SearchPostByTitleComponent } from './components/post/search-post-by-title/search-post-by-title.component';
 import { SearchPostByFengshuiComponent } from './components/post/search-post-by-fengshui/search-post-by-fengshui.component';
 import { SearchPostGeneralComponent } from './components/post/search-post-general/search-post-general.component';
+import { SuccessRegisterComponent } from './components/Register/success-register/success-register.component';
 import { SearchPostGeneralResultComponent } from './components/post/search-post-general-result/search-post-general-result.component';
+
 
 
 const appRoutes: Routes = [
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
   { path: 'post', component: PostComponent },
   { path: 'commentpost', component: PostDetailComponent },
   { path: 'login', component: LoginUsersComponent },
-  { path: 'singin', component: SingInComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'successRegister', component: SuccessRegisterComponent },
   { path: 'post/btnSearchPostAdvanced', component: DemoButtonSearchPostAdvancedComponent },
   { path: 'post/searchPostGeneral', component: SearchPostGeneralComponent },
   { path: 'post/searchByTitile', component: SearchPostByTitleComponent },
@@ -54,7 +57,7 @@ const appRoutes: Routes = [
     PostEditComponent,
     PostDetailComponent,
     LoginUsersComponent,
-    SingInComponent,
+    RegisterComponent,
     PostConfirmComponent,
     DemoButtonSearchPostAdvancedComponent,
     DialogSearchPostAdvancedComponent,
@@ -62,6 +65,7 @@ const appRoutes: Routes = [
     SearchPostByFengshuiComponent,
     SearchPostGeneralComponent,
     PostSuccessComponent,
+    SuccessRegisterComponent,
     SearchPostGeneralResultComponent
   ],
 

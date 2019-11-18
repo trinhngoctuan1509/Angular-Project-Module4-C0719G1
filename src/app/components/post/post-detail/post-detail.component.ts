@@ -1,7 +1,9 @@
 import { Component, OnInit ,Input} from '@angular/core';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 import { Commentpost } from "src/app/models/commentmodels";
 import {CommentserviceService  } from "src/app/services/commentservice.service";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { PostService } from "src/app/services/post.service";
 import { Posts } from "src/app/models/post.model";
 
@@ -11,19 +13,30 @@ import { Posts } from "src/app/models/post.model";
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit {
+  paginacomment:any;
    public commentposts:Commentpost[];
    public id;
+  
    
   @Input() postdetail:Posts;
   
 
   constructor(
     private route:ActivatedRoute,
+    private routes:Router,
     private commentpostservice:CommentserviceService,
-    private postserve:PostService
+    private postserve:PostService,
+    
 
   ) { 
    this.getPostFromroute();
+   this.paginacomment = {
+    itemsPerPage: 4,
+    currentPage: 1,
+    pageSize:4,
+    
+   
+  };
   }
   getcommentpostFromServices(): void {
     //this.movies = this.movieService.getMovies();
@@ -40,24 +53,29 @@ export class PostDetailComponent implements OnInit {
     this.postserve.getPostfromId(this.id).subscribe(post => {
       this.postdetail= post, console.log(this.postdetail)
     }); 
-    
-   
-
   }
-  onadd(userId:number,postId:number,commentContent:string):void {
+  onadd(commentContent:string):void {
     const newComment: Commentpost= new Commentpost();
-    newComment.userId=userId;
-    newComment.postId=postId;
+    newComment.userId=this.postdetail.userId;
+    newComment.postId=this.id;
     newComment.commentContent=commentContent;
     
     this.commentpostservice.addCommentpost(newComment).subscribe(insertedComment => {
       console.log(insertedComment)
      });
+    //  this.routes.navigateByUrl('detailpost/'+this.id);
      
   }
   ngOnInit() {
     this.getcommentpostFromServices();
     this.postdetail=new Posts;
   }
+  pageChanged(event){
+  
+    this.paginacomment.currentPage = event;
+  }
+  refresh(): void {
+    window.location.reload();
+}
 
 }

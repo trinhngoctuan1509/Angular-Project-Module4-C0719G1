@@ -37,7 +37,7 @@ export class PostService {
   }
 
   getPostfromId(id): Observable<any>{
-    return this.httpClient.get(this.apiUrlPost+'/'+id).pipe(map((response: any) => response));
+    return this.httpClient.get(this.apiUrlPost+'All'+'/'+id).pipe(map((response: any) => response));
   }
   
   getAllPostData(): Observable<any> {

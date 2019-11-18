@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -72,6 +74,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
+    NgxPaginationModule,
     RouterModule.forRoot(appRoutes)
   ],
 

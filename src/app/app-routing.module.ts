@@ -29,6 +29,7 @@ import { SearchPostGeneralComponent } from './components/post/search-post-genera
 import { SuccessRegisterComponent } from './components/Register/success-register/success-register.component';
 import { SearchPostGeneralResultComponent } from './components/post/search-post-general-result/search-post-general-result.component';
 
+import { NgxPaginationModule } from "ngx-pagination";
 
 
 const appRoutes: Routes = [
@@ -76,6 +77,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
+    NgxPaginationModule,
     RouterModule.forRoot(appRoutes)
   ],
 

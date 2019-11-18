@@ -20,6 +20,7 @@ export class PostConfirmComponent implements OnInit {
   statusOfPost;
   category;
   region;
+  err;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<PostConfirmComponent>,
@@ -34,12 +35,7 @@ export class PostConfirmComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getDirectionById()
-    this.getPostOfTypeById()
-    this.getSellerById()
-    this.getStatusOfPostId()
-    this.getCategoryById()
-    this.getRegionById()
+    this.getAllInputPost()
   }
 
   // Click Cancel
@@ -51,47 +47,39 @@ export class PostConfirmComponent implements OnInit {
   onClickAdd() {
     this.postService.addPost(this.data).subscribe(data => {
       window.location.href = 'post/add/success';
+    }, error =>{
+      this.err = error.error.errors
     })
   }
 
-  getDirectionById(){
-    this.directionService.getDirectionById(this.data.directionId).subscribe(result=>{
+  // Get All Input Post through Variable Data -- MAT_DIALOG_DATA
+  getAllInputPost() {
+    this.directionService.getDirectionById(this.data.directionId).subscribe(result => {
       this.direction = result.directionName
-      
     })
-  }
-  getPostOfTypeById(){
-    this.postOftypeService.getPostOfTypeById(this.data.postOfTypeId).subscribe(result=>{
+
+    this.postOftypeService.getPostOfTypeById(this.data.postOfTypeId).subscribe(result => {
       this.postOftype = result.postOfTypeName
-      
     })
-  }
 
-  getSellerById(){
-    this.sellerService.getSellerById(this.data.sellerId).subscribe(result=>{
+
+    this.sellerService.getSellerById(this.data.sellerId).subscribe(result => {
       this.seller = result.sellerName
-      
     })
-  }
 
-  getStatusOfPostId(){
-    this.statusOfPostService.getStatusOfPostId(this.data.statusOfPostId).subscribe(result=>{
+
+    this.statusOfPostService.getStatusOfPostId(this.data.statusOfPostId).subscribe(result => {
       this.statusOfPost = result.statusOfPostName
-     
     })
-  }
 
-  getCategoryById(){
-    this.categoryService.getCategoryById(this.data.categoryId).subscribe(result=>{
+
+    this.categoryService.getCategoryById(this.data.categoryId).subscribe(result => {
       this.category = result.categoryName
-     
     })
-  }
 
-  getRegionById(){
-    this.regionService.getRegionById(this.data.regionId).subscribe(result=>{
+
+    this.regionService.getRegionById(this.data.regionId).subscribe(result => {
       this.region = result.regionName
-     
     })
   }
 }

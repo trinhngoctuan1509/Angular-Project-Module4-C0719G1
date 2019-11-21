@@ -1,0 +1,51 @@
+<div class="container border" style="height: 100vh;">
+    <div class="row border" style="height: 10%; background-color: rgb(226, 226, 226);">
+        <div class="col-2 h-100 d-flex flex-column align-items-center justify-content-center">
+            <img style="height: 60%;" src="/assets/img/logoCodeGymAdmin.png" alt="">
+        </div>
+        <div class="col-10 d-flex justify-content-end align-items-center">
+            <div style="font-size: 20px;">
+                <i class="fas fa-user mr-2"></i>
+                <i class="fas fa-sort-down"></i>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="height: 90%;">
+        <div class="col-2 border w-100 px-0" style="background-color: rgb(226, 226, 226);">
+            <div [routerLink]="['/admin/user-list/']" class="btn-group-vertical w-100">
+                <button type="button" class="btn btn-outline-light d-flex align-items-center justify-content-start">
+                    <i class="fas fa-users-cog text-dark mr-2" style="width: 20px;"></i>
+                    <span class="text-dark">Thành viên</span>
+                </button>
+                <button type="button" class="btn btn-outline-light d-flex align-items-center justify-content-start">
+                    <i class="fas fa-address-card text-dark mr-2" style="width: 20px;"></i>
+                    <span class="text-dark">Bài đăng</span>
+                    <i class="fas fa-chevron-left text-dark pl-2 ml-5" style="font-size: 13px;"></i>
+                </button>
+                <button type="button" class="btn btn-outline-light d-flex align-items-center justify-content-start">
+                    <i class="far fa-question-circle text-dark mr-2" style="width: 20px;"></i>
+                    <span class="text-dark">Trợ giúp</span>
+                </button>
+                <button type="button" class="btn btn-outline-light d-flex align-items-center justify-content-start">
+                    <i class="fas fa-chart-pie text-dark mr-2" style="width: 20px;"></i>
+                    <span class="text-dark">Thống kê</span>
+                    <i class="fas fa-chevron-left text-dark pl-2 ml-5" style="font-size: 13px;"></i>
+                </button>
+                <button type="button" class="btn btn-outline-light d-flex align-items-center justify-content-start">
+                    <i class="fas fa-cog text-dark mr-2" style="width: 20px;"></i>
+                    <span class="text-dark">Thiết lập</span>
+                </button>
+                <button type="button" class="btn btn-outline-light d-flex align-items-center justify-content-start">
+                    <i class="fas fa-anchor text-dark mr-2" style="width: 20px;"></i>
+                    <span class="text-dark">Cấp quyền</span>
+                </button>
+
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="p-4">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

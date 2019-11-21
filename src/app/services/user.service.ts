@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
   getAllUsersAPI: string = 'http://127.0.0.1:8000/api/getAllUsers';
+  getUserByIdAPI: string = 'http://127.0.0.1:8000/api/getUserById';
 
   constructor(
     public http: HttpClient
@@ -14,5 +15,9 @@ export class UserService {
 
   getAllUsers(): Observable<any> {
     return this.http.get(this.getAllUsersAPI);
+  }
+
+  getUserById(id: number): Observable<any> {
+    return this.http.get(this.getUserByIdAPI + '/' + id);
   }
 }

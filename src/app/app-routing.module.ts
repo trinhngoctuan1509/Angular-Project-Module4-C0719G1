@@ -46,8 +46,8 @@ const appRoutes: Routes = [
   { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
-  { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
   { path: 'post/add/success', component: PostSuccessComponent },
+  { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
 ]
 
 @NgModule({

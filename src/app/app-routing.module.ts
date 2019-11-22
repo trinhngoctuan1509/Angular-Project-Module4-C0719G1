@@ -18,6 +18,10 @@ import { RegisterComponent } from './components/Register/register.component';
 import { PostConfirmComponent } from './components/post/post-confirm/post-confirm.component';
 import { PostSuccessComponent } from './components/post/post-success/post-success.component';
 
+import {HelpComponent } from "../app/components/help/help.component";
+import { EditUsersComponent } from "../app/components/edit-users/edit-users.component";
+import { ChangePasswordComponent} from "../app/components/change-password/change-password.component";
+
 
 
 
@@ -46,8 +50,18 @@ const appRoutes: Routes = [
   { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
-  { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
+ 
   { path: 'post/add/success', component: PostSuccessComponent },
+
+  { path: 'help', component: HelpComponent},
+  { path: 'editusers', component: EditUsersComponent},
+  { path: 'changepassword', component: ChangePasswordComponent},
+
+  
+
+
+
+  // { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
 ]
 
 @NgModule({
@@ -66,7 +80,10 @@ const appRoutes: Routes = [
     SearchPostByFengshuiComponent,
     SearchPostGeneralComponent,
     PostSuccessComponent,
-    SuccessRegisterComponent
+    SuccessRegisterComponent,
+    HelpComponent,
+    EditUsersComponent,
+    ChangePasswordComponent
   ],
 
 

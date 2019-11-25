@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from "@angular/router";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
-import { PostService } from "../../../services/post.service";
+import { MAT_DIALOG_DATA, MatDialogRef,MatDialog } from "@angular/material";
+import { PostSuccessComponent} from "../post-success/post-success.component";
+import { PostAuthUserService } from "../../../services/Auth/post-auth-user.service";
 import { DirectionService } from "../../../services/direction.service";
 import { PostOftypeService } from "../../../services/post-of-type.service";
 import { SellerService } from "../../../services/seller.service";
@@ -25,13 +26,14 @@ export class PostConfirmComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<PostConfirmComponent>,
     private router: Router,
-    private postService: PostService,
+    private postAuthUserService: PostAuthUserService,
     private directionService: DirectionService,
     private postOftypeService: PostOftypeService,
     private sellerService: SellerService,
     private statusOfPostService: StatusOfPostService,
     private categoryService: CategoryService,
     private regionService: RegionService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -45,11 +47,13 @@ export class PostConfirmComponent implements OnInit {
 
   // Click Add new Post
   onClickAdd() {
-    this.postService.addPost(this.data).subscribe(data => {
-      window.location.href = 'post/add/success';
+    this.postAuthUserService.createNewPost(this.data).subscribe(data => {   
+        this.dialogRef.close()
+      this.dialog.open(PostSuccessComponent)      
     }, error =>{
       this.err = error.error.errors
     })
+    
   }
 
   // Get All Input Post through Variable Data -- MAT_DIALOG_DATA

@@ -40,7 +40,7 @@ export class PostAddComponent implements OnInit {
   }
  createForm(){
 this.formPosts = this.formBuilder.group({
-  userId:[1],
+  
   title: ['',[
     Validators.required,
   ]],

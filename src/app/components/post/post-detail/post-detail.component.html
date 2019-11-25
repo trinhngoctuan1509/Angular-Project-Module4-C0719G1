@@ -99,53 +99,65 @@
                         
                         <div class="card mt-0">
                             <div class="card-header">
-                            Nội Dung Bài Đăng
+                                Thông tin liên hệ người đăng
                             </div>
-                            <div class="card-body">
-                                <p class="text-monospace">{{postdetail.contentPost}}</p>
+                            <ul class="list-group list-group-flush">
+                                <label class="list-group-item">Họ Và Tên:{{postdetail.user.fullName}}</label>
+                                <label class="list-group-item">Email: {{postdetail.user.email}}</label>
+                                <label class="list-group-item">Số điện thoại: {{postdetail.user.phoneNumber}}</label>
+                                <label class="list-group-item">Địa chỉ: {{postdetail.user.address}}</label>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        Nội Dung Bài Đăng
+                    </div>
+                    <div class="card-body">
+                        <p class="text-monospace">{{postdetail.contentPost}}</p>
+                    </div>
+                </div>
+                <div class="card text-right">
+                    <div class="card-body">
+
+                        <form action="comment" method="post">
+                            <div class="form-group">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" #commentContent></textarea>
                             </div>
-                          </div>
-                        <div class="card text-right">
-                                <div class="card-body">
-                                   
-                                  <form action="comment" method="post">
-                                        <div class="form-group">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" 
-                                        rows="3"#commentContent></textarea>
-                                              </div>
-                                  <button class="btn btn-primary"(click)="onadd(commentContent.value);commentContent.value='';refresh()">Bình luận</button>
-                                </form>
-                                </div>
-                              </div>
-                              <div class="card" >
-                                    <div class="card-header">
-                                      Nội dung bình luận
+                            <button class="btn btn-primary" (click)="onadd(commentContent.value);commentContent.value='';refresh()">Bình luận</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        Nội dung bình luận
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+
+                            <div class="col-md-1">
+                                <img src="https://www.dammio.com/wp-content/uploads/2016/10/image_circle_bootstrap.png" class="img-circle" alt="Hot girl" width="80">
+                            </div>
+                            <div class="col-md-11">
+                                <tr *ngFor="let commentpost of commentposts|paginate: paginacomment">
+                                    <div class="card-body">
+                                        <p class="card-title">ngày đăng:{{commentpost.created_at}}</p>
+
+
+                                        <p class="card-text">{{commentpost.commentContent}}</p>
+
                                     </div>
-                                  
-                                     <div class="card mb-3" >
-                                    <div class="row no-gutters">
-                                      
-                                      <div class="col-md-1">
-                                        <img src="https://www.dammio.com/wp-content/uploads/2016/10/image_circle_bootstrap.png" class="img-circle" alt="Hot girl" width="80" >
-                                      </div>
-                                      <div class="col-md-11">
-                                          <tr  *ngFor="let commentpost of commentposts|paginate: paginacomment">
-                                        <div class="card-body">
-                                          <p class="card-title">ngày đăng:{{commentpost.created_at}}</p>
-                                         
-                                    
-                                          <p class="card-text">{{commentpost.commentContent}}</p>
-                                         
-                                        </div>
-                                      </tr>
-                                     
-                                      </div>
-                                      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
-                                    </div>
-                                </div>
-                                  </div>
-                                  
-           </div>
+                                </tr>
+
+                            </div>
+                            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
     </div>

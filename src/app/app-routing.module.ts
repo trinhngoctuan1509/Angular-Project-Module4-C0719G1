@@ -37,6 +37,7 @@ import { SuccessRegisterComponent } from './components/Register/success-register
 import { NgxPaginationModule } from "ngx-pagination";
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 import { AdminUserDetailComponent } from './components/admin/admin-user-detail/admin-user-detail.component';
+import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { PostPendingApprovalComponent } from './components/admin/admin-post-list/post-pending-approval/post-pending-approval.component';
 import { PostApprovedComponent } from './components/admin/admin-post-list/post-approved/post-approved.component';
 import { PostDetailsApprovedComponent } from './components/admin/admin-post-details/post-details-approved/post-details-approved.component';
@@ -73,6 +74,8 @@ const appRoutes: Routes = [
     ]
   },
 
+  { path: 'user/profile', component: UserProfileComponent },
+  { path: 'user/profile/post/:id/edit', component: PostEditComponent },
   { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
 ]
 
@@ -93,6 +96,7 @@ const appRoutes: Routes = [
     SearchPostGeneralComponent,
     PostSuccessComponent,
     SuccessRegisterComponent,
+    UserProfileComponent
     PostPendingApprovalComponent,
     PostApprovedComponent,
     PostDetailsApprovedComponent,

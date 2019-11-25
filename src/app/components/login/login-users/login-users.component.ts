@@ -26,18 +26,17 @@ export class LoginUsersComponent implements OnInit {
       email: [''],
       password: ['']
     })
-    this.formLogin.valueChanges.subscribe(data => {
-      console.log(data)
-    })
   }
   onClickLogin() {
-    this.loginService.login(this.formLogin.value).subscribe(data => {
-      if (!data) {
-        this.router.navigateByUrl('/post/list')
+    this.loginService.login(this.formLogin.value).subscribe((data:any) => {
+      if (data.success==true) {
+        localStorage.setItem('token',data.token);
+      window.location.href=('/post/list') 
       } else {
-        this.dataLogin = data
+        this.dataLogin = data.message;
       }
     })
+ 
   }
 
 }

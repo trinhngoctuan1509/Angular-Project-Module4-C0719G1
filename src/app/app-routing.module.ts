@@ -17,6 +17,9 @@ import { LoginUsersComponent } from './components/login/login-users/login-users.
 import { RegisterComponent } from './components/Register/register.component';
 import { PostConfirmComponent } from './components/post/post-confirm/post-confirm.component';
 import { PostSuccessComponent } from './components/post/post-success/post-success.component';
+import { AdminUserListComponent } from './components/admin/admin-user-list/admin-user-list.component';
+import { AdminLockUserComponent } from './components/admin/admin-lock-user/admin-lock-user.component';
+import { AdminUnlockUserComponent } from './components/admin/admin-unlock-user/admin-unlock-user.component';
 
 import {HelpComponent } from "../app/components/help/help.component";
 import { EditUsersComponent } from "../app/components/edit-users/edit-users.component";
@@ -35,9 +38,20 @@ import { SearchPostGeneralComponent } from './components/post/search-post-genera
 import { SuccessRegisterComponent } from './components/Register/success-register/success-register.component';
 
 import { NgxPaginationModule } from "ngx-pagination";
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
+import { AdminUserDetailComponent } from './components/admin/admin-user-detail/admin-user-detail.component';
+import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
+import { PostPendingApprovalComponent } from './components/admin/admin-post-list/post-pending-approval/post-pending-approval.component';
+import { PostApprovedComponent } from './components/admin/admin-post-list/post-approved/post-approved.component';
+import { PostDetailsApprovedComponent } from './components/admin/admin-post-details/post-details-approved/post-details-approved.component';
+import { PostDetailsPendingApprovalComponent } from './components/admin/admin-post-details/post-details-pending-approval/post-details-pending-approval.component';
+import { MainComponent } from './components/main/main.component';
 
 
 const appRoutes: Routes = [
+  {path:'',component:MainComponent,
+children:[
   { path: 'post/add', component: PostAddComponent },
   { path: 'post/list', component: PostListComponent },
 
@@ -51,19 +65,36 @@ const appRoutes: Routes = [
   { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
- 
-  { path: 'post/add/success', component: PostSuccessComponent },
-
   { path: 'help', component: HelpComponent},
   { path: 'editusers/:id', component: EditUsersComponent},
   { path: 'changepassword', component: ChangePasswordComponent},
+<<<<<<< HEAD
   {path:'loginAdmin',component:LoginAdminComponent},
 
   
+=======
+  { path: 'post/add/success', component: PostSuccessComponent },
+>>>>>>> 67de213e9baa41d54c350a7ba91df4e2366a3fd1
 
 
+  { path: 'user/profile', component: UserProfileComponent },
+  { path: 'user/profile/post/:id/edit', component: PostEditComponent },
+]},
+  
 
-  // { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
+  {
+    path: 'admin', component: AdminHomeComponent,
+    children: [
+      { path: 'user-list', component: AdminUserListComponent },
+      { path: 'user-detail/:id', component: AdminUserDetailComponent },
+      { path: 'post-pending-approval', component: PostPendingApprovalComponent },
+      { path: 'post-approved', component: PostApprovedComponent },
+      { path: 'post-details-approved/:id', component: PostDetailsApprovedComponent },
+      { path: 'post-details-pendding-approval/:id', component: PostDetailsPendingApprovalComponent },
+    ]
+  },
+  { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
+  // { path: '', redirectTo: 'post/list'},
 ]
 
 @NgModule({
@@ -83,10 +114,24 @@ const appRoutes: Routes = [
     SearchPostGeneralComponent,
     PostSuccessComponent,
     SuccessRegisterComponent,
+
+    AdminUserListComponent,
+    AdminLockUserComponent,
+    AdminUnlockUserComponent,
+
+    UserProfileComponent,
+    PostPendingApprovalComponent,
+    PostApprovedComponent,
+    PostDetailsApprovedComponent,
+    PostDetailsPendingApprovalComponent,
     HelpComponent,
     EditUsersComponent,
     ChangePasswordComponent,
+<<<<<<< HEAD
     LoginAdminComponent
+=======
+    MainComponent
+>>>>>>> 67de213e9baa41d54c350a7ba91df4e2366a3fd1
   ],
 
 
@@ -97,12 +142,15 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     NgxPaginationModule,
+    Ng2SearchPipeModule,
     RouterModule.forRoot(appRoutes)
   ],
 
   entryComponents: [
     PostConfirmComponent,
-    DialogSearchPostAdvancedComponent
+    DialogSearchPostAdvancedComponent,
+    AdminLockUserComponent,
+    AdminUnlockUserComponent
   ],
 
   exports: [RouterModule]

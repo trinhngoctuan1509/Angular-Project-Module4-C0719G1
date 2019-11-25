@@ -53,7 +53,7 @@
 
 
                     <div id="singin-input">
-                        <input type="text" class="form-control mt-3" placeholder="Mật khẩu" formControlName="password">
+                        <input type="password" class="form-control mt-3" placeholder="Mật khẩu" formControlName="password">
                         <p *ngIf="errors?.password" style="color: red;">{{errors.password}}</p>
                         <p class="text-danger" *ngIf="formRegister.controls.password.dirty
                         && formRegister.controls.password.errors?.required">
@@ -62,7 +62,7 @@
 
 
                     <div id="singin-input">
-                        <input type="text" class="form-control mt-3" placeholder="Xác nhận mật khẩu"
+                        <input type="password" class="form-control mt-3" placeholder="Xác nhận mật khẩu"
                             formControlName="passwordConfirm">
                         <p *ngIf="errors?.passwordConfirm" style="color: red;">{{errors.passwordConfirm}}</p>
                         <p class="text-danger" *ngIf="formRegister.controls.passwordConfirm.dirty

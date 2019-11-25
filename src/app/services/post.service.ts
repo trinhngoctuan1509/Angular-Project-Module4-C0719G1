@@ -16,6 +16,7 @@ export class PostService {
   searchPostGeneralAPI: string = 'http://127.0.0.1:8000/api/searchPostGeneral';
   searchPostByTitleAPI: string = 'http://127.0.0.1:8000/api/searchPostByTitle';
   searchPostByFengshuiAPI: string = 'http://127.0.0.1:8000/api/searchPostByFengshui';
+  getAllPostOfUserByUserIdAPI: string = 'http://127.0.0.1:8000/api/getAllPostOfUserByUserId';
 
 
 
@@ -26,7 +27,7 @@ export class PostService {
 
   getAllPosts(): Observable<any> {
 
-    return this.httpClient.get(this.apiUrlPost+'All').pipe(map((response: any) => response));
+    return this.httpClient.get(this.apiUrlPost + 'All').pipe(map((response: any) => response));
 
   }
 
@@ -38,10 +39,10 @@ export class PostService {
     return this.httpClient.post(this.apiUrlPost, data).pipe(map((response: any) => response));
   }
 
-  getPostfromId(id): Observable<any>{
-    return this.httpClient.get(this.apiUrlPost+'All'+'/'+id).pipe(map((response: any) => response));
+  getPostfromId(id): Observable<any> {
+    return this.httpClient.get(this.apiUrlPost + 'All' + '/' + id).pipe(map((response: any) => response));
   }
-  
+
   getAllPostData(): Observable<any> {
     return this.httpClient.get(this.getAllPostAPI);
   }
@@ -56,6 +57,10 @@ export class PostService {
 
   searchPostByFengshui(conditionsOfSearchPostByFengshui): Observable<any> {
     return this.httpClient.post(this.searchPostByFengshuiAPI, conditionsOfSearchPostByFengshui);
+  }
+
+  getAllPostOfUserByUserId(userId): Observable<any> {
+    return this.httpClient.post(this.getAllPostOfUserByUserIdAPI, userId);
   }
 
 }

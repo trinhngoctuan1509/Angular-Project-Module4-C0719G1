@@ -29,7 +29,14 @@
                     </tr>
                     <tr>
                         <td>Trạng thái:</td>
-                        <td>{{user.status_of_users.statusOfUserName}}</td>
+                        <td>
+                            <span *ngIf="user.statusOfUserId==1"
+                                class="text-primary font-weight-bold">{{user.status_of_users.statusOfUserName}}</span>
+                            <span *ngIf="user.statusOfUserId==2"
+                                class="text-danger font-weight-bold">{{user.status_of_users.statusOfUserName}}</span>
+                            <span *ngIf="user.statusOfUserId==3"
+                                class="text-warning font-weight-bold">{{user.status_of_users.statusOfUserName}}</span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -54,7 +61,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let post of posts | paginate: { itemsPerPage: 10, currentPage: p }">
+                <tr *ngFor="let post of posts">
                     <td> <span class="ml-3">{{post.id}}</span> </td>
                     <td>{{post.post_of_types.postOfTypeName}}</td>
                     <td>{{post.categories.categoryName}}</td>
@@ -65,7 +72,15 @@
         </table>
     </div>
 
-    <div class="row d-flex justify-content-end my-3">
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <div class="row mt-3 d-flex justify-content-end">
+        <ul class="pagination">
+            <li (click)="goToPreviousPage(user.id)" class="page-item"><a class="page-link">Previous</a></li>
+            <ng-container *ngFor="let paginationArray of paginationArrays">
+                <li (click)="goToPageOfNumber(paginationArray, user.id)" class="page-item"><a class="page-link"
+                        [ngStyle]="paginationArray===selectedPage? backgroundColorOfSelectedPage : backgroundColorOfNotSelectedPage">{{paginationArray}}</a>
+                </li>
+            </ng-container>
+            <li (click)="goToNextPage(user.id)" class="page-item"><a class="page-link">Next</a></li>
+        </ul>
     </div>
 </div>

@@ -5,11 +5,13 @@
     </div>
 
     <div class="row d-flex justify-content-between align-items-center my-2">
-        <h6>Tổng cộng: 29 thành viên</h6>
+        <h6>Tổng cộng: <span class="text-danger font-weight-bold" style="font-size: 20px;">{{numberOfUser}}</span> thành
+            viên</h6>
 
         <div class="d-flex">
-            <input [(ngModel)]="term" type="text" class="form-control form-control-sm mr-3" style="width: 200px;">
-            <button class="btn btn-sm btn-success">Tìm kiếm</button>
+            <input type="text" class="form-control form-control-sm mr-3" style="width: 200px;"
+                [(ngModel)]="keyWordForFindUser">
+            <button class="btn btn-sm btn-success" (click)="findUser()">Tìm kiếm</button>
         </div>
     </div>
 
@@ -25,7 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of users | filter:term | paginate: { itemsPerPage: 5, currentPage: p }">
+                <tr *ngFor="let user of users">
                     <td>{{user.email}}</td>
                     <td>{{user.fullName}}</td>
                     <td>{{user.address}}</td>
@@ -37,7 +39,26 @@
         </table>
     </div>
 
-    <div class="row d-flex justify-content-end my-3">
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <div *ngIf="resultFindUser===null" class="row d-flex justify-content-end mt-3">
+        <ul class="pagination">
+            <li (click)=goToPreviousPage() class="page-item"><a class="page-link">Previous</a></li>
+            <ng-container *ngFor="let paginationArray of paginationArrays">
+                <li (click)="goToPageOfNumber(paginationArray)" class="page-item"><a
+                        [ngStyle]="paginationArray===selectedPage? backgroundColorOfSelectedPage : backgroundColorOfNotSelectedPage"
+                        class="page-link">{{paginationArray}}</a>
+                </li>
+            </ng-container>
+            <li (click)=goToNextPage() class="page-item"><a class="page-link">Next</a></li>
+        </ul>
+    </div>
+
+    <div *ngIf="resultFindUser != null" class="row d-flex justify-content-start mt-3">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
     </div>
 </div>

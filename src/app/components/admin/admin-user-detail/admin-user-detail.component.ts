@@ -14,6 +14,12 @@ import { AdminUnlockUserComponent } from '../admin-unlock-user/admin-unlock-user
 export class AdminUserDetailComponent implements OnInit {
   user;
   posts;
+  numberOfPost;
+  numberOfPage;
+  paginationArrays = [];
+  selectedPage = 1;
+  backgroundColorOfSelectedPage = { backgroundColor: 'rgb(74, 113, 145)' };
+  backgroundColorOfNotSelectedPage = {};
 
   constructor(
     public userService: UserService,
@@ -23,15 +29,35 @@ export class AdminUserDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('khoi chay trang admin user detail')
     this.activateRoute.params.subscribe(data => {
+
+      // Start get user information
       this.userService.getUserById(data['id']).toPromise().then(data => {
         this.user = data[0];
         console.log(this.user);
+        // End get user information
+
+
+        //Start get numberOfPost and Create pagination bar
+        this.postService.getNumberOfPostOfUserByUserId(this.user.id).toPromise().then(data => {
+          this.numberOfPost = data;
+          this.numberOfPage = Math.ceil(this.numberOfPost / 3);
+          console.log(this.numberOfPage);
+          for (var i = 1; i <= this.numberOfPage; i++) {
+            this.paginationArrays.push(i);
+          }
+          console.log(this.paginationArrays);
+        });
+        //End get numberOfPost and Create pagination bar
+
+
+        // Start allPostOfUser by userId
         this.postService.getAllPostOfUserByUserId(this.user.id).toPromise().then(data => {
-          this.posts = data;
+          this.posts = data.data;
           console.log(this.posts);
         });
+        // End allPostOfUser by userId
+
       });
     });
   }
@@ -62,5 +88,32 @@ export class AdminUserDetailComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
     });
+  }
+
+
+  goToPageOfNumber(pageNumber, userId) {
+    this.postService.getAllPostOfUserByUserIdAndPageNumber(pageNumber, userId).subscribe(data => {
+      this.posts = data.data;
+    });
+    this.selectedPage = pageNumber;
+    console.log(this.selectedPage);
+  }
+
+  goToPreviousPage(userId) {
+    if (this.selectedPage != 1) {
+      this.selectedPage = this.selectedPage - 1;
+      this.postService.getAllPostOfUserByUserIdAndPageNumber(this.selectedPage, userId).subscribe(data => {
+        this.posts = data.data;
+      });
+    }
+  }
+
+  goToNextPage(userId) {
+    if (this.selectedPage != this.numberOfPage) {
+      this.selectedPage = this.selectedPage + 1;
+      this.postService.getAllPostOfUserByUserIdAndPageNumber(this.selectedPage, userId).subscribe(data => {
+        this.posts = data.data;
+      });
+    }
   }
 }

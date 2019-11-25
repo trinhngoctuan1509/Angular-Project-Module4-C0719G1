@@ -24,6 +24,7 @@ import { AdminUnlockUserComponent } from './components/admin/admin-unlock-user/a
 import {HelpComponent } from "../app/components/help/help.component";
 import { EditUsersComponent } from "../app/components/edit-users/edit-users.component";
 import { ChangePasswordComponent} from "../app/components/change-password/change-password.component";
+import { LoginAdminComponent } from "../app/components/login-admin/login-admin.component";
 
 
 
@@ -65,11 +66,9 @@ children:[
   { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
   { path: 'help', component: HelpComponent},
-  { path: 'editusers', component: EditUsersComponent},
+  { path: 'editusers/:id', component: EditUsersComponent},
   { path: 'changepassword', component: ChangePasswordComponent},
-  
-
-
+  {path:'loginAdmin',component:LoginAdminComponent},
   { path: 'user/profile', component: UserProfileComponent , canActivate: [GuardsUserGuard]},
   { path: 'user/profile/post/:id/edit', component: PostEditComponent, canActivate: [GuardsUserGuard] },
 ]},
@@ -120,7 +119,11 @@ children:[
     HelpComponent,
     EditUsersComponent,
     ChangePasswordComponent,
+
+    LoginAdminComponent,
+
     MainComponent
+
   ],
 
 

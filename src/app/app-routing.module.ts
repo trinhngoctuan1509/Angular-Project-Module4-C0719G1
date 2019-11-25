@@ -46,12 +46,12 @@ import { PostApprovedComponent } from './components/admin/admin-post-list/post-a
 import { PostDetailsApprovedComponent } from './components/admin/admin-post-details/post-details-approved/post-details-approved.component';
 import { PostDetailsPendingApprovalComponent } from './components/admin/admin-post-details/post-details-pending-approval/post-details-pending-approval.component';
 import { MainComponent } from './components/main/main.component';
-
+import { GuardsUserGuard } from "./services/Guards/guards-user.guard";
 
 const appRoutes: Routes = [
   {path:'',component:MainComponent,
 children:[
-  { path: 'post/add', component: PostAddComponent },
+  { path: 'post/add', component: PostAddComponent,canActivate: [GuardsUserGuard] },
   { path: 'post/list', component: PostListComponent },
 
   { path: 'detailpost/:id', component: PostDetailComponent },
@@ -67,11 +67,11 @@ children:[
   { path: 'help', component: HelpComponent},
   { path: 'editusers', component: EditUsersComponent},
   { path: 'changepassword', component: ChangePasswordComponent},
-  { path: 'post/add/success', component: PostSuccessComponent },
+  
 
 
-  { path: 'user/profile', component: UserProfileComponent },
-  { path: 'user/profile/post/:id/edit', component: PostEditComponent },
+  { path: 'user/profile', component: UserProfileComponent , canActivate: [GuardsUserGuard]},
+  { path: 'user/profile/post/:id/edit', component: PostEditComponent, canActivate: [GuardsUserGuard] },
 ]},
   
 

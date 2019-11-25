@@ -7,7 +7,7 @@ import { map } from "rxjs/operators";
 })
 export class LoginService {
   public api = "http://127.0.0.1:8000/api/login";
-  public apiUser = 'http://127.0.0.1:8000/api/getuser';
+  public apiUser = 'http://127.0.0.1:8000/api/getUser';
   public apiLogout="http://127.0.0.1:8000/api/logout";
   constructor(
     private http: HttpClient

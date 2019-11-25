@@ -37,6 +37,10 @@ import { SuccessRegisterComponent } from './components/Register/success-register
 import { NgxPaginationModule } from "ngx-pagination";
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 import { AdminUserDetailComponent } from './components/admin/admin-user-detail/admin-user-detail.component';
+import { PostPendingApprovalComponent } from './components/admin/admin-post-list/post-pending-approval/post-pending-approval.component';
+import { PostApprovedComponent } from './components/admin/admin-post-list/post-approved/post-approved.component';
+import { PostDetailsApprovedComponent } from './components/admin/admin-post-details/post-details-approved/post-details-approved.component';
+import { PostDetailsPendingApprovalComponent } from './components/admin/admin-post-details/post-details-pending-approval/post-details-pending-approval.component';
 
 
 const appRoutes: Routes = [
@@ -62,6 +66,10 @@ const appRoutes: Routes = [
     children: [
       { path: 'user-list', component: AdminUserListComponent },
       { path: 'user-detail/:id', component: AdminUserDetailComponent },
+      { path: 'post-pending-approval', component: PostPendingApprovalComponent },
+      { path: 'post-approved', component: PostApprovedComponent },
+      { path: 'post-details-approved/:id', component: PostDetailsApprovedComponent },
+      { path: 'post-details-pendding-approval/:id', component: PostDetailsPendingApprovalComponent },
     ]
   },
 
@@ -85,6 +93,10 @@ const appRoutes: Routes = [
     SearchPostGeneralComponent,
     PostSuccessComponent,
     SuccessRegisterComponent,
+    PostPendingApprovalComponent,
+    PostApprovedComponent,
+    PostDetailsApprovedComponent,
+    PostDetailsPendingApprovalComponent
     HelpComponent,
     EditUsersComponent,
     ChangePasswordComponent

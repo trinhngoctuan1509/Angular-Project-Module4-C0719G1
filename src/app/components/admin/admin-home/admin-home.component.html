@@ -12,16 +12,27 @@
     </div>
     <div class="row" style="height: 90%;">
         <div class="col-2 border w-100 px-0" style="background-color: rgb(226, 226, 226);">
-            <div [routerLink]="['/admin/user-list/']" class="btn-group-vertical w-100">
-                <button type="button" class="btn btn-outline-light d-flex align-items-center justify-content-start">
+            <div  class="btn-group-vertical w-100">
+                <button type="button" class="btn btn-outline-light d-flex align-items-center justify-content-start" [routerLink]="['/admin/user-list/']">
                     <i class="fas fa-users-cog text-dark mr-2" style="width: 20px;"></i>
                     <span class="text-dark">Thành viên</span>
                 </button>
-                <button type="button" class="btn btn-outline-light d-flex align-items-center justify-content-start">
+                <button type="button" class="btn btn-outline-light d-flex align-items-center justify-content-start" data-toggle="collapse" data-target="#demo">
+
                     <i class="fas fa-address-card text-dark mr-2" style="width: 20px;"></i>
-                    <span class="text-dark">Bài đăng</span>
+                    <span class="text-dark">Bài Đăng</span>
                     <i class="fas fa-chevron-left text-dark pl-2 ml-5" style="font-size: 13px;"></i>
                 </button>
+                <div id="demo" class="collapse w-100">
+                   <button type="button" class="w-100 btn btn-outline-light d-flex align-items-center justify-content-start" [routerLink]="['/admin/post-pending-approval']" routerLinkActive="router-link-active" >
+                    <i class="text-dark mr-2" style="width: 20px;"></i>
+                    <span class="text-dark">Chờ Phê duyệt</span>
+                </button>
+                <button type="button" class="w-100 btn btn-outline-light d-flex align-items-center justify-content-start" [routerLink]="['/admin/post-approved']" routerLinkActive="router-link-active" >
+                    <i class="text-dark mr-2" style="width: 20px;"></i>
+                    <span class="text-dark">Đã Phê duyệt</span>
+                </button>
+                </div>
                 <button type="button" class="btn btn-outline-light d-flex align-items-center justify-content-start">
                     <i class="far fa-question-circle text-dark mr-2" style="width: 20px;"></i>
                     <span class="text-dark">Trợ giúp</span>

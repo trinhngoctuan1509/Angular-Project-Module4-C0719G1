@@ -18,5 +18,6 @@ export class Posts{
     imagePost4: string ;
     imagePost5: string ;
     imagePost6: string ;
-    ableComposition: boolean ;   
+    ableComposition: boolean ;  
+    post_of_types:string; 
 }

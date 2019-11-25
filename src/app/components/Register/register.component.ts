@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
   onClickRegister() {
     this.registerService.register(this.formRegister.value).subscribe(data => {
       this.router.navigateByUrl('/successRegister');
-console.log(data ) // như nàu là nó ra cái dòng đổ rồi nầy nhưng đăng ký thành công nó không chuyển trang
+// console.log(data ) 
     },error => {
      this.errors= error.error.errors
     })

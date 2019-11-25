@@ -11,9 +11,6 @@ import { AdminHomeComponent } from './components/admin/admin-home/admin-home.com
 import { AdminUserDetailComponent } from './components/admin/admin-user-detail/admin-user-detail.component';
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +22,8 @@ import { AdminUserDetailComponent } from './components/admin/admin-user-detail/a
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    // FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

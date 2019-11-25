@@ -31,11 +31,13 @@ export class LoginUsersComponent implements OnInit {
     this.loginService.login(this.formLogin.value).subscribe((data:any) => {
       if (data.success==true) {
         localStorage.setItem('token',data.token);
+        console.log(localStorage.getItem('token'))
         this.router.navigateByUrl('/post/add');
       } else {
         this.dataLogin = data.message;
       }
     })
+ 
   }
 
 }

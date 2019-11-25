@@ -18,6 +18,8 @@ import { RegisterComponent } from './components/Register/register.component';
 import { PostConfirmComponent } from './components/post/post-confirm/post-confirm.component';
 import { PostSuccessComponent } from './components/post/post-success/post-success.component';
 import { AdminUserListComponent } from './components/admin/admin-user-list/admin-user-list.component';
+import { AdminLockUserComponent } from './components/admin/admin-lock-user/admin-lock-user.component';
+import { AdminUnlockUserComponent } from './components/admin/admin-unlock-user/admin-unlock-user.component';
 
 import {HelpComponent } from "../app/components/help/help.component";
 import { EditUsersComponent } from "../app/components/edit-users/edit-users.component";
@@ -35,6 +37,7 @@ import { SearchPostGeneralComponent } from './components/post/search-post-genera
 import { SuccessRegisterComponent } from './components/Register/success-register/success-register.component';
 
 import { NgxPaginationModule } from "ngx-pagination";
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 import { AdminUserDetailComponent } from './components/admin/admin-user-detail/admin-user-detail.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
@@ -96,6 +99,11 @@ const appRoutes: Routes = [
     SearchPostGeneralComponent,
     PostSuccessComponent,
     SuccessRegisterComponent,
+
+    AdminUserListComponent,
+    AdminLockUserComponent,
+    AdminUnlockUserComponent
+
     UserProfileComponent
     PostPendingApprovalComponent,
     PostApprovedComponent,
@@ -104,7 +112,6 @@ const appRoutes: Routes = [
     HelpComponent,
     EditUsersComponent,
     ChangePasswordComponent
-    AdminUserListComponent
   ],
 
 
@@ -115,12 +122,15 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     NgxPaginationModule,
+    Ng2SearchPipeModule,
     RouterModule.forRoot(appRoutes)
   ],
 
   entryComponents: [
     PostConfirmComponent,
-    DialogSearchPostAdvancedComponent
+    DialogSearchPostAdvancedComponent,
+    AdminLockUserComponent,
+    AdminUnlockUserComponent
   ],
 
   exports: [RouterModule]

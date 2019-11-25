@@ -1,5 +1,5 @@
-<div class="container border" style="height: 100vh;">
-    <div class="row border" style="height: 10%; background-color: rgb(226, 226, 226);">
+<div class="container border border-bottom-0" style="height: 100vh;">
+    <div class="row border" style="height: 7%; background-color: rgb(226, 226, 226);">
         <div class="col-2 h-100 d-flex flex-column align-items-center justify-content-center">
             <img style="height: 60%;" src="/assets/img/logoCodeGymAdmin.png" alt="">
         </div>
@@ -10,10 +10,11 @@
             </div>
         </div>
     </div>
-    <div class="row" style="height: 90%;">
+    <div class="row" style="height: 93%;">
         <div class="col-2 border w-100 px-0" style="background-color: rgb(226, 226, 226);">
-            <div  class="btn-group-vertical w-100">
-                <button type="button" class="btn btn-outline-light d-flex align-items-center justify-content-start" [routerLink]="['/admin/user-list/']">
+            <div class="btn-group-vertical w-100">
+                <button [routerLink]="['/admin/user-list/']" type="button"
+                    class="btn btn-outline-light d-flex align-items-center justify-content-start">
                     <i class="fas fa-users-cog text-dark mr-2" style="width: 20px;"></i>
                     <span class="text-dark">Thành viên</span>
                 </button>

@@ -102,13 +102,13 @@ const appRoutes: Routes = [
 
     AdminUserListComponent,
     AdminLockUserComponent,
-    AdminUnlockUserComponent
+    AdminUnlockUserComponent,
 
-    UserProfileComponent
+    UserProfileComponent,
     PostPendingApprovalComponent,
     PostApprovedComponent,
     PostDetailsApprovedComponent,
-    PostDetailsPendingApprovalComponent
+    PostDetailsPendingApprovalComponent,
     HelpComponent,
     EditUsersComponent,
     ChangePasswordComponent

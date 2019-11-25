@@ -21,6 +21,7 @@ import { PostSuccessComponent } from './components/post/post-success/post-succes
 import {HelpComponent } from "../app/components/help/help.component";
 import { EditUsersComponent } from "../app/components/edit-users/edit-users.component";
 import { ChangePasswordComponent} from "../app/components/change-password/change-password.component";
+import { LoginAdminComponent } from "../app/components/login-admin/login-admin.component";
 
 
 
@@ -54,8 +55,9 @@ const appRoutes: Routes = [
   { path: 'post/add/success', component: PostSuccessComponent },
 
   { path: 'help', component: HelpComponent},
-  { path: 'editusers', component: EditUsersComponent},
+  { path: 'editusers/:id', component: EditUsersComponent},
   { path: 'changepassword', component: ChangePasswordComponent},
+  {path:'loginAdmin',component:LoginAdminComponent},
 
   
 
@@ -83,7 +85,8 @@ const appRoutes: Routes = [
     SuccessRegisterComponent,
     HelpComponent,
     EditUsersComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    LoginAdminComponent
   ],
 
 

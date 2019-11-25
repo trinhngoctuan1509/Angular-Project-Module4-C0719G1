@@ -29,7 +29,7 @@ export class PostDetailComponent implements OnInit {
     
 
   ) { 
-   this.getPostFromroute();
+  this.getPostFromroute();
    this.paginacomment = {
     itemsPerPage: 4,
     currentPage: 1,
@@ -42,8 +42,7 @@ export class PostDetailComponent implements OnInit {
     //this.movies = this.movieService.getMovies();
     this.commentpostservice.getcommentpost().subscribe(updatedCommentpost => {
       this.commentposts = updatedCommentpost
-      
-     
+
     });
   }
   getPostFromroute():void{

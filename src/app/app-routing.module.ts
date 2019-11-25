@@ -17,6 +17,7 @@ import { LoginUsersComponent } from './components/login/login-users/login-users.
 import { RegisterComponent } from './components/Register/register.component';
 import { PostConfirmComponent } from './components/post/post-confirm/post-confirm.component';
 import { PostSuccessComponent } from './components/post/post-success/post-success.component';
+import { AdminUserListComponent } from './components/admin/admin-user-list/admin-user-list.component';
 
 import {HelpComponent } from "../app/components/help/help.component";
 import { EditUsersComponent } from "../app/components/edit-users/edit-users.component";
@@ -34,6 +35,8 @@ import { SearchPostGeneralComponent } from './components/post/search-post-genera
 import { SuccessRegisterComponent } from './components/Register/success-register/success-register.component';
 
 import { NgxPaginationModule } from "ngx-pagination";
+import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
+import { AdminUserDetailComponent } from './components/admin/admin-user-detail/admin-user-detail.component';
 
 
 const appRoutes: Routes = [
@@ -50,18 +53,19 @@ const appRoutes: Routes = [
   { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
- 
-  { path: 'post/add/success', component: PostSuccessComponent },
-
   { path: 'help', component: HelpComponent},
   { path: 'editusers', component: EditUsersComponent},
   { path: 'changepassword', component: ChangePasswordComponent},
+  { path: 'post/add/success', component: PostSuccessComponent },
+  {
+    path: 'admin', component: AdminHomeComponent,
+    children: [
+      { path: 'user-list', component: AdminUserListComponent },
+      { path: 'user-detail/:id', component: AdminUserDetailComponent },
+    ]
+  },
 
-  
-
-
-
-  // { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
+  { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
 ]
 
 @NgModule({
@@ -84,6 +88,7 @@ const appRoutes: Routes = [
     HelpComponent,
     EditUsersComponent,
     ChangePasswordComponent
+    AdminUserListComponent
   ],
 
 

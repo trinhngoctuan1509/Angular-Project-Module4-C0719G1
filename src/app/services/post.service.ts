@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Posts } from "../models/post.model";
 
-import { HttpClient } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { map } from "rxjs/operators";
 @Injectable({
@@ -17,6 +17,8 @@ export class PostService {
   searchPostByTitleAPI: string = 'http://127.0.0.1:8000/api/searchPostByTitle';
   searchPostByFengshuiAPI: string = 'http://127.0.0.1:8000/api/searchPostByFengshui';
   getAllPostOfUserByUserIdAPI: string = 'http://127.0.0.1:8000/api/getAllPostOfUserByUserId';
+  getPostApprovalAPI:string= 'http://127.0.0.1:8000/api/getPostApproval'
+  getPostAppredAPI:string= 'http://127.0.0.1:8000/api/getPostAppred'
 
 
 
@@ -58,9 +60,21 @@ export class PostService {
   searchPostByFengshui(conditionsOfSearchPostByFengshui): Observable<any> {
     return this.httpClient.post(this.searchPostByFengshuiAPI, conditionsOfSearchPostByFengshui);
   }
-
+// get list danh sách bài đăng đang chờ duyệt
+  getPostApproval():Observable<any>{
+    return this.httpClient.get(this.getPostApprovalAPI).pipe(map((response: any) => response));
+  }
+// get list danh sách bài đăng đã duyệt
+  getPostAppred(){
+    return this.httpClient.get(this.getPostAppredAPI).pipe(map((response: any) => response));
+  }
+  
   getAllPostOfUserByUserId(userId): Observable<any> {
     return this.httpClient.post(this.getAllPostOfUserByUserIdAPI, userId);
   }
 
+  // update bài post
+  updatePost(post:Posts){
+    return this.httpClient.put(this.apiUrlPost+'/'+post.id,post).pipe(map((response: any) => response));
+  }
 }

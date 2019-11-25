@@ -5,6 +5,8 @@ import { PostConfirmComponent} from "../post-confirm/post-confirm.component";
 import { CategoryService } from "../../../services/category.service";
 import { RegionService } from "../../../services/region.service";
 import { DirectionService } from "../../../services/direction.service";
+import { LoginService } from "../../../services/login.service";
+import { User } from "../../../models/user.model";
 @Component({
   selector: 'app-post-add',
   templateUrl: './post-add.component.html',
@@ -16,16 +18,21 @@ export class PostAddComponent implements OnInit {
   categories;
   regions;
   directions;
+  userDetails;
   constructor(
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
     private categoryService: CategoryService,
     private regionService: RegionService,
     private directionService: DirectionService,
+    private loginService:LoginService
   ) { }
 
   ngOnInit() {
-   
+    this.userDetails= new User();
+   this.loginService.getUser().subscribe(data=>{
+     this.userDetails=data
+   })
     this.createForm()
     this.getAllCategory()
     this.getAllRegions()
@@ -33,7 +40,7 @@ export class PostAddComponent implements OnInit {
   }
  createForm(){
 this.formPosts = this.formBuilder.group({
-  userId:[1],
+  
   title: ['',[
     Validators.required,
   ]],

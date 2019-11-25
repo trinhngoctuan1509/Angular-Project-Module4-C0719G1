@@ -21,6 +21,10 @@ import { AdminUserListComponent } from './components/admin/admin-user-list/admin
 import { AdminLockUserComponent } from './components/admin/admin-lock-user/admin-lock-user.component';
 import { AdminUnlockUserComponent } from './components/admin/admin-unlock-user/admin-unlock-user.component';
 
+import {HelpComponent } from "../app/components/help/help.component";
+import { EditUsersComponent } from "../app/components/edit-users/edit-users.component";
+import { ChangePasswordComponent} from "../app/components/change-password/change-password.component";
+
 
 
 
@@ -36,6 +40,11 @@ import { NgxPaginationModule } from "ngx-pagination";
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 import { AdminUserDetailComponent } from './components/admin/admin-user-detail/admin-user-detail.component';
+import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
+import { PostPendingApprovalComponent } from './components/admin/admin-post-list/post-pending-approval/post-pending-approval.component';
+import { PostApprovedComponent } from './components/admin/admin-post-list/post-approved/post-approved.component';
+import { PostDetailsApprovedComponent } from './components/admin/admin-post-details/post-details-approved/post-details-approved.component';
+import { PostDetailsPendingApprovalComponent } from './components/admin/admin-post-details/post-details-pending-approval/post-details-pending-approval.component';
 
 
 const appRoutes: Routes = [
@@ -52,15 +61,24 @@ const appRoutes: Routes = [
   { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
+  { path: 'help', component: HelpComponent},
+  { path: 'editusers', component: EditUsersComponent},
+  { path: 'changepassword', component: ChangePasswordComponent},
   { path: 'post/add/success', component: PostSuccessComponent },
   {
     path: 'admin', component: AdminHomeComponent,
     children: [
       { path: 'user-list', component: AdminUserListComponent },
       { path: 'user-detail/:id', component: AdminUserDetailComponent },
+      { path: 'post-pending-approval', component: PostPendingApprovalComponent },
+      { path: 'post-approved', component: PostApprovedComponent },
+      { path: 'post-details-approved/:id', component: PostDetailsApprovedComponent },
+      { path: 'post-details-pendding-approval/:id', component: PostDetailsPendingApprovalComponent },
     ]
   },
 
+  { path: 'user/profile', component: UserProfileComponent },
+  { path: 'user/profile/post/:id/edit', component: PostEditComponent },
   { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
 ]
 
@@ -81,9 +99,19 @@ const appRoutes: Routes = [
     SearchPostGeneralComponent,
     PostSuccessComponent,
     SuccessRegisterComponent,
+
     AdminUserListComponent,
     AdminLockUserComponent,
     AdminUnlockUserComponent
+
+    UserProfileComponent
+    PostPendingApprovalComponent,
+    PostApprovedComponent,
+    PostDetailsApprovedComponent,
+    PostDetailsPendingApprovalComponent
+    HelpComponent,
+    EditUsersComponent,
+    ChangePasswordComponent
   ],
 
 

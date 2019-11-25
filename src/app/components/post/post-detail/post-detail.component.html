@@ -1,23 +1,23 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>[{{postdetail.post_of_types.postOfTypeName}}] Lô đất 4 mặt tiền</h1>
-        <div class="card mb-3" style="max-width: 1200px;">
+            <h1>[{{postdetail.post_of_types.postOfTypeName}}] {{postdetail.title}}</h1>
+        <div class="card mb-3" style="max-width: 1300px;">
                         <div class="row no-gutters">
-                          <div class="col-md-5 mt-3">
+                          <div class="col-md-8 mt-3">
                                 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
                                         <div class="carousel-inner" >
                                           <div class="carousel-item active">
                                             <img src="https://d34zoy7mey8f6f.cloudfront.net/bds/12e650e0-d6bd-4f88-8547-b07a60b6b3fa.jpg"
-                                            style="height: 300px;"
+                                            style="height: 370px;"
                                              class="d-block w-100" alt="...">
                                              
                                         </div>
                                           <div class="carousel-item">
-                                            <img src="https://d34zoy7mey8f6f.cloudfront.net/bds/ca47bb5e-3d3b-4efe-a7c0-e6cdd3a0e3c4.jpg"style="height: 300px;" class="d-block w-100" alt="...">
+                                            <img src="https://d34zoy7mey8f6f.cloudfront.net/bds/ca47bb5e-3d3b-4efe-a7c0-e6cdd3a0e3c4.jpg"style="height: 370px;" class="d-block w-100" alt="...">
                                           </div>
                                           <div class="carousel-item">
-                                            <img src="https://d34zoy7mey8f6f.cloudfront.net/bds/12e650e0-d6bd-4f88-8547-b07a60b6b3fa.jpg"style="height: 300px;" class="d-block w-100" alt="...">
+                                            <img src="https://d34zoy7mey8f6f.cloudfront.net/bds/12e650e0-d6bd-4f88-8547-b07a60b6b3fa.jpg"style="height: 370px;" class="d-block w-100" alt="...">
                                           </div>
                                         </div>
                                         <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -30,83 +30,134 @@
                                         </a>
                                       </div>
                           </div>
-                          <div class="col-md-3">
-                            <div class="card-body">
-                             
-                              <p class="card-text">Ngày Đăng:<small class="text-muted"> {{postdetail.created_at}}</small></p>
-                              <p class="card-text">Vùng Miền: <small class="text-muted">{{postdetail.region.regionName}}</small></p>
-                              <p class="card-text">Hướng:<small class="text-muted"> {{postdetail.directions.directionName}}</small></p>
-                              <p class="card-text">Tinh Trạng:<small class="text-muted"> {{postdetail.status_of_posts.statusOfPostName}}</small></p>
-                              <p class="card-text">Địa Chỉ:<small class="text-muted"> {{postdetail.address}}</small></p>
-                              <p class="card-text">Diện Tích:<small class="text-muted">{{postdetail.area}}/m2</small></p>
-                              <p class="card-text">Gía:<small class="text-muted">{{postdetail.price}} vnd</small></p>
-                              <p class="card-text">Lược xem :<small class="text-muted">{{postdetail.sellerId}}</small></p>
+                          
+                          <div class="card bg-light col-md-4 mt-3" >
+                            <div class="card-header">
+                                   Thông tin bài đăng
+                               </div>
+                               <div class="card-body m-0">
+                                <tr>
+                                  <td>Ngày Đăng :</td>
+                                   <td>{{postdetail.created_at}}</td>
+                               </tr>
+                               <tr>
+                                <td>Vùng Miền :</td>
+                                 <td>{{postdetail.region.regionName}}</td>
+                             </tr>
+                             <tr>
+                              <td>Hướng : </td>
+                               <td>{{postdetail.directions.directionName}}</td>
+                           </tr>
+                           <tr>
+                            <td>Tinh Trạng :</td>
+                             <td>{{postdetail.status_of_posts.statusOfPostName}}</td>
+                         </tr>
+                         <tr>
+                          <td>Địa Chỉ :</td>
+                           <td>{{postdetail.address}}</td>
+                       </tr>
+                       <tr>
+                        <td>Diện Tích :</td>
+                         <td>{{postdetail.area}}/m2</td>
+                     </tr>
+                     <tr>
+                      <td>Gía :</td>
+                       <td>{{postdetail.price}} vnds</td>
+                   </tr>
+                   <tr>
+                    <td>Lượt xem :</td>
+                     <td>{{postdetail.statusOfPostId}}</td>
+                 </tr>
+                              
+                                     </div>
+                     </div>
+                    
+                        </div>
+                        <div class="card bg-light col-md-12 mt-3" >
+                          <div class="card-header">
+                                 Thông tin liên hệ người đăng
+                             </div>
+                             <div class="card-body m-0">
+                              <tr>
+                                <td>Họ Và Tên :</td>
+                                 <td>{{postdetail.user.fullName}}</td>
+                             </tr>
+                             <tr>
+                              <td>Email:</td>
+                               <td>{{postdetail.user.email}}</td>
+                           </tr>
+                           <tr>
+                            <td>Số điện thoại : </td>
+                             <td>{{postdetail.user.phoneNumber}}</td>
+                         </tr>
+                         <tr>
+                          <td>Địa chỉ:</td>
+                           <td>{{postdetail.address}}</td>
+                       </tr>
+                     </div>
+                   </div>
+                        
+                        <div class="card mt-0">
+                            <div class="card-header">
+                                Thông tin liên hệ người đăng
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <label class="list-group-item">Họ Và Tên:{{postdetail.user.fullName}}</label>
+                                <label class="list-group-item">Email: {{postdetail.user.email}}</label>
+                                <label class="list-group-item">Số điện thoại: {{postdetail.user.phoneNumber}}</label>
+                                <label class="list-group-item">Địa chỉ: {{postdetail.user.address}}</label>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        Nội Dung Bài Đăng
+                    </div>
+                    <div class="card-body">
+                        <p class="text-monospace">{{postdetail.contentPost}}</p>
+                    </div>
+                </div>
+                <div class="card text-right">
+                    <div class="card-body">
+
+                        <form action="comment" method="post">
+                            <div class="form-group">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" #commentContent></textarea>
+                            </div>
+                            <button class="btn btn-primary" (click)="onadd(commentContent.value);commentContent.value='';refresh()">Bình luận</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        Nội dung bình luận
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+
+                            <div class="col-md-1">
+                                <img src="https://www.dammio.com/wp-content/uploads/2016/10/image_circle_bootstrap.png" class="img-circle" alt="Hot girl" width="80">
+                            </div>
+                            <div class="col-md-11">
+                                <tr *ngFor="let commentpost of commentposts|paginate: paginacomment">
+                                    <div class="card-body">
+                                        <p class="card-title">ngày đăng:{{commentpost.created_at}}</p>
+
+
+                                        <p class="card-text">{{commentpost.commentContent}}</p>
+
+                                    </div>
+                                </tr>
 
                             </div>
-                          </div>
-                          <div class="col-md-4">
-                            <div class="card" >
-                                    <div class="card-header">
-                                      Thông tin liên hệ người đăng
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                      <label class="list-group-item">Họ Và Tên:{{postdetail.user.fullName}}</label>
-                                      <label class="list-group-item">Email: {{postdetail.user.email}}</label>
-                                      <label class="list-group-item">Số điện thoại: {{postdetail.user.phoneNumber}}</label>
-                                      <label class="list-group-item">Địa chỉ: {{postdetail.user.address}}</label>
-                                    </ul>
-                                  </div>
-                          </div>
+                            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
                         </div>
-                        <div class="card">
-                            <div class="card-header">
-                            Nội Dung Bài Đăng
-                            </div>
-                            <div class="card-body">
-                                <p class="text-monospace">{{postdetail.contentPost}}</p>
-                            </div>
-                          </div>
-                        <div class="card text-right">
-                                <div class="card-body">
-                                   
-                                  <form action="comment" method="post">
-                                        <div class="form-group">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" 
-                                        rows="3"#commentContent></textarea>
-                                              </div>
-                                  <button class="btn btn-primary"(click)="onadd(commentContent.value);commentContent.value='';refresh()">Bình luận</button>
-                                </form>
-                                </div>
-                              </div>
-                              <div class="card" >
-                                    <div class="card-header">
-                                      Nội dung bình luận
-                                    </div>
-                                  
-                                     <div class="card mb-3" >
-                                    <div class="row no-gutters">
-                                      
-                                      <div class="col-md-1">
-                                        <img src="https://www.dammio.com/wp-content/uploads/2016/10/image_circle_bootstrap.png" class="img-circle" alt="Hot girl" width="80" >
-                                      </div>
-                                      <div class="col-md-11">
-                                          <tr  *ngFor="let commentpost of commentposts|paginate: paginacomment">
-                                        <div class="card-body">
-                                          <p class="card-title">ngày đăng:{{commentpost.created_at}}</p>
-                                         
-                                    
-                                          <p class="card-text">{{commentpost.commentContent}}</p>
-                                         
-                                        </div>
-                                      </tr>
-                                     
-                                      </div>
-                                      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
-                                    </div>
-                                </div>
-                                  </div>
-                                  
-           </div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
     </div>

@@ -11,6 +11,7 @@ export class LoginAdminService {
     private http: HttpClient
   ) { }
   login(data) {
+   
     return this.http.post(this.api, data).pipe(map((reponse: any) => reponse));
   }
 }

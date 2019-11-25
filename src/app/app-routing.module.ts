@@ -68,13 +68,13 @@ children:[
   { path: 'help', component: HelpComponent},
   { path: 'editusers/:id', component: EditUsersComponent},
   { path: 'changepassword', component: ChangePasswordComponent},
-<<<<<<< HEAD
+
   {path:'loginAdmin',component:LoginAdminComponent},
 
   
-=======
+
   { path: 'post/add/success', component: PostSuccessComponent },
->>>>>>> 67de213e9baa41d54c350a7ba91df4e2366a3fd1
+
 
 
   { path: 'user/profile', component: UserProfileComponent },
@@ -127,11 +127,11 @@ children:[
     HelpComponent,
     EditUsersComponent,
     ChangePasswordComponent,
-<<<<<<< HEAD
-    LoginAdminComponent
-=======
+
+    LoginAdminComponent,
+
     MainComponent
->>>>>>> 67de213e9baa41d54c350a7ba91df4e2366a3fd1
+
   ],
 
 

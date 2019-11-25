@@ -52,12 +52,10 @@ export class EditUsersComponent implements OnInit {
       "addressNew": this.addressNew
     }
 
-    this.EditUsersService.sendEditUsersMessage(infoOfUserNew).subscribe(() => this.goBack());
-    
+     this.EditUsersService.sendEditUsersMessage(infoOfUserNew).subscribe(data=>{
+      console.log(data);
+    })
   }
-  goBack(): void {
-    this.location.back();
-  }
- 
+  
 
 }

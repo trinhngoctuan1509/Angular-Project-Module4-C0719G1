@@ -34,6 +34,7 @@ export class LoginUsersComponent implements OnInit {
       window.location.href=('/post/list') 
       } else {
         this.dataLogin = data.message;
+       
       }
     })
  

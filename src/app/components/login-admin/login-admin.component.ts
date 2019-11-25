@@ -30,14 +30,20 @@ export class LoginAdminComponent implements OnInit {
     })
   }
   onClickLogin() {
-    this.loginAdminService.login(this.formLogin.value).subscribe(data => {
-      if (!data) {
-        this.router.navigateByUrl('/post/list')
+    this.loginAdminService.login(this.formLogin.value).subscribe((data:any) => {
+      if (data.success==true) {
+        localStorage.setItem('token',data.token);
+      window.location.href=('/admin/user-list') 
       } else {
-        this.dataLogin = data
+
+        this.dataLogin = data.message;
+        console.log(this.dataLogin)
+       
       }
     })
+ 
   }
+
 
 
 }

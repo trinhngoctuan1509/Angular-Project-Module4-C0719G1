@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import { Posts } from 'src/app/models/post.model';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder,FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-post-approved',
@@ -11,12 +12,15 @@ import { ActivatedRoute } from '@angular/router';
 export class PostApprovedComponent implements OnInit {
   postAppreds:Posts[]=[];
   postDetail;
+  formSearch:FormGroup;
   constructor(
     private postService:PostService,
-    private activateRouter:ActivatedRoute
+    private activateRouter:ActivatedRoute,
+    private _FormBuider:FormBuilder
   ) { }
 
   ngOnInit() {
+    this.search();
     this.postService.getPostAppred().subscribe(data=>{
       this.postAppreds=data
       })
@@ -31,4 +35,15 @@ export class PostApprovedComponent implements OnInit {
       console.log(data)
     })
   }
+search(){
+  this.formSearch = this._FormBuider.group({
+    title:['']
+  })
+}
+onClickSearch(){
+  this.postService.searchPostAppred(this.formSearch.value).subscribe(data=>{
+    this.postAppreds=data.data
+  })
+}
+
 }

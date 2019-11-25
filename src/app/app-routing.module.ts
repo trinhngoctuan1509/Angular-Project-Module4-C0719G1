@@ -46,6 +46,7 @@ import { PostApprovedComponent } from './components/admin/admin-post-list/post-a
 import { PostDetailsApprovedComponent } from './components/admin/admin-post-details/post-details-approved/post-details-approved.component';
 import { PostDetailsPendingApprovalComponent } from './components/admin/admin-post-details/post-details-pending-approval/post-details-pending-approval.component';
 import { MainComponent } from './components/main/main.component';
+import { SuccessComfirmMailComponent } from './components/Register/success-comfirm-mail/success-comfirm-mail.component';
 
 
 const appRoutes: Routes = [
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
 children:[
   { path: 'post/add', component: PostAddComponent },
   { path: 'post/list', component: PostListComponent },
+  { path: 'successConfirmMail', component: SuccessComfirmMailComponent },
 
   { path: 'detailpost/:id', component: PostDetailComponent },
   { path: 'post', component: PostComponent },
@@ -120,7 +122,8 @@ children:[
     HelpComponent,
     EditUsersComponent,
     ChangePasswordComponent,
-    MainComponent
+    MainComponent,
+    SuccessComfirmMailComponent
   ],
 
 

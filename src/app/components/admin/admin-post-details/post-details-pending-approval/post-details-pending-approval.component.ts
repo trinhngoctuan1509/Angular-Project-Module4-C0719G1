@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from "../../../../services/post.service";
 import { Posts } from 'src/app/models/post.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-details-pending-approval',
@@ -13,7 +13,8 @@ export class PostDetailsPendingApprovalComponent implements OnInit {
   id: number;
   constructor(
     private postService: PostService,
-    private activateRouter: ActivatedRoute
+    private activateRouter: ActivatedRoute,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -21,7 +22,7 @@ export class PostDetailsPendingApprovalComponent implements OnInit {
     this.activateRouter.params.subscribe(params => {
       this.id = params['id']
     })
-    this.postService.getPostfromId(this.id).subscribe(data => {
+    this.postService.getPostDetailApproval(this.id).subscribe(data => {
       this.postDetails = data
     })
   }
@@ -29,7 +30,7 @@ export class PostDetailsPendingApprovalComponent implements OnInit {
   changeAvailability() {
     this.postDetails.post_availability_status_id = 1;
     this.postService.updatePost(this.postDetails).subscribe(data => {
-      console.log(data)
+      this.router.navigateByUrl('/post-pending-approval')
     })
   }
 

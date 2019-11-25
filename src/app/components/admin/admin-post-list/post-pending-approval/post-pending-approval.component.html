@@ -7,10 +7,14 @@
     <div class="row d-flex justify-content-between align-items-center my-2">
         <h6>Tổng cộng: 1 bài đăng</h6>
 
-        <div class="d-flex">
-            <input type="text" class="form-control form-control-sm mr-3" style="width: 200px;">
-            <button class="btn btn-sm btn-success">Tìm kiếm</button>
-        </div>
+        
+            <form action="" (ngSubmit)="onClickSearch()" [formGroup]="formSearch">
+                    <div class="d-flex" >
+                <input type="text" class="form-control form-control-sm mr-3" style="width: 200px;" formControlName="title">
+                <button class="btn btn-sm btn-success">Tìm kiếm</button>
+            </div>
+            </form>
+        
     </div>
 
     <div class="row">
@@ -27,17 +31,17 @@
             </thead>
             <tbody>
                 <tr *ngFor="let postApproval of postApprovals">
-                <!-- <tr> -->
+                    <!-- <tr> -->
                     <td>{{postApproval.title}}</td>
                     <td>{{postApproval.post_of_types.postOfTypeName}}</td>
                     <td>{{postApproval.categories.categoryName}}</td>
                     <td>{{postApproval.created_at}}</td>
                     <td>
-                        <a [routerLink]="['/admin/post-details-pendding-approval',postApproval.id]" routerLinkActive="router-link-active" >xem</a>
+                        <a [routerLink]="['/admin/post-details-pendding-approval',postApproval.id]"
+                            routerLinkActive="router-link-active">xem</a>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
-

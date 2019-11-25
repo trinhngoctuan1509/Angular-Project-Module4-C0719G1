@@ -17,8 +17,11 @@ export class PostService {
   searchPostByTitleAPI: string = 'http://127.0.0.1:8000/api/searchPostByTitle';
   searchPostByFengshuiAPI: string = 'http://127.0.0.1:8000/api/searchPostByFengshui';
   getAllPostOfUserByUserIdAPI: string = 'http://127.0.0.1:8000/api/getAllPostOfUserByUserId';
-  getPostApprovalAPI:string= 'http://127.0.0.1:8000/api/getPostApproval'
-  getPostAppredAPI:string= 'http://127.0.0.1:8000/api/getPostAppred'
+  getPostApprovalAPI:string= 'http://127.0.0.1:8000/api/getPostApproval';
+  getPostAppredAPI:string= 'http://127.0.0.1:8000/api/getPostAppred';
+  searchPostApproralAPI:string= 'http://127.0.0.1:8000/api/searchPostApproval';
+  searchPostAppredAPI:string= 'http://127.0.0.1:8000/api/searchPostAppred';
+  getPostDetailApprovalAPI:string="http://localhost:8000/api/getPostDetailApproval";
 
 
 
@@ -76,5 +79,15 @@ export class PostService {
   // update bài post
   updatePost(post:Posts){
     return this.httpClient.put(this.apiUrlPost+'/'+post.id,post).pipe(map((response: any) => response));
+  }
+
+  searchPostApproral(data){
+    return this.httpClient.post(this.searchPostApproralAPI,data).pipe(map((response: any) => response));
+  }
+  searchPostAppred(data){
+    return this.httpClient.post(this.searchPostAppredAPI,data).pipe(map((response: any) => response));
+  }
+  getPostDetailApproval(id){
+return this.httpClient.get(this.getPostDetailApprovalAPI+"/"+id).pipe(map((response: any) => response));
   }
 }

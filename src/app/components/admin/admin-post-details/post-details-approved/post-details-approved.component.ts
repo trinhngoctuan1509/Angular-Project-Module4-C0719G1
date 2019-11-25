@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import { Posts } from 'src/app/models/post.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-details-approved',
@@ -13,7 +13,8 @@ export class PostDetailsApprovedComponent implements OnInit {
   id;
   constructor(
     private postService: PostService,
-    private activateRouter: ActivatedRoute
+    private activateRouter: ActivatedRoute,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -28,7 +29,7 @@ export class PostDetailsApprovedComponent implements OnInit {
   changeAvailability() {
     this.postDetails.post_availability_status_id = 3;
     this.postService.updatePost(this.postDetails).subscribe(data => {
-      console.log(data)
+      this.router.navigateByUrl('/admin/post-approved');
     })
   }
 }

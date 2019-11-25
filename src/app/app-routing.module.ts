@@ -45,9 +45,12 @@ import { PostPendingApprovalComponent } from './components/admin/admin-post-list
 import { PostApprovedComponent } from './components/admin/admin-post-list/post-approved/post-approved.component';
 import { PostDetailsApprovedComponent } from './components/admin/admin-post-details/post-details-approved/post-details-approved.component';
 import { PostDetailsPendingApprovalComponent } from './components/admin/admin-post-details/post-details-pending-approval/post-details-pending-approval.component';
+import { MainComponent } from './components/main/main.component';
 
 
 const appRoutes: Routes = [
+  {path:'',component:MainComponent,
+children:[
   { path: 'post/add', component: PostAddComponent },
   { path: 'post/list', component: PostListComponent },
 
@@ -65,6 +68,13 @@ const appRoutes: Routes = [
   { path: 'editusers', component: EditUsersComponent},
   { path: 'changepassword', component: ChangePasswordComponent},
   { path: 'post/add/success', component: PostSuccessComponent },
+
+
+  { path: 'user/profile', component: UserProfileComponent },
+  { path: 'user/profile/post/:id/edit', component: PostEditComponent },
+]},
+  
+
   {
     path: 'admin', component: AdminHomeComponent,
     children: [
@@ -76,10 +86,8 @@ const appRoutes: Routes = [
       { path: 'post-details-pendding-approval/:id', component: PostDetailsPendingApprovalComponent },
     ]
   },
-
-  { path: 'user/profile', component: UserProfileComponent },
-  { path: 'user/profile/post/:id/edit', component: PostEditComponent },
   { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
+  // { path: '', redirectTo: 'post/list'},
 ]
 
 @NgModule({
@@ -111,7 +119,8 @@ const appRoutes: Routes = [
     PostDetailsPendingApprovalComponent,
     HelpComponent,
     EditUsersComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    MainComponent
   ],
 
 

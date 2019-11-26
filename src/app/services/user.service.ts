@@ -10,6 +10,9 @@ export class UserService {
   getUserByIdAPI: string = 'http://127.0.0.1:8000/api/getUserById';
   lockUserAccountAPI: string = 'http://127.0.0.1:8000/api/lockUserAccount';
   unlockUserAccountAPI: string = 'http://127.0.0.1:8000/api/unlockUserAccount';
+  getNumberOfUsersAPI: string = 'http://127.0.0.1:8000/api/getNumberOfUsers';
+  goToPageOfNumberAPI: string = 'http://127.0.0.1:8000/api/getAllUsers?page=';
+  findUserAPI: string = 'http://127.0.0.1:8000/api/findUser';
 
   constructor(
     public http: HttpClient
@@ -29,5 +32,17 @@ export class UserService {
 
   unlockUserAccount(userId): Observable<any> {
     return this.http.post(this.unlockUserAccountAPI, userId);
+  }
+
+  getNumberOfUsers(): Observable<any> {
+    return this.http.get(this.getNumberOfUsersAPI);
+  }
+
+  goToPageOfNumber(numberOfPage: number): Observable<any> {
+    return this.http.get(this.goToPageOfNumberAPI + numberOfPage);
+  }
+
+  findUser(keyWordForFindUser) {
+    return this.http.post(this.findUserAPI, keyWordForFindUser);
   }
 }

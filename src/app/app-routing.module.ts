@@ -24,6 +24,7 @@ import { AdminUnlockUserComponent } from './components/admin/admin-unlock-user/a
 import {HelpComponent } from "../app/components/help/help.component";
 import { EditUsersComponent } from "../app/components/edit-users/edit-users.component";
 import { ChangePasswordComponent} from "../app/components/change-password/change-password.component";
+import { LoginAdminComponent } from "../app/components/login-admin/login-admin.component";
 
 
 
@@ -48,11 +49,18 @@ import { PostDetailsPendingApprovalComponent } from './components/admin/admin-po
 import { MainComponent } from './components/main/main.component';
 import { SuccessComfirmMailComponent } from './components/Register/success-comfirm-mail/success-comfirm-mail.component';
 
+import { GuardsUserGuard } from "./services/Guards/guards-user.guard";
+import { RemovePostMatDialogComponent } from './components/admin/admin-post-details/remove-post-mat-dialog/remove-post-mat-dialog.component';
+import { DeletePostMatDialogComponent } from './components/admin/admin-post-details/delete-post-mat-dialog/delete-post-mat-dialog.component';
+import { DialogRemoveComponent } from './components/admin/admin-post-list/dialog-remove/dialog-remove.component';
+
+
+
 
 const appRoutes: Routes = [
   {path:'',component:MainComponent,
 children:[
-  { path: 'post/add', component: PostAddComponent },
+  { path: 'post/add', component: PostAddComponent,canActivate: [GuardsUserGuard] },
   { path: 'post/list', component: PostListComponent },
   { path: 'successConfirmMail', component: SuccessComfirmMailComponent },
 
@@ -67,13 +75,11 @@ children:[
   { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
   { path: 'help', component: HelpComponent},
-  { path: 'editusers', component: EditUsersComponent},
+  { path: 'editusers/:id', component: EditUsersComponent},
   { path: 'changepassword', component: ChangePasswordComponent},
-  { path: 'post/add/success', component: PostSuccessComponent },
-
-
-  { path: 'user/profile', component: UserProfileComponent },
-  { path: 'user/profile/post/:id/edit', component: PostEditComponent },
+  {path:'loginAdmin',component:LoginAdminComponent},
+  { path: 'user/profile', component: UserProfileComponent , canActivate: [GuardsUserGuard]},
+  { path: 'user/profile/post/:id/edit', component: PostEditComponent, canActivate: [GuardsUserGuard] },
 ]},
   
 
@@ -122,8 +128,24 @@ children:[
     HelpComponent,
     EditUsersComponent,
     ChangePasswordComponent,
+
     MainComponent,
-    SuccessComfirmMailComponent
+    SuccessComfirmMailComponent,
+
+
+    LoginAdminComponent,
+
+
+    RemovePostMatDialogComponent,
+
+
+    DeletePostMatDialogComponent,
+
+
+    DialogRemoveComponent,
+
+
+
   ],
 
 
@@ -142,7 +164,10 @@ children:[
     PostConfirmComponent,
     DialogSearchPostAdvancedComponent,
     AdminLockUserComponent,
-    AdminUnlockUserComponent
+    AdminUnlockUserComponent,
+    RemovePostMatDialogComponent,
+    DeletePostMatDialogComponent,
+    DialogRemoveComponent
   ],
 
   exports: [RouterModule]

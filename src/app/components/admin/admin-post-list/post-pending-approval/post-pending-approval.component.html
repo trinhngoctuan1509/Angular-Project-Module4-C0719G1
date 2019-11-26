@@ -7,14 +7,15 @@
     <div class="row d-flex justify-content-between align-items-center my-2">
         <h6>Tổng cộng: 1 bài đăng</h6>
 
-        
-            <form action="" (ngSubmit)="onClickSearch()" [formGroup]="formSearch">
-                    <div class="d-flex" >
-                <input type="text" class="form-control form-control-sm mr-3" style="width: 200px;" formControlName="title">
+
+        <form action="" (ngSubmit)="onClickSearch()" [formGroup]="formSearch">
+            <div class="d-flex">
+                <input type="text" class="form-control form-control-sm mr-3" style="width: 200px;"
+                    formControlName="title">
                 <button class="btn btn-sm btn-success">Tìm kiếm</button>
             </div>
-            </form>
-        
+        </form>
+
     </div>
 
     <div class="row">
@@ -43,5 +44,31 @@
                 </tr>
             </tbody>
         </table>
+
+        <div class="container d-flex justify-content-end">
+
+            <div *ngIf="isCheck==true">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" (click)="lastPost()"> Previous</a></li>
+                    <div *ngFor="let paginateArrayPost of paginateArrayPosts">
+
+                        <li class="page-item"><a class="page-link"
+                                (click)="onClickApproval(paginateArrayPost)">{{paginateArrayPost}}</a></li>
+                    </div>
+                    <li class="page-item"><a class="page-link" (click)="nextPost()">Next</a></li>
+                </ul>
+            </div>
+            <div *ngIf="isCheck==false">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" (click)="last()"> Previous</a></li>
+                        <div *ngFor="let paginateArray of paginateArrays">
+    
+                            <li class="page-item"><a class="page-link"
+                                    (click)="clickPostApprovalPaginate(paginateArray)">{{paginateArray}}</a></li>
+                        </div>
+                        <li class="page-item"><a class="page-link" (click)="next()">Next</a></li>
+                    </ul>
+                </div>
+        </div>
     </div>
 </div>

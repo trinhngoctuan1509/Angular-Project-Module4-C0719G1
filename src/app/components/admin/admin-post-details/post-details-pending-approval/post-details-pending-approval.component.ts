@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from "../../../../services/post.service";
 import { Posts } from 'src/app/models/post.model';
 import { ActivatedRoute,Router } from '@angular/router';
+import { MatDialog } from "@angular/material/dialog";
+import { RemovePostMatDialogComponent } from "../remove-post-mat-dialog/remove-post-mat-dialog.component";
 
 @Component({
   selector: 'app-post-details-pending-approval',
@@ -14,7 +16,8 @@ export class PostDetailsPendingApprovalComponent implements OnInit {
   constructor(
     private postService: PostService,
     private activateRouter: ActivatedRoute,
-    private router:Router
+    private router:Router,
+    private dialog:MatDialog
   ) { }
 
   ngOnInit() {
@@ -28,10 +31,16 @@ export class PostDetailsPendingApprovalComponent implements OnInit {
   }
 
   changeAvailability() {
-    this.postDetails.post_availability_status_id = 1;
-    this.postService.updatePost(this.postDetails).subscribe(data => {
-      this.router.navigateByUrl('/post-pending-approval')
-    })
+    const dialogRef = this.dialog.open(RemovePostMatDialogComponent, {
+      width: '500px',
+      data: {
+        id: this.postDetails.id,
+        title: this.postDetails.title
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
   }
 
 }

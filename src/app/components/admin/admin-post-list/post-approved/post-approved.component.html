@@ -8,10 +8,11 @@
         <h6>Tổng cộng: 1 bài đăng</h6>
 
         <form action="" (ngSubmit)="onClickSearch()" [formGroup]="formSearch">
-                <div class="d-flex" >
-            <input type="text" class="form-control form-control-sm mr-3" style="width: 200px;" formControlName="title">
-            <button class="btn btn-sm btn-success">Tìm kiếm</button>
-        </div>
+            <div class="d-flex">
+                <input type="text" class="form-control form-control-sm mr-3" style="width: 200px;"
+                    formControlName="title">
+                <button class="btn btn-sm btn-success">Tìm kiếm</button>
+            </div>
         </form>
     </div>
 
@@ -29,21 +30,43 @@
             </thead>
             <tbody>
                 <tr *ngFor="let postAppred of postAppreds ">
-                <!-- <tr> -->
+                    <!-- <tr> -->
                     <td>{{postAppred.title}}</td>
                     <td>{{postAppred.post_of_types.postOfTypeName}}</td>
                     <td>{{postAppred.categories.categoryName}}</td>
                     <td>{{postAppred.created_at}}</td>
                     <td class="d-flex justify-content-end mr-4">
-                        <a class="mr-3" [routerLink]="['/admin/post-details-approved',postAppred.id]" routerLinkActive="router-link-active" >xem</a>
+                        <a class="mr-3" [routerLink]="['/admin/post-details-approved',postAppred.id]"
+                            routerLinkActive="router-link-active">xem</a>
                         <a (click)="changeAvailability(postAppred)">gỡ bỏ</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <div class="mt-4">
-            <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+
+        <div class="container d-flex justify-content-end">
+            <div *ngIf="isCheck==true">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" (click)="lastPost()"> Previous</a></li>
+                    <div *ngFor="let paginateArrayPost of paginateArrayPosts">
+
+                        <li class="page-item"><a class="page-link"
+                                (click)="onClickGetPostAppred(paginateArrayPost)">{{paginateArrayPost}}</a></li>
+                    </div>
+                    <li class="page-item"><a class="page-link" (click)="nextPost()">Next</a></li>
+                </ul>
+            </div>
+            <div *ngIf="isCheck==false">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" (click)="last()"> Previous</a></li>
+                    <div *ngFor="let paginateArray of paginateArrays">
+
+                        <li class="page-item"><a class="page-link"
+                                (click)="clickSearchPostAppredPaginate(paginateArray)">{{paginateArray}}</a></li>
+                    </div>
+                    <li class="page-item"><a class="page-link" (click)="next()">Next</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
-

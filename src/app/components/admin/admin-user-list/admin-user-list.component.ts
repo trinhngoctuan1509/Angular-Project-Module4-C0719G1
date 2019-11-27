@@ -62,15 +62,15 @@ export class AdminUserListComponent implements OnInit {
     }
   }
 
-  findUser() {
-    var conditionForFindUser = {
-      "keyWordForFindUser": this.keyWordForFindUser
-    };
-    this.userService.findUser(conditionForFindUser).subscribe(data => {
-      console.log(data);
-      this.resultFindUser = data.data;
-      this.users = this.resultFindUser;
-    })
-  }
+  // findUser() {
+  //   var conditionForFindUser = {
+  //     "keyWordForFindUser": this.keyWordForFindUser
+  //   };
+  //   this.userService.findUser(conditionForFindUser).subscribe(data => {
+  //     console.log(data);
+  //     this.resultFindUser = data.data;
+  //     this.users = this.resultFindUser;
+  //   })
+  // }
 
 }

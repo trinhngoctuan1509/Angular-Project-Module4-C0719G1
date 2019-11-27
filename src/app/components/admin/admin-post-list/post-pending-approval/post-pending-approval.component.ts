@@ -18,6 +18,7 @@ export class PostPendingApprovalComponent implements OnInit {
   paginateArrays;
   isCheck: boolean = true;
   idNext:number=1;
+  resultPost;
   constructor(
     private postService: PostService,
     private _FormBuilder: FormBuilder
@@ -29,6 +30,7 @@ export class PostPendingApprovalComponent implements OnInit {
     this.search();
     this.postService.getPostApproval().subscribe((data: any) => {
       this.postApprovals = data.postApproval.data;
+      this.resultPost=data.count
       this.countPosts = Math.ceil(data.count / 5);
       this.paginateArrayPosts = [];
       for (var i = 1; i <= this.countPosts; i++) {

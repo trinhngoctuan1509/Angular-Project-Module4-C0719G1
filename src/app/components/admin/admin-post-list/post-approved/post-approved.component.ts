@@ -21,6 +21,7 @@ export class PostApprovedComponent implements OnInit {
   paginateArrays;
   idNext: number = 1;
   isCheck: boolean = true;
+  resultPost;
 
   constructor(
     private postService: PostService,
@@ -33,6 +34,7 @@ export class PostApprovedComponent implements OnInit {
     this.search();
     this.postService.getPostAppred().subscribe(data => {
       this.postAppreds = data.postApproval.data;
+      this.resultPost=data.count;
       this.countPost = Math.ceil(data.count / 5);
       this.paginateArrayPosts = [];
       for (var i = 1; i <= this.countPost; i++) {

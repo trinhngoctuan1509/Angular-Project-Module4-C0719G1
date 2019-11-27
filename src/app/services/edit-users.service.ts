@@ -7,9 +7,10 @@ import {editUsers  } from "src/app/models/editUsers";
 import {Observable} from "rxjs";
 import { of } from "rxjs";
 import { catchError,map,tap } from 'rxjs/operators'; 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { User } from '../models/user.model';
+// const httpOptions = {
+//   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+// };
 
 
 @Injectable({
@@ -17,7 +18,8 @@ const httpOptions = {
 })
 export class EditUsersService {
   public editAPI='http://127.0.0.1:8000/api/getUserById';
-  public sendHelpMessageAPI='http://127.0.0.1:8000/api/editUser';
+  public sendHelpMessageAPI='http://127.0.0.1:8000/api/editUsers';
+  public editUsersAPI='http://127.0.0.1:8000/api/updateedit';
 
   constructor(private http:HttpClient) { }
 
@@ -26,19 +28,22 @@ export class EditUsersService {
   // }
   
   getEditUsers(id){
-    var editUsers= new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('token')});
+    // var editUsers= new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('token')});
   
-   return this.http.get(this.editAPI+'/'+id,{headers : editUsers})
+   return this.http.get(this.editAPI+'/'+id)
   }
-  // updateeditusers(editusers: editUsers ): Observable<any> {
-   
-  //   return this.http.put(`${this.editAPI}/${editusers.id}`, editusers, httpOptions).pipe(
-  //     tap(updatedusers => console.log(`updated users = ${JSON.stringify(updatedusers)}`)),
-  //     catchError(error => of(new editUsers ()))
-  //   );
-  // }
-  sendEditUsersMessage(message):Observable<any>{
-    return this.http.post(this.sendHelpMessageAPI, message);
+  
+  sendEditUsersMessage(message:editUsers)
+  {
+    return this.http.put(this.sendHelpMessageAPI+'/'+message.id, message).pipe(map((response: any) => response));
+  }
+
+
+
+  sendchangepassword(message:editUsers)
+  {
+    var tokenHeader= new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('token')});
+    return this.http.post(this. editUsersAPI, message,{headers : tokenHeader}).pipe(map((response: any) => response));
   }
  
 }

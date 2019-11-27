@@ -66,7 +66,7 @@ children:[
   { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
   { path: 'help', component: HelpComponent},
-  { path: 'editusers/:id', component: EditUsersComponent},
+  { path: 'editusers', component: EditUsersComponent},
   { path: 'changepassword', component: ChangePasswordComponent},
 
   {path:'loginAdmin',component:LoginAdminComponent},

@@ -48,6 +48,7 @@ import { PostDetailsApprovedComponent } from './components/admin/admin-post-deta
 import { PostDetailsPendingApprovalComponent } from './components/admin/admin-post-details/post-details-pending-approval/post-details-pending-approval.component';
 import { MainComponent } from './components/main/main.component';
 import { GuardsUserGuard } from "./services/Guards/guards-user.guard";
+import { PostEditSuccesComponent } from './components/post/post-edit-succes/post-edit-succes.component';
 
 const appRoutes: Routes = [
   {path:'',component:MainComponent,
@@ -122,7 +123,9 @@ children:[
 
     LoginAdminComponent,
 
-    MainComponent
+    MainComponent,
+
+    PostEditSuccesComponent
 
   ],
 
@@ -142,7 +145,9 @@ children:[
     PostConfirmComponent,
     DialogSearchPostAdvancedComponent,
     AdminLockUserComponent,
-    AdminUnlockUserComponent
+    AdminUnlockUserComponent,
+    PostSuccessComponent,
+    PostEditSuccesComponent
   ],
 
   exports: [RouterModule]

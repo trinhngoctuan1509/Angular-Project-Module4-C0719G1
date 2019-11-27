@@ -16,7 +16,7 @@ export class AdminUserDetailComponent implements OnInit {
   posts;
   numberOfPost;
   numberOfPage;
-  paginationArrays = [];
+  paginationArrays;
   selectedPage = 1;
   backgroundColorOfSelectedPage = { backgroundColor: 'rgb(74, 113, 145)' };
   backgroundColorOfNotSelectedPage = {};
@@ -43,6 +43,7 @@ export class AdminUserDetailComponent implements OnInit {
           this.numberOfPost = data;
           this.numberOfPage = Math.ceil(this.numberOfPost / 3);
           console.log(this.numberOfPage);
+          this.paginationArrays = [];
           for (var i = 1; i <= this.numberOfPage; i++) {
             this.paginationArrays.push(i);
           }

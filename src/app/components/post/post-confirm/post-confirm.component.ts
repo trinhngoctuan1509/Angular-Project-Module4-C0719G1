@@ -49,7 +49,10 @@ export class PostConfirmComponent implements OnInit {
   onClickAdd() {
     this.postAuthUserService.createNewPost(this.data).subscribe(data => {   
         this.dialogRef.close()
-      this.dialog.open(PostSuccessComponent)      
+      this.dialog.open(PostSuccessComponent)   
+      setTimeout(() => {   
+        window.location.href = '/user/profile'
+      }, 5000);   
     }, error =>{
       this.err = error.error.errors
     })

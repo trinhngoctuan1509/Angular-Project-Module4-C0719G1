@@ -55,30 +55,33 @@
                             </div>
                             <div class="card bg-light col-md-7 " >
                                 <div class="card-body m-0">
-                                        <form #employeeForm="ngForm">
+                                        <form #edit="ngForm" >
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-3 col-form-label">Họ Tên</label>
                                                   <div class="col-sm-9">
-                                                        <input type="email" class="form-control" 
-                                                        name="fullName"  [(ngModel)]="fullNameNew" value="{{editusers.fullName}}">
+                                
+                                                        <input type="text" class="form-control"name="fullName" [(ngModel)]="editusers.fullName" 
+                                                      value="{{edituser.fullName}}" #fullName="ngModel" required>
+                                                      
+                            
                                                   </div>
                                                 </div>
                                                 <div class="form-group row">
                                                   <label for="inputPassword" class="col-sm-3 col-form-label">Địa Chỉ</label>
                                                   <div class="col-sm-9">
-                                                    <input type="text" class="form-control"  
-                                                    name="address"  [(ngModel)]="addressNew" value="{{editusers.address}}">
+                                                    <input type="text" class="form-control"   name="address" [(ngModel)]="editusers.address" 
+                                                   value="{{edituser.address}}">
                                                   </div>
                                                 </div>
                                                 <div class="form-group row">
                                                         <label for="inputPassword" class="col-sm-3 col-form-label">Số Điện Thoại</label>
                                                         <div class="col-sm-9">
-                                                          <input type="text" class="form-control" 
-                                                          name="phoneNumber"  [(ngModel)]="phoneNumberNew" value="{{editusers.phoneNumber}}">
+                                                          <input type="text" class="form-control" name="phoneNumber" [(ngModel)]="editusers.phoneNumber" 
+                                                       value="{{edituser.phoneNumber}}">
                                                         </div>
                                                 </div>
-                                                  <button class="btn btn-primary" style="float: right;"(click)="save();">Lưu Lại</button>
+                                                  <button class="btn btn-primary" style="float: right;"(click)="savecheck();">Lưu Lại</button>
                                         
                                               </form>    
                                       

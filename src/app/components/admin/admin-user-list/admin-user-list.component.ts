@@ -68,7 +68,7 @@ export class AdminUserListComponent implements OnInit {
     };
     this.userService.findUser(conditionForFindUser).subscribe(data => {
       console.log(data);
-      this.resultFindUser = data.data;
+      // this.resultFindUser = data.data;
       this.users = this.resultFindUser;
     })
   }

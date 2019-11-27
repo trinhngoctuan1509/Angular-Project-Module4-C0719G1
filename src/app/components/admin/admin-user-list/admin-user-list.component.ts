@@ -10,8 +10,12 @@ export class AdminUserListComponent implements OnInit {
   users;
   numberOfUser;
   numberOfPage;
+  numberOfUserOfResultFind;
+  numberOfPageOfResultFind;
   paginationArrays = [];
+  paginationArraysOfResultFind;
   selectedPage = 1;
+  selectedPageOfResultFind = 1;
   backgroundColorOfSelectedPage = { backgroundColor: 'rgb(74, 113, 145)' };
   backgroundColorOfNotSelectedPage = {};
   keyWordForFindUser;
@@ -68,9 +72,62 @@ export class AdminUserListComponent implements OnInit {
     };
     this.userService.findUser(conditionForFindUser).subscribe(data => {
       console.log(data);
-      this.resultFindUser = data.data;
+      this.numberOfUserOfResultFind = data[0];
+      console.log(this.numberOfUserOfResultFind);
+      this.numberOfPageOfResultFind = Math.ceil(this.numberOfUserOfResultFind / 3);
+      console.log(this.numberOfPageOfResultFind);
+      this.resultFindUser = data[1].data;
       this.users = this.resultFindUser;
+      console.log(this.resultFindUser);
+      this.paginationArraysOfResultFind = [];
+      for (var i = 1; i <= this.numberOfPageOfResultFind; i++) {
+        this.paginationArraysOfResultFind.push(i);
+      }
+      console.log(this.paginationArraysOfResultFind);
     })
   }
 
+  goToPageOfNumberOfResultFind(paginate) {
+    var conditionForFindUser = {
+      "keyWordForFindUser": this.keyWordForFindUser
+    };
+    this.userService.goToPageOfNumberOfResultFind(paginate, conditionForFindUser).subscribe(data => {
+      this.resultFindUser = data[1].data;
+      this.users = this.resultFindUser;
+    })
+    this.selectedPageOfResultFind = paginate;
+  }
+
+  goToPreviousPageOfResultFind() {
+    if (this.selectedPageOfResultFind != 1) {
+      this.selectedPageOfResultFind = this.selectedPageOfResultFind - 1;
+      var conditionForFindUser = {
+        "keyWordForFindUser": this.keyWordForFindUser
+      };
+      this.userService.goToPageOfNumberOfResultFind(this.selectedPageOfResultFind, conditionForFindUser).subscribe(data => {
+        this.resultFindUser = data[1].data;
+        this.users = this.resultFindUser;
+      })
+    }
+  }
+
+  goToNextPageOfResultFind() {
+    if (this.selectedPageOfResultFind != this.numberOfPageOfResultFind) {
+      this.selectedPageOfResultFind = this.selectedPageOfResultFind + 1;
+      var conditionForFindUser = {
+        "keyWordForFindUser": this.keyWordForFindUser
+      };
+      this.userService.goToPageOfNumberOfResultFind(this.selectedPageOfResultFind, conditionForFindUser).subscribe(data => {
+        this.resultFindUser = data[1].data;
+        this.users = this.resultFindUser;
+      })
+    }
+  }
+
+
+  backToListUser() {
+    this.resultFindUser = null;
+    this.paginationArrays = [];
+    this.ngOnInit();
+  }
 }

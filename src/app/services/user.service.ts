@@ -13,6 +13,7 @@ export class UserService {
   getNumberOfUsersAPI: string = 'http://127.0.0.1:8000/api/getNumberOfUsers';
   goToPageOfNumberAPI: string = 'http://127.0.0.1:8000/api/getAllUsers?page=';
   findUserAPI: string = 'http://127.0.0.1:8000/api/findUser';
+  goToPageOfNumberOfResultFindAPI: string = 'http://127.0.0.1:8000/api/findUser?page=';
 
   constructor(
     public http: HttpClient
@@ -40,6 +41,10 @@ export class UserService {
 
   goToPageOfNumber(numberOfPage: number): Observable<any> {
     return this.http.get(this.goToPageOfNumberAPI + numberOfPage);
+  }
+
+  goToPageOfNumberOfResultFind(numberOfPage: number, keyWordForFindUser): Observable<any> {
+    return this.http.post(this.goToPageOfNumberOfResultFindAPI + numberOfPage, keyWordForFindUser);
   }
 
   findUser(keyWordForFindUser) {

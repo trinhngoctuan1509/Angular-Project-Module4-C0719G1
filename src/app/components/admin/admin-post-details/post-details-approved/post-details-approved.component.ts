@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import { Posts } from 'src/app/models/post.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
+import { MatDialog } from "@angular/material/dialog";
+import { DeletePostMatDialogComponent } from "../delete-post-mat-dialog/delete-post-mat-dialog.component";
 
 @Component({
   selector: 'app-post-details-approved',
@@ -13,7 +15,9 @@ export class PostDetailsApprovedComponent implements OnInit {
   id;
   constructor(
     private postService: PostService,
-    private activateRouter: ActivatedRoute
+    private activateRouter: ActivatedRoute,
+    private router:Router,
+    private dialog:MatDialog
   ) { }
 
   ngOnInit() {
@@ -26,9 +30,15 @@ export class PostDetailsApprovedComponent implements OnInit {
     })
   }
   changeAvailability() {
-    this.postDetails.post_availability_status_id = 3;
-    this.postService.updatePost(this.postDetails).subscribe(data => {
-      console.log(data)
-    })
+    const dialogRef = this.dialog.open(DeletePostMatDialogComponent, {
+      width: '500px',
+      data: {
+        id: this.postDetails.id,
+        title: this.postDetails.title
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
   }
 }

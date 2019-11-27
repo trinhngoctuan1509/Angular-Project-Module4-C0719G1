@@ -2,6 +2,7 @@ import { Component, OnInit ,Input} from '@angular/core';
 import { Route, ActivatedRoute} from "@angular/router";
 import { EditUsersService } from "src/app/services/edit-users.service";
 import { editUsers } from "src/app/models/editUsers";
+import { LoginService } from "../../services/login.service";
 
 import { Location } from '@angular/common';//de goback chuyen ve mang hinh phia truoc
 
@@ -13,49 +14,43 @@ import { Location } from '@angular/common';//de goback chuyen ve mang hinh phia 
 })
 export class EditUsersComponent implements OnInit {
   public id;
-  editusers;
-  fullNameNew;
-  addressNew;
-  phoneNumberNew;
+  public editusers:editUsers;
+  public errors;
 
   constructor(
     private route: ActivatedRoute,
     private EditUsersService:EditUsersService,
-    private location: Location
+    private location: Location,
+    private loginService:LoginService
     
   
   ) { }
 
   ngOnInit() {
     this.editusers= new editUsers();
-   this.getUsersFromroute();
+  this.getUser();
 
 
   }
-   getUsersFromroute():void{
-    this.route.params.subscribe(data=>{
-      this.id=data['id'],console.log(this.id)
+  getUser(){
+    this.loginService.getUser().subscribe((data:any)=>{
+      this.editusers=data,console.log(this.editusers)
     })
-    this.EditUsersService.getEditUsers(this.id).subscribe((data:any)=>{
+  }
+
+  savecheck(): void {
+
+    console.log(this.editusers)
+     this.EditUsersService.sendchangepassword( this.editusers).
+     subscribe(() => this.goBack()),
+     error=>{
+
+      this.errors= error.error.errors;
       
-      this.editusers=data['0'];
-      console.log(this.editusers)
-    });
-     
-  }
-  
-  save(): void {
-    var infoOfUserNew = {
-      "userId": this.id,
-      "fullNameNew": this.fullNameNew,
-      "phoneNumberNew": this.phoneNumberNew,
-      "addressNew": this.addressNew
-    }
-
-     this.EditUsersService.sendEditUsersMessage(infoOfUserNew).subscribe(data=>{
-      console.log(data);
-    })
-  }
-  
+     };
+}
+goBack(): void {
+  this.location.back();
+}
 
 }

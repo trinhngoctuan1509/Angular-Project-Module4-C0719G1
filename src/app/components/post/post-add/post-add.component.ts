@@ -29,6 +29,7 @@ export class PostAddComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(localStorage.getItem('token'))
     this.userDetails= new User();
    this.loginService.getUser().subscribe(data=>{
      this.userDetails=data

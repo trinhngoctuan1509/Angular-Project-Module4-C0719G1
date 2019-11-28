@@ -44,6 +44,7 @@ export class RegisterComponent implements OnInit {
       passwordConfirm: ['',[
         Validators.required,
       ]]
+      
     })
       // this.formRegister.valueChanges.subscribe(data => {
       //   console.log(data)

@@ -21,9 +21,9 @@ import { AdminUserListComponent } from './components/admin/admin-user-list/admin
 import { AdminLockUserComponent } from './components/admin/admin-lock-user/admin-lock-user.component';
 import { AdminUnlockUserComponent } from './components/admin/admin-unlock-user/admin-unlock-user.component';
 
-import {HelpComponent } from "../app/components/help/help.component";
+import { HelpComponent } from "../app/components/help/help.component";
 import { EditUsersComponent } from "../app/components/edit-users/edit-users.component";
-import { ChangePasswordComponent} from "../app/components/change-password/change-password.component";
+import { ChangePasswordComponent } from "../app/components/change-password/change-password.component";
 import { LoginAdminComponent } from "../app/components/login-admin/login-admin.component";
 
 
@@ -59,22 +59,34 @@ import { DialogRemoveComponent } from './components/admin/admin-post-list/dialog
 import { PostEditSuccesComponent } from './components/post/post-edit-succes/post-edit-succes.component';
 
 const appRoutes: Routes = [
-  {path:'',component:MainComponent,
-children:[
-  { path: 'post/add', component: PostAddComponent,canActivate: [GuardsUserGuard] },
-  { path: 'post/list', component: PostListComponent },
-  { path: 'successConfirmMail', component: SuccessComfirmMailComponent },
+  {
+    path: '', component: MainComponent,
+    children: [
+      { path: 'post/add', component: PostAddComponent, canActivate: [GuardsUserGuard] },
+      { path: 'post/list', component: PostListComponent },
+      { path: 'successConfirmMail', component: SuccessComfirmMailComponent },
 
-  { path: 'detailpost/:id', component: PostDetailComponent },
-  { path: 'post', component: PostComponent },
-  { path: 'commentpost', component: PostDetailComponent },
-  { path: 'login', component: LoginUsersComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'successRegister', component: SuccessRegisterComponent },
-  { path: 'post/btnSearchPostAdvanced', component: DemoButtonSearchPostAdvancedComponent },
+      { path: 'detailpost/:id', component: PostDetailComponent },
+      { path: 'post', component: PostComponent },
+      { path: 'commentpost', component: PostDetailComponent },
+      { path: 'login', component: LoginUsersComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'successRegister', component: SuccessRegisterComponent },
+      { path: 'post/btnSearchPostAdvanced', component: DemoButtonSearchPostAdvancedComponent },
+
+      { path: 'help', component: HelpComponent },
+      { path: 'editusers', component: EditUsersComponent },
+      { path: 'changepassword', component: ChangePasswordComponent },
+      { path: 'loginAdmin', component: LoginAdminComponent },
+      { path: 'user/profile', component: UserProfileComponent, canActivate: [GuardsUserGuard] },
+      { path: 'user/profile/post/:id/edit', component: PostEditComponent, canActivate: [GuardsUserGuard] },
+    ]
+  },
+
   { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
+
   { path: 'help', component: HelpComponent},
   { path: 'helpSucces', component: HelpSuccessComponent},
   { path: 'editusers', component: EditUsersComponent},
@@ -84,6 +96,7 @@ children:[
   { path: 'user/profile/post/:id/edit', component: PostEditComponent, canActivate: [GuardsUserGuard] },
 ]},
   
+
 
   {
     path: 'admin', component: AdminHomeComponent,

@@ -62,7 +62,7 @@ const appRoutes: Routes = [
   {
     path: '', component: MainComponent,
     children: [
-      { path: 'post/add', component: PostAddComponent, canActivate: [GuardsUserGuard] },
+      { path: 'post/add', component: PostAddComponent },
       { path: 'post/list', component: PostListComponent },
       { path: 'successConfirmMail', component: SuccessComfirmMailComponent },
 
@@ -78,39 +78,36 @@ const appRoutes: Routes = [
       { path: 'editusers', component: EditUsersComponent },
       { path: 'changepassword', component: ChangePasswordComponent },
       { path: 'loginAdmin', component: LoginAdminComponent },
-      { path: 'user/profile', component: UserProfileComponent, canActivate: [GuardsUserGuard] },
-      { path: 'user/profile/post/:id/edit', component: PostEditComponent, canActivate: [GuardsUserGuard] },
-    ]
-  },
-
-  { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
-  { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
-  { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
-
-  { path: 'help', component: HelpComponent},
-  { path: 'helpSucces', component: HelpSuccessComponent},
-  { path: 'editusers', component: EditUsersComponent},
-  { path: 'changepassword', component: ChangePasswordComponent},
-  {path:'loginAdmin',component:LoginAdminComponent},
-  { path: 'user/profile', component: UserProfileComponent , canActivate: [GuardsUserGuard]},
-  { path: 'user/profile/post/:id/edit', component: PostEditComponent, canActivate: [GuardsUserGuard] },
-]},
-  
+      { path: 'user/profile', component: UserProfileComponent },
+      { path: 'user/profile/post/:id/edit', component: PostEditComponent },
 
 
-  {
-    path: 'admin', component: AdminHomeComponent,
-    children: [
-      { path: 'user-list', component: AdminUserListComponent },
-      { path: 'user-detail/:id', component: AdminUserDetailComponent },
-      { path: 'post-pending-approval', component: PostPendingApprovalComponent },
-      { path: 'post-approved', component: PostApprovedComponent },
-      { path: 'post-details-approved/:id', component: PostDetailsApprovedComponent },
-      { path: 'post-details-pendding-approval/:id', component: PostDetailsPendingApprovalComponent },
-    ]
-  },
-  { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
-  // { path: '', redirectTo: 'post/list'},
+      { path: 'help', component: HelpComponent },
+      { path: 'helpSucces', component: HelpSuccessComponent },
+      { path: 'editusers', component: EditUsersComponent },
+      { path: 'changepassword', component: ChangePasswordComponent },
+      { path: 'loginAdmin', component: LoginAdminComponent },
+      { path: 'user/profile', component: UserProfileComponent },
+      { path: 'user/profile/post/:id/edit', component: PostEditComponent },
+    ]},
+      {
+        path: 'admin', component: AdminHomeComponent,
+        children: [
+          { path: 'user-list', component: AdminUserListComponent },
+          { path: 'user-detail/:id', component: AdminUserDetailComponent },
+          { path: 'post-pending-approval', component: PostPendingApprovalComponent },
+          { path: 'post-approved', component: PostApprovedComponent },
+          { path: 'post-details-approved/:id', component: PostDetailsApprovedComponent },
+          { path: 'post-details-pendding-approval/:id', component: PostDetailsPendingApprovalComponent },
+        ]
+      },
+      { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
+      { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
+      { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
+      { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
+
+      // { path: '', redirectTo: 'post/list'},
+
 ]
 
 @NgModule({

@@ -153,11 +153,30 @@
                                 </div>
 
                             </div>
-                            <div class="row">
-                                <div class="col mt-4 ">
-                                    <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>
-                                </div>
+                            <!-- //Load Trang bình thường -->
+                            <div *ngIf="searchClick === false && PostByUser?.length > 0 " class="row d-flex justify-content-end mt-3">
+                                <ul class="pagination">
+                                    <li (click)=goToPreviousPage() class="page-item"><a class="page-link">Previous</a></li>
+                                    <ng-container *ngFor="let paginationArray of paginationArrays">
+                                        <li (click)="goToPageOfNumber(paginationArray)" class="page-item"><a [ngStyle]="paginationArray===selectedPage? backgroundColorOfSelectedPage : backgroundColorOfNotSelectedPage" class="page-link">{{paginationArray}}</a>
+                                        </li>
+                                    </ng-container>
+                                    <li (click)=goToNextPage() class="page-item"><a class="page-link">Next</a></li>
+                                </ul>
                             </div>
+
+                            <!-- //Nếu Click Tìm Kiếm -->
+                            <div *ngIf="searchClick === true && PostByUser?.length > 0" class="row d-flex justify-content-end mt-3">
+                                <ul class="pagination">
+                                    <li (click)=goToPreviousPage() class="page-item"><a class="page-link">Previous</a></li>
+                                    <ng-container *ngFor="let searchPaginationArray of searchPaginationArrays">
+                                        <li (click)="goToPageSearchOfNumber(searchPaginationArray)" class="page-item"><a [ngStyle]="searchPaginationArrays===selectedPage? backgroundColorOfSelectedPage : backgroundColorOfNotSelectedPage" class="page-link">{{searchPaginationArray}}</a>
+                                        </li>
+                                    </ng-container>
+                                    <li (click)=goToNextPage() class="page-item"><a class="page-link">Next</a></li>
+                                </ul>
+                            </div>
+
                         </div>
                     </div>
 

@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder,Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material";
-import { PostConfirmComponent} from "../post-confirm/post-confirm.component";
+import { PostConfirmComponent } from "../post-confirm/post-confirm.component";
+import { PostEditSuccesComponent } from "../post-edit-succes/post-edit-succes.component";
 import { CategoryService } from "../../../services/category.service";
 import { RegionService } from "../../../services/region.service";
 import { DirectionService } from "../../../services/direction.service";
 import { PostAuthUserService } from "../../../services/Auth/post-auth-user.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Posts } from "../../../models/post.model";
+import { timeout } from 'q';
 @Component({
   selector: 'app-post-edit',
   templateUrl: './post-edit.component.html',
   styleUrls: ['./post-edit.component.css']
 })
 export class PostEditComponent implements OnInit {
-  formPosts : FormGroup
-  imageUrls:string = "assets/image/default.png";
+  formPosts: FormGroup
+  imageUrls: string = "assets/image/default.png";
   categories;
   regions;
   directions;
@@ -38,12 +40,12 @@ export class PostEditComponent implements OnInit {
     this.getAllCategory()
     this.getAllRegions()
     this.getAllDirection()
-    
+
   }
-  createForm(){
+  createForm() {
     this.formPosts = this.formBuilder.group({
       id: [''],
-      title: ['',[
+      title: ['', [
         Validators.required,
       ]],
       categoryId: [''],
@@ -51,18 +53,18 @@ export class PostEditComponent implements OnInit {
       sellerId: [''],
       postOfTypeId: [''],
       statusOfPostId: [''],
-      address: ['',[
+      address: ['', [
         Validators.required
       ]],
-      area: ['',[
+      area: ['', [
         Validators.required,
         Validators.pattern('[0-9]+')
       ]],
       directionId: [''],
-      contentPost: ['',[
+      contentPost: ['', [
         Validators.required
       ]],
-      price: ['',[
+      price: ['', [
         Validators.required,
         Validators.pattern('[0-9]+')
       ]],
@@ -73,67 +75,70 @@ export class PostEditComponent implements OnInit {
       imagePost4: [''],
       imagePost5: [''],
       imagePost6: [''],
-     
+
     })
     // console.log(this.formPosts.value)
     // this.formPosts.valueChanges.subscribe(data=>{
     //   console.log(data)
-     
+
     // })
-     }
-      onSelectFile(event) {   
-        if (event.target.files && event.target.files[0]) {  
-                    var reader = new FileReader();
-                    reader.onload = (event:any) => {
-                      console.log(event.target.result[1]);
-                       this.imageUrls= event.target.result; 
-                    }
-                    reader.readAsDataURL(event.target.files[0]);
-                    console.log("assets/image/" + event.target.files[0].name);
-            
-        }
+  }
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        console.log(event.target.result[1]);
+        this.imageUrls = event.target.result;
       }
-    
-      // CLick Update
-      onClickUpdate(){
-        if(confirm('Bạn Đồng Ý với sự thay đổi ?')){
-          this.postAuthUserService.UpdatePost(this.formPosts.value).subscribe(data=>{
-            this.router.navigateByUrl('/user/profile') 
-           })
-        }
-      
-      
-    
+      reader.readAsDataURL(event.target.files[0]);
+      console.log("assets/image/" + event.target.files[0].name);
+
     }
-    
-    // Get All Category
-    getAllCategory(){
-      this.categoryService.getAllCategory().subscribe(data=>{
-        this.categories = data;
-      })
-    }
-    
-    // Get All Region
-    getAllRegions(){
-      this.regionService.getAllRegions().subscribe(data=>{
-        this.regions = data;
-      })
-    }
-    
-    getAllDirection(){
-      this.directionService.getAllDirection().subscribe(data=>{
-        this.directions = data;
+  }
+
+  // CLick Update
+  onClickUpdate() {
+    if (confirm('Bạn Đồng Ý với sự thay đổi ?')) {
+      this.postAuthUserService.UpdatePost(this.formPosts.value).subscribe(data => {
+        this.dialog.open(PostEditSuccesComponent)
+        setTimeout(() => {   
+          window.location.href = '/user/profile'
+        }, 5000);
       })
     }
 
-    getPostById(){
-      this.activatedRoute.params.subscribe(data=>{
-        let id = data['id']
-        this.postAuthUserService.showPostById(id).subscribe(result=>{
-          this.valueForm = result
-          this.formPosts.patchValue(result)
-          
-        })
+
+
+  }
+
+  // Get All Category
+  getAllCategory() {
+    this.categoryService.getAllCategory().subscribe(data => {
+      this.categories = data;
+    })
+  }
+
+  // Get All Region
+  getAllRegions() {
+    this.regionService.getAllRegions().subscribe(data => {
+      this.regions = data;
+    })
+  }
+
+  getAllDirection() {
+    this.directionService.getAllDirection().subscribe(data => {
+      this.directions = data;
+    })
+  }
+
+  getPostById() {
+    this.activatedRoute.params.subscribe(data => {
+      let id = data['id']
+      this.postAuthUserService.showPostById(id).subscribe(result => {
+        this.valueForm = result
+        this.formPosts.patchValue(result)
+
       })
-    }
+    })
+  }
 }

@@ -12,6 +12,13 @@ export class UserProfileComponent implements OnInit {
   formSearch : FormGroup
   userDetail;
   PostByUser;
+  numberOfPage;
+  paginationArrays = [];
+  searchPaginationArrays = [];
+  selectedPage = 1;
+  backgroundColorOfSelectedPage = { backgroundColor: 'rgb(74, 113, 145)' };
+  backgroundColorOfNotSelectedPage = {};
+  searchClick :boolean = false ;
   constructor(
     private loginService:LoginService,
     private postAuthUserService: PostAuthUserService,
@@ -36,8 +43,67 @@ export class UserProfileComponent implements OnInit {
 
   getPostByUser(){
     this.postAuthUserService.getPostByUser().subscribe(data=>{
-      this.PostByUser = data
+      this.PostByUser = data.data
+      this.numberOfPage = Math.ceil(data.total / 3);
+      for (var i = 1; i <= this.numberOfPage; i++) {
+        this.paginationArrays.push(i);
+      }
+      console.log(this.paginationArrays);
     })
+  }
+
+  goToPageOfNumber(pageNumber) {
+    this.postAuthUserService.goToPageOfNumber(pageNumber).subscribe(data => {
+      this.PostByUser = data.data;
+    })
+    this.selectedPage = pageNumber;
+  }
+
+  goToPageSearchOfNumber(pageNumber) {
+    this.postAuthUserService.goToPageSearchOfNumber(pageNumber,this.formSearch.value).subscribe(data => {
+      this.PostByUser = data.data;
+    })
+    this.selectedPage = pageNumber;
+    console.log(this.formSearch.value)
+  }
+
+  goToPreviousPage() {
+    if (this.selectedPage != 1) {
+      this.selectedPage = this.selectedPage - 1;
+      //Load Trang bình thường
+      if(this.searchClick == false){
+        this.postAuthUserService.goToPageOfNumber(this.selectedPage).subscribe(data => {
+          this.PostByUser = data.data;
+        })
+      }
+      //Nếu Click Tìm Kiếm
+      else{
+        this.postAuthUserService.goToPageSearchOfNumber(this.selectedPage,this.formSearch.value).subscribe(data => {
+          this.PostByUser = data.data;
+        })
+      }
+  
+    }
+  }
+
+  goToNextPage() {
+    if (this.selectedPage != this.numberOfPage) {
+      this.selectedPage = this.selectedPage + 1;
+      //Load Trang bình thường
+      if(this.searchClick == false){
+        this.postAuthUserService.goToPageOfNumber(this.selectedPage).subscribe(data => {
+          this.PostByUser = data.data;
+        })
+      }
+      //Nếu Click Tìm Kiếm
+      else{
+        this.postAuthUserService.goToPageSearchOfNumber(this.selectedPage,this.formSearch.value).subscribe(data => {
+          this.PostByUser = data.data;
+         
+        })
+      }
+     
+    }
   }
 
   deletePost(id){
@@ -48,8 +114,15 @@ export class UserProfileComponent implements OnInit {
     }  
   }
   onClickSearch(){
+    this.searchPaginationArrays.length = 0
+    this.searchClick = true;
     this.postAuthUserService.searchTitlePost(this.formSearch.value).subscribe(data=>{
-      this.PostByUser = data
+      this.PostByUser = data.data;
+      this.numberOfPage = Math.ceil(data.total / 3);
+      for (var i = 1; i <= this.numberOfPage; i++) {
+        this.searchPaginationArrays.push(i);
+      }
+      console.log(this.searchPaginationArrays)
     })
     
   }

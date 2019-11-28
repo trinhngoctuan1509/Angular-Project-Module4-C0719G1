@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HelpsServiceService} from "src/app/services/helps-service.service";
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
+import { Helps } from "../../models/helps";
+import { Router, ActivatedRoute } from "@angular/router";
+
 
 @Component({
   selector: 'app-help',
@@ -9,28 +12,25 @@ import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms"
 })
 
 export class HelpComponent implements OnInit {
-public helps;
-public formSendHelpMessage:FormGroup;
+public helps:Helps;
+
 
   constructor(
     private helpsService:HelpsServiceService,
-    public formBuilder:FormBuilder
+    private router: Router,
+   
   ) { }
 
   ngOnInit() {
-    this.formSendHelpMessage = this.formBuilder.group({
-      fullName: [''],
-      email: [''],
-      phoneNumber: [''],
-      reason:[''],
-      note:['']
-    })
+    this.helps= new Helps();
+    
   }
 
-  sendHelpMessage(){
-    this.helpsService.sendHelpMessage(this.formSendHelpMessage.value).subscribe(data=>{
-      console.log(data);
-    })
+  onadd() {
+    console.log(this.helps)
+    this.helpsService.addEmployeer(this.helps)
+      .subscribe(data=>
+        {  this.router.navigateByUrl('helpSucces');})
   }
 
 

@@ -3,6 +3,7 @@ import { Route, ActivatedRoute} from "@angular/router";
 import { EditUsersService } from "src/app/services/edit-users.service";
 import { editUsers } from "src/app/models/editUsers";
 import { LoginService } from "../../services/login.service";
+import { FileUpload } from "../../models/uploadService";
 
 import { Location } from '@angular/common';//de goback chuyen ve mang hinh phia truoc
 
@@ -16,6 +17,9 @@ export class EditUsersComponent implements OnInit {
   public id;
   public editusers:editUsers;
   public errors;
+  file;
+  currentFileUpload;
+  urlImage = 'https://www.dammio.com/wp-content/uploads/2016/10/image_circle_bootstrap.png';
 
   constructor(
     private route: ActivatedRoute,
@@ -52,5 +56,18 @@ export class EditUsersComponent implements OnInit {
 goBack(): void {
   this.location.back();
 }
+selectFile(event) {
+  this.file = event.target.files.item(0);
+  console.log(this.file);
+}
+upload() {
+  this.currentFileUpload = new FileUpload(this.file);
+  this. EditUsersService.pushFileToStorage(this.currentFileUpload).subscribe(data => {
+    this.urlImage = data;
+    console.log(this.urlImage);
+  }
+  );
+}
+
 
 }

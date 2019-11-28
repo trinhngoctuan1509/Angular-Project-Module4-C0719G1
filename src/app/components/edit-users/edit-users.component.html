@@ -45,11 +45,12 @@
                             <div class="col-md-5 ">
                                     <div class="card text-center">
                                             <div class="card-body">
-                                                    <img src="https://www.dammio.com/wp-content/uploads/2016/10/image_circle_bootstrap.png" 
-                                                    class="img-circle" alt="Hot girl" width="150"style="height: 200px;" >
-                                                    
+                                                    <label>
+                                                    <img class="rounded-circle" [src]="urlImage"  style="height: 200px; width: 200px;" >
+                                                    <input style="display: none;" type="file" (change)="selectFile($event)">
+                                                </label>
                                             </div>
-                                            <button class="btn btn-primary mx-auto" style="max-width: 70%;">Chọn ảnh đại diện</button>
+                                            <button class="btn btn-primary mx-auto" style="max-width: 70%;"(click)="upload()">Chọn ảnh đại diện</button>
                                     </div>
                                     
                             </div>
@@ -62,7 +63,10 @@
                                                   <div class="col-sm-9">
                                 
                                                         <input type="text" class="form-control"name="fullName" [(ngModel)]="editusers.fullName" 
-                                                      value="{{edituser.fullName}}" #fullName="ngModel" required>
+                                                      value="{{edituser?.fullName}}" #fullName="ngModel" required>
+                                                      <div [hidden]="fullName.valid || fullName.pristine" class="alert alert-danger">
+                                                      họ tên không được để trống
+                                                        </div>
                                                       
                             
                                                   </div>
@@ -71,14 +75,22 @@
                                                   <label for="inputPassword" class="col-sm-3 col-form-label">Địa Chỉ</label>
                                                   <div class="col-sm-9">
                                                     <input type="text" class="form-control"   name="address" [(ngModel)]="editusers.address" 
-                                                   value="{{edituser.address}}">
+                                                   value="{{edituser?.address}}" #address="ngModel" required>
+                                                   <div [hidden]="address.valid || address.pristine" class="alert alert-danger">
+                                                  địa chỉ không được để trống
+                                                    </div>
+                                                  
                                                   </div>
                                                 </div>
                                                 <div class="form-group row">
                                                         <label for="inputPassword" class="col-sm-3 col-form-label">Số Điện Thoại</label>
                                                         <div class="col-sm-9">
                                                           <input type="text" class="form-control" name="phoneNumber" [(ngModel)]="editusers.phoneNumber" 
-                                                       value="{{edituser.phoneNumber}}">
+                                                       value="{{edituser?.phoneNumber}}"  #phoneNumber="ngModel" pattern="^(([\+][8][4])|[0])([0-9]{9,10})$"required>
+                                                       <div [hidden]="phoneNumber.valid || phoneNumber.pristine" class="alert alert-danger">
+                                                       điên thoại phải theo đúng định dạng. 
+                                                        </div>
+                                                      
                                                         </div>
                                                 </div>
                                                   <button class="btn btn-primary" style="float: right;"(click)="savecheck();">Lưu Lại</button>
@@ -95,67 +107,6 @@
 
 
 <!-- ****************** Start Footer *********************** -->
-<div class="container-fluid py-5" style="background-color:#dbdbdb;">
-    <div class="row d-flex justify-content-around mx-auto" style="width: 1000px; max-width: 1000px;">
-        <div class="col-2">
-            <div>
-                <p class="font-weight-bold">Liên Kết</p>
-            </div>
 
-            <div class="d-flex align-items-center">
-                <i class="fab fa-facebook-square" style="font-size: 25px;"></i>
-                <span class="ml-2">Facebook</span>
-            </div>
-            <div class="d-flex align-items-center">
-                <i class="fab fa-google-plus-g" style="font-size: 25px;"></i>
-                <span class="ml-2">Google+</span>
-            </div>
-            <div class="d-flex align-items-center">
-                <i class="fab fa-youtube" style="font-size: 25px;"></i>
-                <span class="ml-2">Youtube</span>
-            </div>
-        </div>
-
-        <div class="col-2">
-            <p class="font-weight-bold">Bản di động</p>
-            <img class="mb-2" src="https://static.chotot.com/storage/marketplace/ios-logo.svg" alt="" height="32px">
-            <img src="https://static.chotot.com/storage/marketplace/gg-play.svg" alt="" height="32px">
-        </div>
-
-        <div class="col-3">
-            <p class="font-weight-bold mb-2">Hỗ trợ khách hàng</p>
-            <p class="my-0 py-0">Trung tâm trợ giúp</p>
-            <p class="my-0 py-0">An toàn mua bán</p>
-            <p class="my-0 py-0">Quy định cần biết</p>
-            <p class="my-0 py-0">Liên hệ hỗ trợ</p>
-        </div>
-
-        <div class="col-2">
-            <p class="font-weight-bold mb-2">Về CodeGym</p>
-            <p class="my-0 py-0">Giới thiệu</p>
-            <p class="my-0 py-0">Tuyển dụng</p>
-            <p class="my-0 py-0">Truyền thông</p>
-            <p class="my-0 py-0">Blog</p>
-        </div>
-
-        <div class="col-2">
-            <p class="font-weight-bold mb-2">Chứng nhận</p>
-            <img src="https://static.chotot.com/storage/marketplace/cerfiticate.png" alt="" height="38px">
-        </div>
-    </div>
-
-
-
-    <div class="row mx-auto mt-4 text-center d-flex justify-content-center" style="width: 1000px; max-width: 1000px;">
-        <p class="text-center" style="font-size: 13px;">
-            Công ty Đào tạo lập trình CodeGym - Địa chỉ: Tầng 10 ,Số 295 Nguyễn Tất Thành , Phường Thanh Bình, Đà Nẵng,
-            550000. <br>
-            <span>Giấy chứng nhận đăng ký doanh nghiệp số 0312120782 do Sở Kế Hoạch và Đầu Tư TP Đà Nẵng cấp ngày
-                11/01/2013</span>
-            <br>
-            <span>Email: trogiup@chotot.vn - Đường dây nóng: (084)364452261</span>
-        </p>
-    </div>
-</div>
 <!-- ****************** End Footer *********************** -->
 

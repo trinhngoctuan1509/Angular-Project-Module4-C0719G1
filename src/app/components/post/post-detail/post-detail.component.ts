@@ -16,9 +16,10 @@ export class PostDetailComponent implements OnInit {
   paginacomment:any;
    public commentposts:Commentpost[];
    public id;
+   public isCheck=true;
   
    
-  @Input() postdetail:Posts;
+   postdetail:Posts;
   
 
   constructor(
@@ -29,6 +30,11 @@ export class PostDetailComponent implements OnInit {
     
 
   ) { 
+    if(localStorage.getItem('token')==null){
+      this.isCheck=true
+    }else
+    this.isCheck=false;
+    console.log(this.isCheck)
   this.getPostFromroute();
    this.paginacomment = {
     itemsPerPage: 4,

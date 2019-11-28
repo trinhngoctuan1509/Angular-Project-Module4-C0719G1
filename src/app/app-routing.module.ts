@@ -48,6 +48,8 @@ import { PostDetailsApprovedComponent } from './components/admin/admin-post-deta
 import { PostDetailsPendingApprovalComponent } from './components/admin/admin-post-details/post-details-pending-approval/post-details-pending-approval.component';
 import { MainComponent } from './components/main/main.component';
 import { GuardsUserGuard } from "./services/Guards/guards-user.guard";
+import { HelpSuccessComponent } from './components/help/help-success/help-success.component';
+
 
 const appRoutes: Routes = [
   {path:'',component:MainComponent,
@@ -66,6 +68,7 @@ children:[
   { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
   { path: 'help', component: HelpComponent},
+  { path: 'helpSucces', component: HelpSuccessComponent},
   { path: 'editusers', component: EditUsersComponent},
   { path: 'changepassword', component: ChangePasswordComponent},
   {path:'loginAdmin',component:LoginAdminComponent},
@@ -121,6 +124,7 @@ children:[
     ChangePasswordComponent,
 
     LoginAdminComponent,
+    HelpSuccessComponent,
 
     MainComponent
 

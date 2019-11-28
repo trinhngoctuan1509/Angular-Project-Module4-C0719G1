@@ -34,7 +34,7 @@
 
                                 <div>
                                     <button type="button" class="btn btn-sm btn-primary" routerLink="/editusers">Chỉnh sửa thông tin</button>
-                                    <button type="button" class="btn btn-sm btn-primary ml-3"routerLink="/changepassword">Đổi mật khẩu</button>
+                                    <button type="button" class="btn btn-sm btn-primary ml-3" routerLink="/changepassword">Đổi mật khẩu</button>
                                 </div>
                             </div>
 
@@ -158,7 +158,7 @@
                                 <ul class="pagination">
                                     <li (click)=goToPreviousPage() class="page-item"><a class="page-link">Previous</a></li>
                                     <ng-container *ngFor="let paginationArray of paginationArrays">
-                                        <li (click)="goToPageOfNumber(paginationArray)" class="page-item"><a [ngStyle]="paginationArray===selectedPage? backgroundColorOfSelectedPage : backgroundColorOfNotSelectedPage" class="page-link">{{paginationArray}}</a>
+                                        <li (click)="goToPageOfNumber(paginationArray)" class="page-item"><a class="page-link">{{paginationArray}}</a>
                                         </li>
                                     </ng-container>
                                     <li (click)=goToNextPage() class="page-item"><a class="page-link">Next</a></li>

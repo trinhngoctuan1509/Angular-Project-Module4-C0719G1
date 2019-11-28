@@ -2,6 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from '../environments/environment';
+
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -32,7 +37,8 @@ import { environment } from '../environments/environment';
     // ChangePasswordComponent
 
     AdminHomeComponent,
-    AdminUserDetailComponent
+    AdminUserDetailComponent,
+    
 
   ],
   imports: [
@@ -44,6 +50,9 @@ import { environment } from '../environments/environment';
     AngularFireDatabaseModule,
     AngularFireStorageModule
     // FormsModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

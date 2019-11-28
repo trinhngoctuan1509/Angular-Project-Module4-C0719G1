@@ -29,7 +29,7 @@ export class SearchPostGeneralComponent implements OnInit {
       areaRangeId: ['0'],
       priceRangeId: ['0'],
       directionId: ['0'],
-      ableComposition: [false]
+      ableComposition: [true]
     })
   }
 

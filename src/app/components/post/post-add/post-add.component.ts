@@ -7,6 +7,8 @@ import { RegionService } from "../../../services/region.service";
 import { DirectionService } from "../../../services/direction.service";
 import { LoginService } from "../../../services/login.service";
 import { User } from "../../../models/user.model";
+import { UploadFileService } from "../../../services/Upload/upload-file.service";
+import { FileUpload } from "../../../models/fileupload";
 @Component({
   selector: 'app-post-add',
   templateUrl: './post-add.component.html',
@@ -19,13 +21,16 @@ export class PostAddComponent implements OnInit {
   regions;
   directions;
   userDetails;
+  currentFileUpload;
+  file;
   constructor(
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
     private categoryService: CategoryService,
     private regionService: RegionService,
     private directionService: DirectionService,
-    private loginService:LoginService
+    private loginService:LoginService,
+    private uploadService: UploadFileService
   ) { }
 
   ngOnInit() {
@@ -65,7 +70,7 @@ this.formPosts = this.formBuilder.group({
     Validators.required,
     Validators.pattern('[0-9]+')
   ]],
-  ableComposition: [false],
+  ableComposition: [true],
   imagePost1: [''],
   imagePost2: [''],
   imagePost3: [''],
@@ -83,19 +88,36 @@ this.formPosts.valueChanges.subscribe(data=>{
     if (event.target.files && event.target.files[0]) {  
                 var reader = new FileReader();
                 reader.onload = (event:any) => {
-                  console.log(event.target.result[1]);
+                  // console.log(event.target.result[1]);
                    this.imageUrls= event.target.result; 
+                  
                 }
                 reader.readAsDataURL(event.target.files[0]);
-                console.log("assets/image/" + event.target.files[0].name);
+                this.formPosts.value.imagePost1 = event.target.files.item(0)
+               
+    //             this.file = event.target.files.item(0);
+    // console.log(this.file);
         
     }
   }
 
+  // upload(){
+  //   this.currentFileUpload = new FileUpload(this.file);
+  //   this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(data => {
+  //     this.formPosts.value.imagePost1 = data
+  //   }
+  //   );
+
+  // }
+
   // CLick Open Dialog Confirm
   onClickAdd(){
    this.dialog.open(PostConfirmComponent,
-    {data: this.formPosts.value, height: '100%',
+    {data: {
+      form: this.formPosts.value,
+      imagePre: this.imageUrls
+    }, 
+      height: '100%',
     width: '80%',})
 
 }

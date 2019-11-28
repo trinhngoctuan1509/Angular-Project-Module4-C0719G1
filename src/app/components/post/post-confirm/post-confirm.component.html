@@ -55,7 +55,7 @@
                                 <label for="inputPassword" class="col col-sm-2 col-form-label">[{{postOftype}}] </label>
                                 <div class="col d-flex">
 
-                                    {{data.title}}
+                                    {{data.form.title}}
                                 </div>
 
                             </div>
@@ -72,21 +72,21 @@
                             <div class="form-group row">
                                 <label class="col col-sm-2 col-form-label">Địa chỉ:  </label>
                                 <div class="col">
-                                    {{data.address}}
+                                    {{data.form.address}}
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col col-sm-2 col-form-label">Diện tích: </label>
                                 <div class="col">
-                                    {{data.area}} m2
+                                    {{data.form.area}} m2
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputPassword" class="col col-sm-2 col-form-label">Giá: </label>
                                 <div class="col">
-                                    {{data.price}}
+                                    {{data.form.price}}
                                 </div>
                             </div>
 
@@ -94,7 +94,7 @@
                             <div class="form-group row">
                                 <label class="col col-sm-2 col-form-label">Nội dung:  </label>
                                 <div class="col">
-                                    {{data.contentPost}}
+                                    {{data.form.contentPost}}
                                 </div>
                             </div>
 
@@ -103,7 +103,7 @@
                             <div class="form-group row">
                                 <label class="col col-sm-2 col-form-label">Hình Ảnh:  </label>
                                 <div class="col">
-                                    Test
+                                    <img [src]="imageUrls" alt="Smiley face" width="150px" height="150px">
                                 </div>
                             </div>
 

@@ -10,6 +10,8 @@ import { PostAuthUserService } from "../../../services/Auth/post-auth-user.servi
 import { Router, ActivatedRoute } from "@angular/router";
 import { Posts } from "../../../models/post.model";
 import { timeout } from 'q';
+import { UploadFileService } from "../../../services/Upload/upload-file.service";
+import { FileUpload } from "../../../models/fileupload";
 @Component({
   selector: 'app-post-edit',
   templateUrl: './post-edit.component.html',
@@ -22,6 +24,9 @@ export class PostEditComponent implements OnInit {
   regions;
   directions;
   valueForm;
+  file;
+  test;
+  currentFileUpload;
   constructor(
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
@@ -30,7 +35,8 @@ export class PostEditComponent implements OnInit {
     private directionService: DirectionService,
     private postAuthUserService: PostAuthUserService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private uploadService: UploadFileService
   ) { }
 
   ngOnInit() {
@@ -77,9 +83,9 @@ export class PostEditComponent implements OnInit {
       imagePost6: [''],
 
     })
-    // console.log(this.formPosts.value)
+    console.log(this.formPosts.value)
     // this.formPosts.valueChanges.subscribe(data=>{
-    //   console.log(data)
+    //   console.log(data.imagePost1)
 
     // })
   }
@@ -87,18 +93,36 @@ export class PostEditComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
       reader.onload = (event: any) => {
-        console.log(event.target.result[1]);
-        this.imageUrls = event.target.result;
+        // console.log(event.target.result[1]);
+        this.valueForm.imagePost1 = event.target.result;
+
       }
       reader.readAsDataURL(event.target.files[0]);
-      console.log("assets/image/" + event.target.files[0].name);
+      this.file = event.target.files.item(0)
+
+      //             this.file = event.target.files.item(0);
+      // console.log(this.file);
 
     }
   }
 
-  // CLick Update
   onClickUpdate() {
-    if (confirm('Bạn Đồng Ý với sự thay đổi ?')) {
+    if (this.file != null) {
+      this.currentFileUpload = new FileUpload(this.file);
+      this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(data => {
+        this.formPosts.value.imagePost1 = data
+        console.log(data)
+        this.postAuthUserService.UpdatePost(this.formPosts.value).subscribe(result => {
+          console.log(result)
+          this.dialog.open(PostEditSuccesComponent)
+        setTimeout(() => {   
+          window.location.href = '/user/profile'
+        }, 5000);
+        })
+      }
+      );
+    }
+    else{
       this.postAuthUserService.UpdatePost(this.formPosts.value).subscribe(data => {
         this.dialog.open(PostEditSuccesComponent)
         setTimeout(() => {   
@@ -106,8 +130,28 @@ export class PostEditComponent implements OnInit {
         }, 5000);
       })
     }
+         
+     
+   
+  }
 
-
+  // CLick Update
+  onClickUpdatse() {
+    if (this.formPosts.value.imagePost1 != null) {
+      // this.upload()
+    }
+    console.log(this.test)
+    // if (confirm('Bạn Đồng Ý với sự thay đổi ?')) {
+    // this.postAuthUserService.UpdatePost(this.formPosts.value).subscribe(data => {
+    //   console.log(data)
+    //     this.dialog.open(PostEditSuccesComponent)
+    //     setTimeout(() => {   
+    //       window.location.href = '/user/profile'
+    //     }, 5000);
+    // })
+    // }
+    // this.formPosts.value.imagePost1=1;
+    console.log(this.formPosts.value.imagePost1)
 
   }
 
@@ -137,7 +181,6 @@ export class PostEditComponent implements OnInit {
       this.postAuthUserService.showPostById(id).subscribe(result => {
         this.valueForm = result
         this.formPosts.patchValue(result)
-
       })
     })
   }

@@ -188,7 +188,7 @@
                                                     Chỉ hình ảnh của sản phẩm mới được duyệt. Lưu ý không dùng hình có dán kèm số điện thoại hoặc địa chỉ Website
                                                 </p>
                                             </div>
-                                            <input id="file" type='file' (change)="onSelectFile($event)" [ngStyle]="{ 'background-image': 'url(' + imageUrls + ')',
+                                            <input id="file" type='file' (change)="onSelectFile($event)" [ngStyle]="{ 'background-image': 'url(' + valueForm.imagePost1 + ')',
                                          'height':'150px' ,'width':'150px'}" formControlName="imagePost1">
                                         </div>
                                     </div>

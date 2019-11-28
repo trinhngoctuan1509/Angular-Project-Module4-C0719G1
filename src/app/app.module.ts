@@ -22,6 +22,10 @@ import { PostCommentComponent } from './components/post/post-comment/post-commen
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 import { AdminUserDetailComponent } from './components/admin/admin-user-detail/admin-user-detail.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +46,9 @@ import { AdminUserDetailComponent } from './components/admin/admin-user-detail/a
     HttpClientModule,
     AppRoutingModule,
     NgxPaginationModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
     // FormsModule
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,

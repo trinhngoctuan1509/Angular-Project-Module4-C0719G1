@@ -18,6 +18,6 @@ export class ChangepasswordService {
   sendchangepassword(message:editUsers)
   {
     var tokenHeader= new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('token')});
-    return this.http.post(this.changeAPI, message,{headers : tokenHeader}).pipe(map((response: any) => response));;
+    return this.http.post(this.changeAPI, message,{headers : tokenHeader}).pipe(map((response: any) => response));
   }
 }

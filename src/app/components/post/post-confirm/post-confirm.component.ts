@@ -9,6 +9,8 @@ import { SellerService } from "../../../services/seller.service";
 import { StatusOfPostService } from "../../../services/status-of-post.service";
 import { CategoryService } from "../../../services/category.service";
 import { RegionService } from "../../../services/region.service";
+import { UploadFileService } from "../../../services/Upload/upload-file.service";
+import { FileUpload } from "../../../models/fileupload";
 @Component({
   selector: 'app-post-confirm',
   templateUrl: './post-confirm.component.html',
@@ -22,6 +24,9 @@ export class PostConfirmComponent implements OnInit {
   category;
   region;
   err;
+  imageUrls:string = "assets/image/default.png";
+  currentFileUpload;
+  file;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<PostConfirmComponent>,
@@ -34,20 +39,23 @@ export class PostConfirmComponent implements OnInit {
     private categoryService: CategoryService,
     private regionService: RegionService,
     public dialog: MatDialog,
+    private uploadService: UploadFileService
   ) { }
 
   ngOnInit() {
     this.getAllInputPost()
+    this.imageUrls = this.data.imagePre
   }
 
   // Click Cancel
   onClickBack() {
     this.dialogRef.close();
   }
-
-  // Click Add new Post
-  onClickAdd() {
-    this.postAuthUserService.createNewPost(this.data).subscribe(data => {   
+  onClickAdd(){
+    this.currentFileUpload = new FileUpload(this.data.form.imagePost1);
+    this.uploadService.pushFileToStorage(this.currentFileUpload).toPromise().then(data => {
+      this.data.form.imagePost1 = data
+      this.postAuthUserService.createNewPost(this.data.form).subscribe(data => {   
         this.dialogRef.close()
       this.dialog.open(PostSuccessComponent)   
       setTimeout(() => {   
@@ -56,36 +64,54 @@ export class PostConfirmComponent implements OnInit {
     }, error =>{
       this.err = error.error.errors
     })
-    
+    }
+    );
+
   }
+
+  // Click Add new Post
+  // onClickAdd() {
+  //   this.upload()
+
+  //   this.postAuthUserService.createNewPost(this.data).subscribe(data => {   
+  //       this.dialogRef.close()
+  //     this.dialog.open(PostSuccessComponent)   
+  //     setTimeout(() => {   
+  //       window.location.href = '/user/profile'
+  //     }, 5000);   
+  //   }, error =>{
+  //     this.err = error.error.errors
+  //   })
+    
+  // }
 
   // Get All Input Post through Variable Data -- MAT_DIALOG_DATA
   getAllInputPost() {
-    this.directionService.getDirectionById(this.data.directionId).subscribe(result => {
+    this.directionService.getDirectionById(this.data.form.directionId).subscribe(result => {
       this.direction = result.directionName
     })
 
-    this.postOftypeService.getPostOfTypeById(this.data.postOfTypeId).subscribe(result => {
+    this.postOftypeService.getPostOfTypeById(this.data.form.postOfTypeId).subscribe(result => {
       this.postOftype = result.postOfTypeName
     })
 
 
-    this.sellerService.getSellerById(this.data.sellerId).subscribe(result => {
+    this.sellerService.getSellerById(this.data.form.sellerId).subscribe(result => {
       this.seller = result.sellerName
     })
 
 
-    this.statusOfPostService.getStatusOfPostId(this.data.statusOfPostId).subscribe(result => {
+    this.statusOfPostService.getStatusOfPostId(this.data.form.statusOfPostId).subscribe(result => {
       this.statusOfPost = result.statusOfPostName
     })
 
 
-    this.categoryService.getCategoryById(this.data.categoryId).subscribe(result => {
+    this.categoryService.getCategoryById(this.data.form.categoryId).subscribe(result => {
       this.category = result.categoryName
     })
 
 
-    this.regionService.getRegionById(this.data.regionId).subscribe(result => {
+    this.regionService.getRegionById(this.data.form.regionId).subscribe(result => {
       this.region = result.regionName
     })
   }

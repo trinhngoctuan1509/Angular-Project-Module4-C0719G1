@@ -50,6 +50,8 @@ import { MainComponent } from './components/main/main.component';
 import { SuccessComfirmMailComponent } from './components/Register/success-comfirm-mail/success-comfirm-mail.component';
 
 import { GuardsUserGuard } from "./services/Guards/guards-user.guard";
+import { HelpSuccessComponent } from './components/help/help-success/help-success.component';
+
 
 import { RemovePostMatDialogComponent } from './components/admin/admin-post-details/remove-post-mat-dialog/remove-post-mat-dialog.component';
 import { DeletePostMatDialogComponent } from './components/admin/admin-post-details/delete-post-mat-dialog/delete-post-mat-dialog.component';
@@ -84,6 +86,16 @@ const appRoutes: Routes = [
   { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
   { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
+
+  { path: 'help', component: HelpComponent},
+  { path: 'helpSucces', component: HelpSuccessComponent},
+  { path: 'editusers', component: EditUsersComponent},
+  { path: 'changepassword', component: ChangePasswordComponent},
+  {path:'loginAdmin',component:LoginAdminComponent},
+  { path: 'user/profile', component: UserProfileComponent , canActivate: [GuardsUserGuard]},
+  { path: 'user/profile/post/:id/edit', component: PostEditComponent, canActivate: [GuardsUserGuard] },
+]},
+  
 
 
   {
@@ -137,6 +149,7 @@ const appRoutes: Routes = [
 
 
     LoginAdminComponent,
+    HelpSuccessComponent,
 
     RemovePostMatDialogComponent,
     DeletePostMatDialogComponent,

@@ -57,6 +57,11 @@ import { RemovePostMatDialogComponent } from './components/admin/admin-post-deta
 import { DeletePostMatDialogComponent } from './components/admin/admin-post-details/delete-post-mat-dialog/delete-post-mat-dialog.component';
 import { DialogRemoveComponent } from './components/admin/admin-post-list/dialog-remove/dialog-remove.component';
 import { PostEditSuccesComponent } from './components/post/post-edit-succes/post-edit-succes.component';
+import { EmployeeDetailComponent } from './components/admin/employees/employee-detail/employee-detail.component';
+import { AuthorizationAdminComponent } from './components/admin/authorization-admin/authorization-admin.component';
+import { DeleteEmployeeComponent } from './components/admin/delete-employee/delete-employee.component';
+import { LockEmployeeComponent } from './components/admin/lock-employee/lock-employee.component';
+import { UnlockEmployeeComponent } from './components/admin/unlock-employee/unlock-employee.component';
 
 const appRoutes: Routes = [
   {
@@ -99,6 +104,8 @@ const appRoutes: Routes = [
           { path: 'post-approved', component: PostApprovedComponent },
           { path: 'post-details-approved/:id', component: PostDetailsApprovedComponent },
           { path: 'post-details-pendding-approval/:id', component: PostDetailsPendingApprovalComponent },
+          { path: 'employee-detail', component: EmployeeDetailComponent },
+          { path: 'authorization-admin', component: AuthorizationAdminComponent },
         ]
       },
       { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
@@ -154,7 +161,21 @@ const appRoutes: Routes = [
 
     MainComponent,
 
-    PostEditSuccesComponent
+    PostEditSuccesComponent,
+
+    EmployeeDetailComponent,
+
+
+    AuthorizationAdminComponent,
+
+
+    DeleteEmployeeComponent,
+
+
+    LockEmployeeComponent,
+
+
+    UnlockEmployeeComponent
 
   ],
 
@@ -179,7 +200,10 @@ const appRoutes: Routes = [
     DeletePostMatDialogComponent,
     DialogRemoveComponent,
     PostSuccessComponent,
-    PostEditSuccesComponent
+    PostEditSuccesComponent,
+    DeleteEmployeeComponent,
+    LockEmployeeComponent,
+    UnlockEmployeeComponent
   ],
 
   exports: [RouterModule]

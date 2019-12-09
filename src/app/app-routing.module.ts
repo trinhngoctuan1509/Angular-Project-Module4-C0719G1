@@ -57,6 +57,8 @@ import { RemovePostMatDialogComponent } from './components/admin/admin-post-deta
 import { DeletePostMatDialogComponent } from './components/admin/admin-post-details/delete-post-mat-dialog/delete-post-mat-dialog.component';
 import { DialogRemoveComponent } from './components/admin/admin-post-list/dialog-remove/dialog-remove.component';
 import { PostEditSuccesComponent } from './components/post/post-edit-succes/post-edit-succes.component';
+import { AdminStatisticViewComponent } from './components/admin/admin-statistic-view/admin-statistic-view.component';
+import { AdminMostViewPostComponent } from './components/admin/admin-most-view-post/admin-most-view-post.component';
 
 const appRoutes: Routes = [
   {
@@ -99,6 +101,8 @@ const appRoutes: Routes = [
           { path: 'post-approved', component: PostApprovedComponent },
           { path: 'post-details-approved/:id', component: PostDetailsApprovedComponent },
           { path: 'post-details-pendding-approval/:id', component: PostDetailsPendingApprovalComponent },
+          { path: 'post-view', component: AdminStatisticViewComponent },
+          { path: 'post-topview', component: AdminMostViewPostComponent },
         ]
       },
       { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
@@ -154,7 +158,11 @@ const appRoutes: Routes = [
 
     MainComponent,
 
-    PostEditSuccesComponent
+    PostEditSuccesComponent,
+
+    AdminStatisticViewComponent,
+
+    AdminMostViewPostComponent
 
   ],
 

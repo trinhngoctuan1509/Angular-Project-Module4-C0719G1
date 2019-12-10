@@ -7,6 +7,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 import { PostService } from "src/app/services/post.service";
 import { Posts } from "src/app/models/post.model";
 
+import { TrafficService } from "src/app/services/traffic.service";
 @Component({
   selector: 'app-post-detail',
   templateUrl: './post-detail.component.html',
@@ -20,13 +21,14 @@ export class PostDetailComponent implements OnInit {
   
    
    postdetail:Posts;
-  
-
+   public viewpost={};
+    ipClient;
   constructor(
     private route:ActivatedRoute,
     private routes:Router,
     private commentpostservice:CommentserviceService,
     private postserve:PostService,
+    private trafficService:TrafficService,
     
 
   ) { 
@@ -74,6 +76,8 @@ export class PostDetailComponent implements OnInit {
   ngOnInit() {
     this.getcommentpostFromServices();
     this.postdetail=new Posts;
+    this.getip()
+
   }
   pageChanged(event){
   
@@ -82,5 +86,24 @@ export class PostDetailComponent implements OnInit {
   refresh(): void {
     window.location.reload();
 }
+
+  //Upview
+  upview(){
+    this.trafficService.upView(this.viewpost).subscribe(data=>{
+
+    })
+  }
+  //Get Ip
+  getip(){
+    this.trafficService.getIPAddress().subscribe(data=>{
+      this.ipClient =data['ip']
+       this.viewpost={
+        posts_id: this.id,
+        ip: this.id+':'+this.ipClient    
+      };
+      this.upview()
+      
+    })
+  }
 
 }

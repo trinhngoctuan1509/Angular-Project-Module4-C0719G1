@@ -31,4 +31,7 @@ export class MainComponent implements OnInit {
     localStorage.removeItem('token');
 
   }
+  backToListPost(){
+    window.location.href='/post/list';
+  }
 }

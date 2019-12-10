@@ -42,6 +42,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   getPostByUser(){
+    this.paginationArrays.length = 0
     this.postAuthUserService.getPostByUser().subscribe(data=>{
       this.PostByUser = data.data
       this.numberOfPage = Math.ceil(data.total / 3);

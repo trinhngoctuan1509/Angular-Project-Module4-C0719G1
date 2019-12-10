@@ -50,6 +50,8 @@ import { MainComponent } from './components/main/main.component';
 import { SuccessComfirmMailComponent } from './components/Register/success-comfirm-mail/success-comfirm-mail.component';
 
 import { GuardsUserGuard } from "./services/Guards/guards-user.guard";
+import { HelpSuccessComponent } from './components/help/help-success/help-success.component';
+
 
 import { RemovePostMatDialogComponent } from './components/admin/admin-post-details/remove-post-mat-dialog/remove-post-mat-dialog.component';
 import { DeletePostMatDialogComponent } from './components/admin/admin-post-details/delete-post-mat-dialog/delete-post-mat-dialog.component';
@@ -68,7 +70,7 @@ const appRoutes: Routes = [
   {
     path: '', component: MainComponent,
     children: [
-      { path: 'post/add', component: PostAddComponent, canActivate: [GuardsUserGuard] },
+      { path: 'post/add', component: PostAddComponent },
       { path: 'post/list', component: PostListComponent },
       { path: 'successConfirmMail', component: SuccessComfirmMailComponent },
 
@@ -84,16 +86,19 @@ const appRoutes: Routes = [
       { path: 'editusers', component: EditUsersComponent },
       { path: 'changepassword', component: ChangePasswordComponent },
       { path: 'loginAdmin', component: LoginAdminComponent },
-      { path: 'user/profile', component: UserProfileComponent, canActivate: [GuardsUserGuard] },
-      { path: 'user/profile/post/:id/edit', component: PostEditComponent, canActivate: [GuardsUserGuard] },
+      { path: 'user/profile', component: UserProfileComponent },
+      { path: 'user/profile/post/:id/edit', component: PostEditComponent },
+
+
+      { path: 'help', component: HelpComponent },
+      { path: 'helpSucces', component: HelpSuccessComponent },
+      { path: 'editusers', component: EditUsersComponent },
+      { path: 'changepassword', component: ChangePasswordComponent },
+      { path: 'loginAdmin', component: LoginAdminComponent },
+      { path: 'user/profile', component: UserProfileComponent },
+      { path: 'user/profile/post/:id/edit', component: PostEditComponent },
     ]
   },
-
-  { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
-  { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
-  { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
-
-
   {
     path: 'admin', component: AdminHomeComponent,
     children: [
@@ -103,13 +108,15 @@ const appRoutes: Routes = [
       { path: 'post-approved', component: PostApprovedComponent },
       { path: 'post-details-approved/:id', component: PostDetailsApprovedComponent },
       { path: 'post-details-pendding-approval/:id', component: PostDetailsPendingApprovalComponent },
-      {
-        path: 'setting', component: AdminSettingComponent
-      }
     ]
   },
+  { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
+  { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
+  { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
   { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
+
   // { path: '', redirectTo: 'post/list'},
+
 ]
 
 @NgModule({
@@ -148,6 +155,7 @@ const appRoutes: Routes = [
 
 
     LoginAdminComponent,
+    HelpSuccessComponent,
 
     RemovePostMatDialogComponent,
     DeletePostMatDialogComponent,

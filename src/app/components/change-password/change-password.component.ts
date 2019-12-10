@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Route, ActivatedRoute} from "@angular/router";
 import { editUsers } from "src/app/models/editUsers";
 import {ChangepasswordService  } from "../../services/changepassword.service";
-
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -16,7 +16,8 @@ export class ChangePasswordComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private ChangepasswordServices:ChangepasswordService
+    private ChangepasswordServices:ChangepasswordService,
+    private location: Location,
   ) { }
 
   ngOnInit() {
@@ -26,13 +27,14 @@ export class ChangePasswordComponent implements OnInit {
 
     console.log(this.changepassword)
      this.ChangepasswordServices.sendchangepassword( this.changepassword).
-     subscribe(data=>{
-      console.log(data)
-     },
+     subscribe(() => this.goBack()),
      error=>{
 
       this.errors= error.error.errors;
       
-     })
+     };
+}
+goBack(): void {
+  this.location.back();
 }
 }

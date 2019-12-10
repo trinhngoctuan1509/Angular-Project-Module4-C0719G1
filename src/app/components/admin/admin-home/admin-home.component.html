@@ -4,10 +4,37 @@
             <img style="height: 60%;" src="/assets/img/logoCodeGymAdmin.png" alt="">
         </div>
         <div class="col-10 d-flex justify-content-end align-items-center">
-            <div style="font-size: 20px;">
+            <!-- <div style="font-size: 20px;">
                 <i class="fas fa-user mr-2"></i>
                 <i class="fas fa-sort-down"></i>
-            </div>
+            </div> -->
+
+
+            <div id="home-admin" class=" dropdown btn cursor-pointer"   data-toggle="dropdown"
+            style="background-color:  rgb(226, 226, 226); ">
+                    <div style="font-size: 20px;">
+                            <i class="fas fa-user mr-2"></i>
+                            <i class="fas fa-sort-down"></i>
+                        </div>
+                    <ul class="dropdown-menu" style="background-color:  rgb(226, 226, 226);">
+                        <li class="text-center"> <i class="fa fa-user-circle mr-1" aria-hidden="true"
+                                style="color: black;"></i><a [routerLink]="['/admin/employee-detail']"
+                                routerLinkActive="router-link-active" style="color: black; font-size: 16px;">
+                            Thông tin cá nhân</a></li>
+                        <li class="text-center"> <i class="fa fa-sign-in mr-1" style="color: black;"
+                                aria-hidden="true"></i><a [routerLink]="['/register']"
+                                routerLinkActive="router-link-active" style="color: black; font-size: 16px;">
+                                Logout</a></li>
+                    
+                    </ul>
+
+                </div>
+
+
+
+
+
+
         </div>
     </div>
     <div class="row" style="height: 93%;">
@@ -57,7 +84,7 @@
                     <i class="fas fa-cog text-dark mr-2" style="width: 20px;"></i>
                     <span class="text-dark">Thiết lập</span>
                 </button>
-                <button type="button" class="btn btn-outline-light d-flex align-items-center justify-content-start">
+                <button type="button" class="btn btn-outline-light d-flex align-items-center justify-content-start" [routerLink]="['/admin/authorization-admin']" routerLinkActive="router-link-active" >
                     <i class="fas fa-anchor text-dark mr-2" style="width: 20px;"></i>
                     <span class="text-dark">Cấp quyền</span>
                 </button>

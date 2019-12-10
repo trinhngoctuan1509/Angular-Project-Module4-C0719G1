@@ -56,6 +56,14 @@ import { DeletePostMatDialogComponent } from './components/admin/admin-post-deta
 import { DialogRemoveComponent } from './components/admin/admin-post-list/dialog-remove/dialog-remove.component';
 import { PostEditSuccesComponent } from './components/post/post-edit-succes/post-edit-succes.component';
 
+import { AdminSettingComponent } from './components/admin/admin-setting/admin-setting.component';
+import { AdminSettingDialogConfirmDeleteCategoryComponent } from './components/admin/admin-setting-dialog-confirm-delete-category/admin-setting-dialog-confirm-delete-category.component';
+import { AdminSettingDialogEditCategoryComponent } from './components/admin/admin-setting-dialog-edit-category/admin-setting-dialog-edit-category.component';
+import { AdminSettingDialogConfirmDeleteRegionComponent } from './components/admin/admin-setting-dialog-confirm-delete-region/admin-setting-dialog-confirm-delete-region.component';
+import { AdminSettingDialogEditRegionComponent } from './components/admin/admin-setting-dialog-edit-region/admin-setting-dialog-edit-region.component';
+import { AdminSettingDialogConfirmDeletePostOfTypeComponent } from './components/admin/admin-setting-dialog-confirm-delete-post-of-type/admin-setting-dialog-confirm-delete-post-of-type.component';
+import { AdminSettingDialogEditPostOfTypeComponent } from './components/admin/admin-setting-dialog-edit-post-of-type/admin-setting-dialog-edit-post-of-type.component';
+
 const appRoutes: Routes = [
   {
     path: '', component: MainComponent,
@@ -95,6 +103,9 @@ const appRoutes: Routes = [
       { path: 'post-approved', component: PostApprovedComponent },
       { path: 'post-details-approved/:id', component: PostDetailsApprovedComponent },
       { path: 'post-details-pendding-approval/:id', component: PostDetailsPendingApprovalComponent },
+      {
+        path: 'setting', component: AdminSettingComponent
+      }
     ]
   },
   { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
@@ -144,7 +155,14 @@ const appRoutes: Routes = [
 
     MainComponent,
 
-    PostEditSuccesComponent
+    PostEditSuccesComponent,
+    AdminSettingComponent,
+    AdminSettingDialogConfirmDeleteCategoryComponent,
+    AdminSettingDialogEditCategoryComponent,
+    AdminSettingDialogConfirmDeleteRegionComponent,
+    AdminSettingDialogEditRegionComponent,
+    AdminSettingDialogConfirmDeletePostOfTypeComponent,
+    AdminSettingDialogEditPostOfTypeComponent,
 
   ],
 
@@ -169,7 +187,13 @@ const appRoutes: Routes = [
     DeletePostMatDialogComponent,
     DialogRemoveComponent,
     PostSuccessComponent,
-    PostEditSuccesComponent
+    PostEditSuccesComponent,
+    AdminSettingDialogConfirmDeleteCategoryComponent,
+    AdminSettingDialogEditCategoryComponent,
+    AdminSettingDialogConfirmDeleteRegionComponent,
+    AdminSettingDialogEditRegionComponent,
+    AdminSettingDialogConfirmDeletePostOfTypeComponent,
+    AdminSettingDialogEditPostOfTypeComponent,
   ],
 
   exports: [RouterModule]

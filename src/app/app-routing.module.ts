@@ -58,6 +58,7 @@ import { DeletePostMatDialogComponent } from './components/admin/admin-post-deta
 import { DialogRemoveComponent } from './components/admin/admin-post-list/dialog-remove/dialog-remove.component';
 import { PostEditSuccesComponent } from './components/post/post-edit-succes/post-edit-succes.component';
 
+
 import { AdminSettingComponent } from './components/admin/admin-setting/admin-setting.component';
 import { AdminSettingDialogConfirmDeleteCategoryComponent } from './components/admin/admin-setting-dialog-confirm-delete-category/admin-setting-dialog-confirm-delete-category.component';
 import { AdminSettingDialogEditCategoryComponent } from './components/admin/admin-setting-dialog-edit-category/admin-setting-dialog-edit-category.component';
@@ -65,6 +66,17 @@ import { AdminSettingDialogConfirmDeleteRegionComponent } from './components/adm
 import { AdminSettingDialogEditRegionComponent } from './components/admin/admin-setting-dialog-edit-region/admin-setting-dialog-edit-region.component';
 import { AdminSettingDialogConfirmDeletePostOfTypeComponent } from './components/admin/admin-setting-dialog-confirm-delete-post-of-type/admin-setting-dialog-confirm-delete-post-of-type.component';
 import { AdminSettingDialogEditPostOfTypeComponent } from './components/admin/admin-setting-dialog-edit-post-of-type/admin-setting-dialog-edit-post-of-type.component';
+
+import { EmployeeDetailComponent } from './components/admin/employees/employee-detail/employee-detail.component';
+import { AuthorizationAdminComponent } from './components/admin/authorization-admin/authorization-admin.component';
+import { DeleteEmployeeComponent } from './components/admin/delete-employee/delete-employee.component';
+import { LockEmployeeComponent } from './components/admin/lock-employee/lock-employee.component';
+import { UnlockEmployeeComponent } from './components/admin/unlock-employee/unlock-employee.component';
+
+import { AdminStatisticViewComponent } from './components/admin/admin-statistic-view/admin-statistic-view.component';
+import { AdminMostViewPostComponent } from './components/admin/admin-most-view-post/admin-most-view-post.component';
+
+
 
 const appRoutes: Routes = [
   {
@@ -97,26 +109,31 @@ const appRoutes: Routes = [
       { path: 'loginAdmin', component: LoginAdminComponent },
       { path: 'user/profile', component: UserProfileComponent },
       { path: 'user/profile/post/:id/edit', component: PostEditComponent },
-    ]
-  },
-  {
-    path: 'admin', component: AdminHomeComponent,
-    children: [
-      { path: 'user-list', component: AdminUserListComponent },
-      { path: 'user-detail/:id', component: AdminUserDetailComponent },
-      { path: 'post-pending-approval', component: PostPendingApprovalComponent },
-      { path: 'post-approved', component: PostApprovedComponent },
-      { path: 'post-details-approved/:id', component: PostDetailsApprovedComponent },
-      { path: 'post-details-pendding-approval/:id', component: PostDetailsPendingApprovalComponent },
-    ]
-  },
-  { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
-  { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
-  { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
-  { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
+    ]},
+      {
+        path: 'admin', component: AdminHomeComponent,
+        children: [
+          { path: 'user-list', component: AdminUserListComponent },
+          { path: 'user-detail/:id', component: AdminUserDetailComponent },
+          { path: 'post-pending-approval', component: PostPendingApprovalComponent },
+          { path: 'post-approved', component: PostApprovedComponent },
+          { path: 'post-details-approved/:id', component: PostDetailsApprovedComponent },
+          { path: 'post-details-pendding-approval/:id', component: PostDetailsPendingApprovalComponent },
 
-  // { path: '', redirectTo: 'post/list'},
+          { path: 'employee-detail', component: EmployeeDetailComponent },
+          { path: 'authorization-admin', component: AuthorizationAdminComponent },
 
+          { path: 'post-view', component: AdminStatisticViewComponent },
+          { path: 'post-topview', component: AdminMostViewPostComponent },
+
+        ]
+      },
+      { path: 'searchPostGeneral', component: SearchPostGeneralComponent, outlet: 'searchPostAdvanced' },
+      { path: 'searchByTitile', component: SearchPostByTitleComponent, outlet: 'searchPostAdvanced' },
+      { path: 'searchByFengshui', component: SearchPostByFengshuiComponent, outlet: 'searchPostAdvanced' },
+      { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
+
+      // { path: '', redirectTo: 'post/list'},
 ]
 
 @NgModule({
@@ -164,6 +181,7 @@ const appRoutes: Routes = [
     MainComponent,
 
     PostEditSuccesComponent,
+
     AdminSettingComponent,
     AdminSettingDialogConfirmDeleteCategoryComponent,
     AdminSettingDialogEditCategoryComponent,
@@ -171,6 +189,25 @@ const appRoutes: Routes = [
     AdminSettingDialogEditRegionComponent,
     AdminSettingDialogConfirmDeletePostOfTypeComponent,
     AdminSettingDialogEditPostOfTypeComponent,
+
+
+    EmployeeDetailComponent,
+
+
+    AuthorizationAdminComponent,
+
+
+    DeleteEmployeeComponent,
+
+
+    LockEmployeeComponent,
+
+
+    UnlockEmployeeComponent,
+
+    AdminStatisticViewComponent,
+
+    AdminMostViewPostComponent
 
   ],
 
@@ -202,6 +239,9 @@ const appRoutes: Routes = [
     AdminSettingDialogEditRegionComponent,
     AdminSettingDialogConfirmDeletePostOfTypeComponent,
     AdminSettingDialogEditPostOfTypeComponent,
+    DeleteEmployeeComponent,
+    LockEmployeeComponent,
+    UnlockEmployeeComponent
   ],
 
   exports: [RouterModule]

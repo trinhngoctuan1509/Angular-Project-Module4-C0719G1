@@ -21,6 +21,7 @@ import { PostCommentComponent } from './components/post/post-comment/post-commen
 
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 import { AdminUserDetailComponent } from './components/admin/admin-user-detail/admin-user-detail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,7 @@ import { AdminUserDetailComponent } from './components/admin/admin-user-detail/a
 
     AdminHomeComponent,
     AdminUserDetailComponent,
-    
+
 
   ],
   imports: [

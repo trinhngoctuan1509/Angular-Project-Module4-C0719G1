@@ -58,6 +58,15 @@ import { DeletePostMatDialogComponent } from './components/admin/admin-post-deta
 import { DialogRemoveComponent } from './components/admin/admin-post-list/dialog-remove/dialog-remove.component';
 import { PostEditSuccesComponent } from './components/post/post-edit-succes/post-edit-succes.component';
 
+
+import { AdminSettingComponent } from './components/admin/admin-setting/admin-setting.component';
+import { AdminSettingDialogConfirmDeleteCategoryComponent } from './components/admin/admin-setting-dialog-confirm-delete-category/admin-setting-dialog-confirm-delete-category.component';
+import { AdminSettingDialogEditCategoryComponent } from './components/admin/admin-setting-dialog-edit-category/admin-setting-dialog-edit-category.component';
+import { AdminSettingDialogConfirmDeleteRegionComponent } from './components/admin/admin-setting-dialog-confirm-delete-region/admin-setting-dialog-confirm-delete-region.component';
+import { AdminSettingDialogEditRegionComponent } from './components/admin/admin-setting-dialog-edit-region/admin-setting-dialog-edit-region.component';
+import { AdminSettingDialogConfirmDeletePostOfTypeComponent } from './components/admin/admin-setting-dialog-confirm-delete-post-of-type/admin-setting-dialog-confirm-delete-post-of-type.component';
+import { AdminSettingDialogEditPostOfTypeComponent } from './components/admin/admin-setting-dialog-edit-post-of-type/admin-setting-dialog-edit-post-of-type.component';
+
 import { EmployeeDetailComponent } from './components/admin/employees/employee-detail/employee-detail.component';
 import { AuthorizationAdminComponent } from './components/admin/authorization-admin/authorization-admin.component';
 import { DeleteEmployeeComponent } from './components/admin/delete-employee/delete-employee.component';
@@ -66,6 +75,7 @@ import { UnlockEmployeeComponent } from './components/admin/unlock-employee/unlo
 
 import { AdminStatisticViewComponent } from './components/admin/admin-statistic-view/admin-statistic-view.component';
 import { AdminMostViewPostComponent } from './components/admin/admin-most-view-post/admin-most-view-post.component';
+
 
 
 const appRoutes: Routes = [
@@ -124,7 +134,6 @@ const appRoutes: Routes = [
       { path: '**', redirectTo: 'post/list', pathMatch: 'full' },
 
       // { path: '', redirectTo: 'post/list'},
-
 ]
 
 @NgModule({
@@ -173,6 +182,14 @@ const appRoutes: Routes = [
 
     PostEditSuccesComponent,
 
+    AdminSettingComponent,
+    AdminSettingDialogConfirmDeleteCategoryComponent,
+    AdminSettingDialogEditCategoryComponent,
+    AdminSettingDialogConfirmDeleteRegionComponent,
+    AdminSettingDialogEditRegionComponent,
+    AdminSettingDialogConfirmDeletePostOfTypeComponent,
+    AdminSettingDialogEditPostOfTypeComponent,
+
 
     EmployeeDetailComponent,
 
@@ -186,12 +203,11 @@ const appRoutes: Routes = [
     LockEmployeeComponent,
 
 
-    UnlockEmployeeComponent
+    UnlockEmployeeComponent,
 
     AdminStatisticViewComponent,
 
     AdminMostViewPostComponent
-
 
   ],
 
@@ -217,6 +233,12 @@ const appRoutes: Routes = [
     DialogRemoveComponent,
     PostSuccessComponent,
     PostEditSuccesComponent,
+    AdminSettingDialogConfirmDeleteCategoryComponent,
+    AdminSettingDialogEditCategoryComponent,
+    AdminSettingDialogConfirmDeleteRegionComponent,
+    AdminSettingDialogEditRegionComponent,
+    AdminSettingDialogConfirmDeletePostOfTypeComponent,
+    AdminSettingDialogEditPostOfTypeComponent,
     DeleteEmployeeComponent,
     LockEmployeeComponent,
     UnlockEmployeeComponent
